@@ -1,46 +1,7 @@
-function colorize(string)
+function colorize(str)
 {
-    var newString = '';
-    var inSpan = false;
-
-    for (i = 0; i < string.length; i++)
-    {
-        if (string[i] == '^')
-        {
-            if (string[i + 1] == '7' || string[i + 1] == '0')
-            {
-                if (inSpan)
-                {
-                    newString += '</span>';
-
-                    inSpan = false;
-                }
-
-                i += 2;
-            }
-            else if (string[i + 1] >= '0' && string[i + 1] <= '9')
-            {
-                if (inSpan)
-                {
-                    newString += '</span>';
-                }
-
-                i += 2;
-                newString += '<span class="color-' + string[i - 1] + '">';
-
-                inSpan = true;
-            }
-        }
-
-        newString += string[i];
-    }
-
-    if (inSpan)
-    {
-        newString += '</span>';
-    }
-
-    return newString;
+    const s = "<span>" + (str.replace(/\^([0-9])/g, (str, color) => `</span><span class="color-${color}">`)) + "</span>";
+    return s.replace(/<span[^>]*><\/span[^>]*>/g, '');
 }
 
 $(function()
@@ -112,12 +73,22 @@ $(function()
         }
     });
 
-    $(document).keypress(function(e)
+    $(document).keydown(function(e)
     {
         if (e.keyCode == 9)
         {
             e.preventDefault();
             return false;
+        }
+        else if (e.keyCode == 33)
+        {
+            let buf = $('#chatBuffer');
+            buf.scrollTop(buf.scrollTop() - 50);
+        }
+        else if (e.keyCode == 34)
+        {
+            let buf = $('#chatBuffer');
+            buf.scrollTop(buf.scrollTop() + 50);
         }
     });
 
@@ -129,7 +100,7 @@ $(function()
         {
             inputShown = true;
 
-            $('#chat').css('opacity', '1');
+            $('#chat').stop().css('opacity', '1');
 
             $('#chatInputHas').show();
             $('#chatInput')[0].doFocus();
@@ -145,6 +116,7 @@ $(function()
         var name = item.name.replace('<', '&lt;');
         var message = item.message.replace('<', '&lt;');
 
+        name = colorize(name);
         message = colorize(message);
 
         var buf = $('#chatBuffer');
@@ -159,7 +131,7 @@ $(function()
         buf.find('ul').append('<li>' + nameStr + message + '</li>');
         buf.scrollTop(buf[0].scrollHeight - buf.height());
 
-        $('#chat').css('opacity', '1');
+        $('#chat').stop().css('opacity', '1');
 
         startHideChat();
     }, false);

@@ -40,7 +40,7 @@ input.fake
 #chatInputHas strong
 {
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: bottom;
     text-transform: uppercase;
     height: 29px;
     line-height: 26px;
@@ -66,7 +66,7 @@ input.fake
     overflow: hidden;
 }
 
-#chatInput > div:first-child
+#chatInput * > div:first-child
 {
     display: inline-block;
     vertical-align: middle;
