@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'Roboto Condensed';
+    src: url('nui://channelfeed/client/fonts/roboto-condensed.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('nui://channelfeed/client/fonts/roboto-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#channel-obituary
+{
+    position: absolute;
+}
+
+#channel-obituary > div
+{
+    width: 100%;
+
+    font-family: 'Roboto';
+}
+
+#channel-obituary div.item
+{
+    background-color: rgba(50, 50, 50, .6);
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    color: #eee;
+    margin-bottom: 3px;
+
+    font-size: 65%;
+}
+
+#channel-obituary div.item b
+{
+    font-family: 'Roboto Condensed';
+    font-size: 125%;
+    font-weight: normal;
+    color: #09f;
+}

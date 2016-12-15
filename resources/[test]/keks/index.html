@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <link href="keks.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="backdrop">
+            <div class="top">
+                <h1 title="Free Mode">Free Mode</h1>
+                <h2 title="Algonquin">Algonquin</h2>
+            </div>
+
+            <div class="letni">
+                <h2 title="INTEL">Intel</h2>
+                <div class="loadbar"><div class="thingy"></div></div>
+                <p>The Statue of Happiness has a heart. Have one too!</p>
+            </div>
+            <div class="bottom">
+                <div id="gradient">
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        var left = -10;
+
+        var self = function()
+        {
+            var elem = document.querySelector('.thingy');
+            left += (0.15 / 60) * 100;
+            if (left >= 100)
+            {
+                left = -10;
+            }
+
+            elem.style.left = left + '%';
+            requestAnimationFrame(self);
+        };
+        requestAnimationFrame(self);
+        </script>
+    </body>
+</html>

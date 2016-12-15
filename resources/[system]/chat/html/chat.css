@@ -1,0 +1,102 @@
+body
+{
+    background-color: transparent;
+    margin: 0px;
+}
+
+ul
+{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none; /* hii */
+}
+
+#chat
+{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    padding: 7px;
+    width: 30%;
+    font-size: 20px;
+    font-family: "Segoe UI", "Segoe UI Symbol", "Segoe UI Emoji",  Arial, sans-serif;
+    color: #fff;
+    overflow: hidden;
+    text-shadow: 0px 0px 1px #333;
+}
+
+input.fake
+{
+    position: absolute;
+    top: -10000px;
+    left: -10000px;
+}
+
+#chatInputHas
+{
+    display: none;
+}
+
+#chatInputHas strong
+{
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: uppercase;
+    height: 29px;
+    line-height: 26px;
+}
+
+#chatInput
+{
+    background-color: transparent;
+    border: none;
+    outline: none !important;
+    padding: 3px;
+
+    display: inline-block;
+    vertical-align: middle;
+
+    margin: 0px;
+    color: #fff;
+    text-shadow: 0px 0px 1px #333;
+
+    font: inherit;
+
+    white-space: pre;
+    overflow: hidden;
+}
+
+#chatInput > div:first-child
+{
+    display: inline-block;
+    vertical-align: middle;
+    height: 23px;
+    line-height: 20px;
+}
+
+#chatInput .caret
+{
+    display: inline-block;
+    min-width: 1px;
+    height: 22px;
+    margin-left: 1px;
+    vertical-align: bottom;
+    background-color: #fff;
+    box-shadow: 0px 0px 1px #333;
+    color: white;
+}
+
+#chatBuffer
+{
+    height: 240px;
+    overflow: hidden;
+}
+
+.color-1{color: #ff4444;}
+.color-2{color: #99cc00;}
+.color-3{color: #ffbb33;}
+.color-4{color: #0099cc;}
+.color-5{color: #33b5e5;}
+.color-6{color: #aa66cc;}
+.color-8{color: #cc0000;}
+.color-9{color: #cc0000;}
