@@ -65,3 +65,5 @@ AddEventHandler('hostedSession', function()
 
     currentHosting = nil
 end)
+
+EnableEnhancedHostSupport(true)
