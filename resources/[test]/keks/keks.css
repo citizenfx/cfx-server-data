@@ -80,7 +80,7 @@ h1:before, h2:before {
     margin-top: 0px;
 }
 
-.letni h2
+.letni h2, .letni h3
 {
     font-family: BankGothic;
 
@@ -89,6 +89,8 @@ h1:before, h2:before {
     font-size: 50px;
 
     margin: 0px;
+
+    display: inline-block;
 }
 
 .top
@@ -134,6 +136,8 @@ h1:before, h2:before {
     overflow: hidden;
 
     position: relative;
+
+    display: block;
 }
 
 .thingy
