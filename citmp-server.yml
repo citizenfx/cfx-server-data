@@ -9,19 +9,14 @@ AutoStartResources:
     - fivem-map-skater
     - baseevents
     - rconlog
-    - hardcap # prevents too many players from joining
+    - hardcap # prevents the game from breaking
     - scoreboard
 
 # do change
 RconPassword: lovely
 
 # configure this, please
-Hostname: default FiveReborn server
-
-# don't change this, it'll cause your server to be unlisted
-Game: GTA5
-
-PlatformServer: updater.fivereborn.com
+Hostname: default FiveM server
 
 ScriptDebug: true
 
@@ -34,7 +29,10 @@ Announce: true
 DisableAuth: true
 
 # set to true to disable local script hook plugins
-DisableScriptHook: false
+DisableScriptHook: true
 
-# set to the path of an icon to use in the server browser. it should be square.
+# uncomment and set to the path of an icon to use in the server browser. it should be square.
 #ServerIcon: hello.png
+
+# don't try enabling this
+#UseGameServerV2: true
