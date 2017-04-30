@@ -270,6 +270,10 @@ function spawnPlayer(spawnIdx, cb)
         --loadScene(spawn.x, spawn.y, spawn.z)
         --ForceLoadingScreen(false)
 
+        while not HasCollisionLoadedAroundEntity(ped) do
+            Citizen.Wait(0)
+        end
+
         ShutdownLoadingScreen()
 
         DoScreenFadeIn(500)
@@ -335,16 +339,3 @@ function forceRespawn()
     spawnLock = false
     respawnForced = true
 end
-
---[[AddEventHandler('playerInfoCreated', function()
-    loadSpawns(json.encode({
-        spawns = {
-            { x = -238.511, y = 954.025, z = 11.0803, heading = 90.0, model = 'ig_brucie' },
-            { x = -310.001, y = 945.603, z = 14.3728, heading = 90.0, model = 'ig_bulgarin' },
-        }
-    }))
-end)
-
-AddEventHandler('playerActivated', function()
-    respawnForced = true
-end)]]
