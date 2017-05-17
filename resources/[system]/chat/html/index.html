@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="index.css"></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css"></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.min.js"></script>
+  <script type="text/javascript" src="config.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+
+  <!-- App Template -->
+  <script type="text/x-template" id="app_template">
+    <div id="app">
+      <div class="chat-window" :class="{ 'fadeOut animated': !showWindow }">
+        <div class="chat-messages" ref="messages">
+          <message v-for="msg in messages"
+                   :multiline="msg.multiline"
+                   :args="msg.args"
+                   :template="msg.template"
+                   :key="msg">
+          </message>
+        </div>
+      </div>
+      <div class="chat-input" v-show="showInput">
+        <span class="prefix">➤</span>
+        <textarea v-model="message"
+                  ref="input"
+                  type="text"
+                  value="/help"
+                  autofocus
+                  @keyup.esc="hideInput"
+                  @keyup="keyUp"
+                  @keydown="keyDown"
+                  @keypress.enter.none.prevent="send"
+                  @keypress.enter.shift.prevent="addLine">
+        </textarea>
+        <suggestions :message="message" :suggestions="suggestions">
+        </suggestions>
+      </div>
+    </div>
+  </script>
+
+  <!-- Message Template -->
+  <script type="text/x-template" id="message_template">
+    <div class="msg" :class="{ multiline }">
+      <span v-html="textEscaped"></span>
+    </div>
+  </script>
+
+  <!-- Suggestions Template -->
+  <script type="text/x-template" id="suggestions_template">
+    <ul class="suggestions" v-show="currentSuggestions.length > 0">
+      <li class="suggestion" v-for="s in currentSuggestions">
+        <p>
+          <span :class="{ 'disabled': s.disabled }">
+            {{s.name}}
+          </span>
+          <span class="param"
+                v-for="(p, index) in s.params"
+                :class="{ 'disabled': p.disabled }">
+            [{{p.name}}]
+          </span>
+        </p>
+        <small class="help">
+          <template v-if="!s.disabled">
+            {{s.help}}
+          </template>
+          <template v-for="p in s.params" v-if="!p.disabled">
+            {{p.help}}
+          </template>
+        </small>
+      </li>
+    </ul>
+  </script>
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="./Suggestions.js"></script>
+  <script type="text/javascript" src="./Message.js"></script>
+  <script type="text/javascript" src="./App.js"></script>
+
+  <!-- Main Entry -->
+  <script type="text/javascript">
+  const instance = new Vue({
+    el: '#app',
+    render: h => h(window.APP),
+  });
+  window.instance = instance;
+  </script>
+
+</body>
+</html>
