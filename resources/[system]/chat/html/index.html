@@ -3,12 +3,17 @@
 <head>
   <meta charset="utf-8">
   <title></title>
-  <link rel="stylesheet" href="index.css"></link>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css"></link>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.min.js"></script>
-  <script type="text/javascript" src="config.js"></script>
+  <link href="vendor/latofonts.css" rel="stylesheet">
+  <link href="vendor/flexboxgrid.6.3.1.min.css" rel="stylesheet"></link>
+  <link href="vendor/animate.3.5.2.min.css" rel="stylesheet"></link>
+  <link href="index.css" rel="stylesheet"></link>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+
+  <!-- <script src="nui://game/ui/jquery.js" type="text/javascript"></script> -->
+  <script src="vendor/vue.2.3.3.min.js" type="text/javascript"></script>
+  <script src="config.default.js" type="text/javascript"></script>
+  <!-- <script src="config.js" type="text/javascript"></script> -->
 </head>
 <body>
   <div id="app"></div>
@@ -19,9 +24,12 @@
       <div class="chat-window" :class="{ 'fadeOut animated': !showWindow }">
         <div class="chat-messages" ref="messages">
           <message v-for="msg in messages"
+                   :templates="templates"
                    :multiline="msg.multiline"
                    :args="msg.args"
+                   :color="msg.color"
                    :template="msg.template"
+                   :template-id="msg.templateId"
                    :key="msg">
           </message>
         </div>
@@ -31,13 +39,11 @@
         <textarea v-model="message"
                   ref="input"
                   type="text"
-                  value="/help"
                   autofocus
                   @keyup.esc="hideInput"
                   @keyup="keyUp"
                   @keydown="keyDown"
-                  @keypress.enter.none.prevent="send"
-                  @keypress.enter.shift.prevent="addLine">
+                  @keypress.enter.prevent="send">
         </textarea>
         <suggestions :message="message" :suggestions="suggestions">
         </suggestions>
@@ -87,9 +93,15 @@
   <script type="text/javascript">
   const instance = new Vue({
     el: '#app',
-    render: h => h(window.APP),
+    render: h => h(APP),
   });
-  window.instance = instance;
+
+  window.emulate = (type, detail = {}) => {
+    detail.type = type;
+    window.dispatchEvent(new CustomEvent('message', {
+      detail,
+    }));
+  };
   </script>
 
 </body>

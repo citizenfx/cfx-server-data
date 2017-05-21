@@ -6,6 +6,7 @@ window.APP = {
       showInput: false,
       showWindow: false,
       suggestions: [],
+      templates: CONFIG.templates,
       message: '',
       messages: [],
       oldMessages: [],
@@ -17,7 +18,7 @@ window.APP = {
     window.removeEventListener('message', this.listener);
   },
   mounted() {
-    axios.post('http://betterchat/loaded', {});
+    $.post('http://chat/loaded', JSON.stringify({}));
     this.listener = window.addEventListener('message', (event) => {
       const item = event.data || event.detail; //'detail' is for debuging via browsers
       if (this[item.type]) {
@@ -31,11 +32,7 @@ window.APP = {
         clearTimeout(this.showWindowTimer);
       }
       this.showWindow = true;
-      this.showWindowTimer = setTimeout(() => {
-        if (!this.showInput) {
-          this.showWindow = false;
-        }
-      }, window.CONFIG.fadeTimeout);
+      this.resetShowWindowTimer();
 
       const messagesObj = this.$refs.messages;
       this.$nextTick(() => {
@@ -58,17 +55,46 @@ window.APP = {
         }
       }, 100);
     },
-    ON_MESSAGE(data) {
-      this.messages.push(data.message);
+    ON_MESSAGE({ message }) {
+      this.messages.push(message);
     },
-    ON_SUGGESTION_ADD(data) {
-      const suggestion = data.suggestion;
+    ON_CLEAR() {
+      this.messages = [];
+      this.oldMessages = [];
+      this.oldMessagesIndex = -1;
+    },
+    ON_SUGGESTION_ADD({ suggestion }) {
       if (!suggestion.params) {
-        suggestion.params = [];
+        suggestion.params = []; //TODO Move somewhere else
       }
       this.suggestions.push(suggestion);
     },
-    ON_SUGGESTION_REMOVE() {
+    ON_SUGGESTION_REMOVE({ name }) {
+      this.suggestions = this.suggestions.filter((sug) => sug.name !== name)
+    },
+    ON_TEMPLATE_ADD({ template }) {
+      if (this.templates[template.id]) {
+        this.warn(`Tried to add duplicate template '${template.id}'`)
+      } else {
+        this.templates[template.id] = template.html;
+      }
+    },
+    warn(msg) {
+      this.messages.push({
+        args: [msg],
+        template: '^3<b>CHAT-WARN</b>: ^0{0}',
+      });
+    },
+    clearShowWindowTimer() {
+      clearTimeout(this.showWindowTimer);
+    },
+    resetShowWindowTimer() {
+      this.clearShowWindowTimer();
+      this.showWindowTimer = setTimeout(() => {
+        if (!this.showInput) {
+          this.showWindow = false;
+        }
+      }, CONFIG.fadeTimeout);
     },
     keyUp() {
       this.resize();
@@ -77,6 +103,12 @@ window.APP = {
       if (e.which === 38 || e.which === 40) {
         e.preventDefault();
         this.moveOldMessageIndex(e.which === 38);
+      } else if (e.which == 33) {
+        const buf = $(this.$refs.messages);
+        buf.scrollTop(buf.scrollTop() - 50);
+      } else if (e.which == 34) {
+        const buf = $(this.$refs.messages);
+        buf.scrollTop(buf.scrollTop() + 50);
       }
     },
     moveOldMessageIndex(up) {
@@ -96,71 +128,31 @@ window.APP = {
       input.style.height = '5px';
       input.style.height = `${input.scrollHeight + 2}px`;
     },
-    addLine() {
-      this.message += '\n';
-      this.resize();
-    },
     send(e) {
-      if (e.shiftKey || this.message === '') {
-        return;
+      if (e.shiftKey) {
+        this.message += '\n';
+        this.resize();
+      } else {
+        if(this.message !== '') {
+          $.post('http://chat/chatResult', JSON.stringify({
+            message: this.message,
+          }));
+          this.oldMessages.unshift(this.message);
+          this.message = '';
+          this.oldMessagesIndex = -1;
+          this.hideInput();
+        } else {
+          this.hideInput(true);
+        }
       }
-      axios.post('http://betterchat/chatResult', {
-        message: this.message,
-      });
-      this.oldMessages.unshift(this.message);
-      this.message = '';
-      this.showInput = false;
-
-      this.showWindowTimer = setTimeout(() => {
-        this.showWindow = false;
-      }, window.CONFIG.fadeTimeout);
     },
-    hideInput(canceled) {
+    hideInput(canceled = false) {
       if (canceled) {
-        axios.post('http://betterchat/chatResult', {
-          canceled,
-        });
+        $.post('http://chat/chatResult', JSON.stringify({ canceled }));
       }
       this.showInput = false;
       clearInterval(this.focusTimer);
-
-      this.showWindowTimer = setTimeout(() => {
-        this.showWindow = false;
-      }, window.CONFIG.fadeTimeout);
+      this.resetShowWindowTimer();
     },
   },
-  components: {
-    Message: window.MESSAGE,
-    Suggestions: window.SUGGESTIONS,
-  },
-};
-
-window.emulate_open = () => {
-  window.dispatchEvent(new CustomEvent('message', {
-    detail: {
-      type: 'ON_OPEN',
-    },
-  }));
-};
-
-window.emulate_suggestion = (name, help, params = []) => {
-  window.dispatchEvent(new CustomEvent('message', {
-    detail: {
-      type: 'ON_SUGGESTION_ADD',
-      suggestion: {
-        name,
-        help,
-        params,
-      },
-    },
-  }));
-};
-
-window.emulate_message = (message) => {
-  window.dispatchEvent(new CustomEvent('message', {
-    detail: {
-      type: 'ON_MESSAGE',
-      message,
-    },
-  }));
 };

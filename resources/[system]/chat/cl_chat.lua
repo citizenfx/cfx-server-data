@@ -1,10 +1,17 @@
 local chatInputActive = false
 local chatInputActivating = false
 
-RegisterNetEvent('suggestionAdd')
 RegisterNetEvent('chatMessage')
-RegisterNetEvent('chatMessageEx')
+RegisterNetEvent('chat:addTemplate')
+RegisterNetEvent('chat:addMessage')
+RegisterNetEvent('chat:addSuggestion')
+RegisterNetEvent('chat:removeSuggestion')
+RegisterNetEvent('chat:clear')
 
+-- internal events
+RegisterNetEvent('_chat:messageEntered')
+
+--deprecated, use chat:addMessage
 AddEventHandler('chatMessage', function(author, color, text)
   if author == "" then
     author = false
@@ -19,15 +26,14 @@ AddEventHandler('chatMessage', function(author, color, text)
   })
 end)
 
-AddEventHandler('chatMessageEx', function(message)
+AddEventHandler('chat:addMessage', function(message)
   SendNUIMessage({
     type = 'ON_MESSAGE',
     message = message
   })
 end)
 
-AddEventHandler('suggestionAdd', function(name, help, params)
-  Citizen.Trace(name)
+AddEventHandler('chat:addSuggestion', function(name, help, params)
   SendNUIMessage({
     type = 'ON_SUGGESTION_ADD',
     suggestion = {
@@ -38,6 +44,29 @@ AddEventHandler('suggestionAdd', function(name, help, params)
   })
 end)
 
+AddEventHandler('chat:removeSuggestion', function(name)
+  SendNUIMessage({
+    type = 'ON_SUGGESTION_REMOVE',
+    name = name
+  })
+end)
+
+AddEventHandler('chat:addTemplate', function(id, html)
+  SendNUIMessage({
+    type = 'ON_TEMPLATE_ADD',
+    template = {
+      id = id,
+      html = html
+    }
+  })
+end)
+
+AddEventHandler('chat:clear', function(name)
+  SendNUIMessage({
+    type = 'ON_CLEAR'
+  })
+end)
+
 RegisterNUICallback('chatResult', function(data, cb)
   chatInputActive = false
   SetNuiFocus(false)
@@ -45,20 +74,24 @@ RegisterNUICallback('chatResult', function(data, cb)
   if not data.canceled then
     local id = PlayerId()
 
-    TriggerServerEvent('chatMessageEntered', GetPlayerName(id), data.message)
+    --deprecated
+    local r, g, b = 0, 0x99, 255
+
+    TriggerServerEvent('_chat:messageEntered', GetPlayerName(id), { r, g, b }, data.message)
   end
 
   cb('ok')
 end)
 
 RegisterNUICallback('loaded', function(data, cb)
-  TriggerServerEvent('chatInit');
+  TriggerServerEvent('chat:init');
 
   cb('ok')
 end)
 
 Citizen.CreateThread(function()
   SetTextChatEnabled(false)
+  SetNuiFocus(false)
 
   while true do
     Wait(0)

@@ -1,4 +1,4 @@
-window.SUGGESTIONS = {
+Vue.component('suggestions', {
   template: '#suggestions_template',
   props: ['message', 'suggestions'],
   data() {
@@ -21,11 +21,9 @@ window.SUGGESTIONS = {
               return false;
             }
           }
-
-          return true;
         }
         return true;
-      }).slice(0, 5);
+      }).slice(0, CONFIG.suggestionLimit);
 
       currentSuggestions.forEach((s) => {
         // eslint-disable-next-line no-param-reassign
@@ -43,4 +41,4 @@ window.SUGGESTIONS = {
     },
   },
   methods: {},
-};
+});

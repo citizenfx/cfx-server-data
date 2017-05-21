@@ -1,14 +1,22 @@
+.color-0{color: #ffffff;}
+.color-1{color: #ff4444;}
+.color-2{color: #99cc00;}
+.color-3{color: #ffbb33;}
+.color-4{color: #0099cc;}
+.color-5{color: #33b5e5;}
+.color-6{color: #aa66cc;}
+.color-8{color: #cc0000;}
+.color-9{color: #cc0068;}
+
 * {
   font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
 }
 
-
 .no-grow {
   flex-grow: 0;
 }
-
 
 #app {
   font-family: 'Lato', Helvetica, Arial, sans-serif;
@@ -33,7 +41,7 @@
   position: relative;
   height: 95%;
   font-size: 1.2rem;
-  margin: 5px;
+  margin: 10px;
 
   overflow-x: hidden;
   overflow-y: hidden;
