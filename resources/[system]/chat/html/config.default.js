@@ -8,4 +8,9 @@ window.CONFIG = {
   },
   fadeTimeout: 7000,
   suggestionLimit: 5,
+  style: {
+    background: 'rgba(52, 73, 94, 0.7)',
+    width: '38%',
+    height: '240px',
+  }
 };
