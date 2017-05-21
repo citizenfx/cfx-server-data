@@ -5,13 +5,8 @@ Vue.component('message', {
   },
   computed: {
     textEscaped() {
-      let s = '';
-      if (this.template) {
-        s = this.colorize(this.template);
-      } else {
-        s = this.colorize(this.templates[this.templateId]);
-      }
-      return s.replace(/{(\d+)}/g, (match, number) => {
+      let s = this.template ? this.template : this.templates[this.templateId];
+      s = s.replace(/{(\d+)}/g, (match, number) => {
         const argEscaped = this.args[number] != undefined ? this.escape(this.args[number]) : match
         if (number == 0 && this.color) {
           //color is deprecated, use templates or ^1 etc.
@@ -19,6 +14,7 @@ Vue.component('message', {
         }
         return argEscaped;
       });
+      return this.colorize(s);
     },
   },
   methods: {
