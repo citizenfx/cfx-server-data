@@ -21,7 +21,36 @@ AddEventHandler('getResourceInitFuncs', function(isPreParse, add)
     end)
 end)
 
+local function refreshResources()
+    local numResources = GetNumResources()
+
+    for i = 0, numResources - 1 do
+        local resource = GetResourceByFindIndex(i)
+
+        if GetNumResourceMetadata(resource, 'resource_type') > 0 then
+            local type = GetResourceMetadata(resource, 'resource_type', 0)
+            local params = json.decode(GetResourceMetadata(resource, 'resource_type_extra', 0))
+
+            if type == 'map' then
+                maps[resource] = params
+            elseif type == 'gametype' then
+                gametypes[resource] = params
+            end
+        end
+    end
+end
+
+AddEventHandler('onResourceListRefresh', function()
+    refreshResources()
+end)
+
+refreshResources()
+
 AddEventHandler('onResourceStarting', function(resource)
+    if GetNumResourceMetadata(resource, 'map') then
+        -- todo: add file
+    end
+
     if maps[resource] then
         if getCurrentMap() and getCurrentMap() ~= resource then
             if doesMapSupportGameType(getCurrentGameType(), resource) then
@@ -80,8 +109,10 @@ AddEventHandler('onResourceStart', function(resource)
             if doesMapSupportGameType(currentGameType, resource) then
                 if TriggerEvent('onMapStart', resource, maps[resource]) then
                     if maps[resource].name then
+                        print('Started map ' .. maps[resource].name)
                         SetMapName(maps[resource].name)
                     else
+                        print('Started map ' .. resource)
                         SetMapName(resource)
                     end
 
