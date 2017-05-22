@@ -1,6 +1,3 @@
-RegisterServerEvent('chatCommandEntered')
-RegisterServerEvent('chatMessageEntered')
-
 RegisterServerEvent('chat:init')
 RegisterServerEvent('chat:addTemplate')
 RegisterServerEvent('chat:addMessage')

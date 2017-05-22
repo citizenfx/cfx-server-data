@@ -3,6 +3,7 @@ window.APP = {
   name: 'app',
   data() {
     return {
+      style: CONFIG.style,
       showInput: false,
       showWindow: false,
       suggestions: [],
