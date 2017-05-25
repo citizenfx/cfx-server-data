@@ -8,9 +8,9 @@
 .color-8{color: #cc0000;}
 .color-9{color: #cc0068;}
 
-.style-b{font-weight: bold;}
-.style-u{text-decoration: underline;}
-.style-s{text-decoration: line-through;}
+.style-\*{font-weight: bold;}
+.style-\_{text-decoration: underline;}
+.style-\~{text-decoration: line-through;}
 .style-r {
   text-decoration: none;
   font-weight: normal;
