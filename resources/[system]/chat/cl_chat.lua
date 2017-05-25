@@ -13,15 +13,16 @@ RegisterNetEvent('_chat:messageEntered')
 
 --deprecated, use chat:addMessage
 AddEventHandler('chatMessage', function(author, color, text)
-  if author == "" then
-    author = false
+  local args = { text }
+  if author ~= "" then
+    table.insert(args, 1, author)
   end
   SendNUIMessage({
     type = 'ON_MESSAGE',
     message = {
       color = color,
       multiline = true,
-      args = { author, text }
+      args = args
     }
   })
 end)

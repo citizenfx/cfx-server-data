@@ -19,7 +19,7 @@ window.APP = {
     window.removeEventListener('message', this.listener);
   },
   mounted() {
-    $.post('http://chat/loaded', JSON.stringify({}));
+    post('http://chat/loaded', JSON.stringify({}));
     this.listener = window.addEventListener('message', (event) => {
       const item = event.data || event.detail; //'detail' is for debuging via browsers
       if (this[item.type]) {
@@ -135,7 +135,7 @@ window.APP = {
         this.resize();
       } else {
         if(this.message !== '') {
-          $.post('http://chat/chatResult', JSON.stringify({
+          post('http://chat/chatResult', JSON.stringify({
             message: this.message,
           }));
           this.oldMessages.unshift(this.message);
@@ -149,7 +149,7 @@ window.APP = {
     },
     hideInput(canceled = false) {
       if (canceled) {
-        $.post('http://chat/chatResult', JSON.stringify({ canceled }));
+        post('http://chat/chatResult', JSON.stringify({ canceled }));
       }
       this.showInput = false;
       clearInterval(this.focusTimer);
