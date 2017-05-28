@@ -139,7 +139,6 @@ window.APP = {
             message: this.message,
           }));
           this.oldMessages.unshift(this.message);
-          this.message = '';
           this.oldMessagesIndex = -1;
           this.hideInput();
         } else {
@@ -151,6 +150,7 @@ window.APP = {
       if (canceled) {
         post('http://chat/chatResult', JSON.stringify({ canceled }));
       }
+      this.message = '';
       this.showInput = false;
       clearInterval(this.focusTimer);
       this.resetShowWindowTimer();

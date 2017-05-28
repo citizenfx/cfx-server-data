@@ -8,14 +8,6 @@
 .color-8{color: #cc0000;}
 .color-9{color: #cc0068;}
 
-.style-\*{font-weight: bold;}
-.style-\_{text-decoration: underline;}
-.style-\~{text-decoration: line-through;}
-.style-r {
-  text-decoration: none;
-  font-weight: normal;
-}
-
 * {
   font-family: 'Lato', sans-serif;
   margin: 0;
@@ -24,6 +16,10 @@
 
 .no-grow {
   flex-grow: 0;
+}
+
+em {
+  font-style: normal;
 }
 
 #app {
