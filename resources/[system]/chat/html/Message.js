@@ -29,13 +29,23 @@ Vue.component('message', {
       return `<span style="color: rgb(${this.color[0]}, ${this.color[1]}, ${this.color[2]})">${str}</span>`
     },
     colorize(str) {
-      const s = "<span>" + (str.replace(/\^([0-9]+)([\*\_\~r])|\^([0-9]+)|\^([\*\_\~r])/g,
-        (match, color1, style1, color2, style2) => {
-          const color = (color1 || color2) ? `color-${color1 || color2} ` : '';
-          const style = (style1 || style2) ? `style-${style1 || style2} ` : '';
-          return `</span><span class="${color}${style}">`;
-        }
-      )) + "</span>";
+      let s = "<span>" + (str.replace(/\^([0-9]+)/g, (str, color) => `</span><span class="color-${color}">`)) + "</span>";
+
+      const styleDict = {
+        '*': 'font-weight: bold;',
+        '_': 'text-decoration: underline;',
+        '~': 'text-decoration: line-through;',
+        '=': 'text-decoration: underline line-through;',
+        'r': 'text-decoration: none;font-weight: normal;',
+      };
+
+      const styleRegex = /\^(\_|\*|\=|\~|\/|r)(.*?)(?=$|\^r|<\/em>)/;
+      while (s.match(styleRegex)) { //Any better solution would be appreciated :P
+        s = s.replace(styleRegex, (str, style, inner) => `<em style="${styleDict[style]}">${inner}</em>`)
+      }
+
+      console.log(s);
+
       return s.replace(/<span[^>]*><\/span[^>]*>/g, '');
     },
     escape(unsafe) {
