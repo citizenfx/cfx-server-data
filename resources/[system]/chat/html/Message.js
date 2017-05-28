@@ -43,9 +43,6 @@ Vue.component('message', {
       while (s.match(styleRegex)) { //Any better solution would be appreciated :P
         s = s.replace(styleRegex, (str, style, inner) => `<em style="${styleDict[style]}">${inner}</em>`)
       }
-
-      console.log(s);
-
       return s.replace(/<span[^>]*><\/span[^>]*>/g, '');
     },
     escape(unsafe) {
