@@ -18,6 +18,10 @@
   flex-grow: 0;
 }
 
+em {
+  font-style: normal;
+}
+
 #app {
   font-family: 'Lato', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
