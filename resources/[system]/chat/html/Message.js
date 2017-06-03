@@ -29,7 +29,7 @@ Vue.component('message', {
       return `<span style="color: rgb(${this.color[0]}, ${this.color[1]}, ${this.color[2]})">${str}</span>`
     },
     colorize(str) {
-      let s = "<span>" + (str.replace(/\^([0-9]+)/g, (str, color) => `</span><span class="color-${color}">`)) + "</span>";
+      let s = "<span>" + (str.replace(/\^([0-9])/g, (str, color) => `</span><span class="color-${color}">`)) + "</span>";
 
       const styleDict = {
         '*': 'font-weight: bold;',
