@@ -267,6 +267,10 @@ function getCurrentMap()
     return currentMap
 end
 
+function getMaps()
+    return maps
+end
+
 function changeGameType(gameType)
     if currentMap and not doesMapSupportGameType(gameType, currentMap) then
         StopResource(currentMap)
