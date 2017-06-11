@@ -87,7 +87,7 @@ AddEventHandler('onClientResourceStart', function(res)
     end)
 end)
 
-AddEventHandler('onClientResourceStop', function(res)
+AddEventHandler('onResourceStop', function(res)
     if maps[res] then
         TriggerEvent('onClientMapStop', res)
     elseif gametypes[res] then

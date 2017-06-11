@@ -85,6 +85,8 @@ function loadSpawns(spawnString)
     end
 end
 
+local spawnNum = 1
+
 function addSpawnPoint(spawn)
     -- validate the spawn (position)
     if not tonumber(spawn.x) or not tonumber(spawn.y) or not tonumber(spawn.z) then
@@ -117,8 +119,24 @@ function addSpawnPoint(spawn)
     -- overwrite the model in case we hashed it
     spawn.model = model
 
+    -- add an index
+    spawn.idx = spawnNum
+    spawnNum = spawnNum + 1
+
     -- all OK, add the spawn entry to the list
     table.insert(spawnPoints, spawn)
+
+    return spawn.idx
+end
+
+-- removes a spawn point
+function removeSpawnPoint(spawn)
+    for i = 1, #spawnPoints do
+        if spawnPoints[i].idx == spawn then
+            table.remove(spawnPoints, i)
+            return
+        end
+    end
 end
 
 -- changes the auto-spawn flag

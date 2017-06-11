@@ -38,7 +38,7 @@ Citizen.CreateThread(function()
 				else killerid = -1
 				end
 
-                if killer == ped then
+                if killer == ped or killer == -1 then
                     TriggerEvent('baseevents:onPlayerDied', killertype, { table.unpack(GetEntityCoords(ped)) })
                     TriggerServerEvent('baseevents:onPlayerDied', killertype, { table.unpack(GetEntityCoords(ped)) })
                     hasBeenDead = true
