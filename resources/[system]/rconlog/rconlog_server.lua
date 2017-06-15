@@ -15,7 +15,7 @@ end)
 RegisterServerEvent('rlUpdateNamesResult')
 
 AddEventHandler('rlUpdateNamesResult', function(res)
-    if source ~= GetHostId() then
+    if source ~= tonumber(GetHostId()) then
         print('bad guy')
         return
     end
