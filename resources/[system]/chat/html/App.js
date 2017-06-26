@@ -130,20 +130,15 @@ window.APP = {
       input.style.height = `${input.scrollHeight + 2}px`;
     },
     send(e) {
-      if (e.shiftKey) {
-        this.message += '\n';
-        this.resize();
+      if(this.message !== '') {
+        post('http://chat/chatResult', JSON.stringify({
+          message: this.message,
+        }));
+        this.oldMessages.unshift(this.message);
+        this.oldMessagesIndex = -1;
+        this.hideInput();
       } else {
-        if(this.message !== '') {
-          post('http://chat/chatResult', JSON.stringify({
-            message: this.message,
-          }));
-          this.oldMessages.unshift(this.message);
-          this.oldMessagesIndex = -1;
-          this.hideInput();
-        } else {
-          this.hideInput(true);
-        }
+        this.hideInput(true);
       }
     },
     hideInput(canceled = false) {
