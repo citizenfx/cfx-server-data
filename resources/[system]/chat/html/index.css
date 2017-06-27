@@ -83,6 +83,10 @@ textarea {
   overflow: hidden;
 }
 
+textarea:focus, input:focus {
+    outline: none;
+}
+
 .msg {
   margin-bottom: 3px;
 }
