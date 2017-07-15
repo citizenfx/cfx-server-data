@@ -34,7 +34,7 @@ AddEventHandler('__cfx_internal:commandFallback', function(command)
 end)
 
 -- player join messages
-AddEventHandler('playerActivated', function()
+AddEventHandler('playerConnecting', function()
     TriggerClientEvent('chatMessage', -1, '', { 255, 255, 255 }, '^2* ' .. GetPlayerName(source) .. ' joined.')
 end)
 
