@@ -7,6 +7,11 @@ Vue.component('message', {
     textEscaped() {
       let s = this.template ? this.template : this.templates[this.templateId];
 
+      if (this.template) {
+        //We disable templateId since we are using a direct raw template
+        this.templateId = -1;
+      }
+
       //This hack is required to preserve backwards compatability
       if (this.templateId == CONFIG.defaultTemplateId
           && this.args.length == 1) {
