@@ -1,5 +1,6 @@
 local chatInputActive = false
 local chatInputActivating = false
+local chatVisibilityToggle = false
 
 RegisterNetEvent('chatMessage')
 RegisterNetEvent('chat:addTemplate')
@@ -7,6 +8,7 @@ RegisterNetEvent('chat:addMessage')
 RegisterNetEvent('chat:addSuggestion')
 RegisterNetEvent('chat:removeSuggestion')
 RegisterNetEvent('chat:clear')
+RegisterNetEvent('chat:toggleChat')
 
 -- internal events
 RegisterNetEvent('__cfx_internal:serverPrint')
@@ -19,34 +21,41 @@ AddEventHandler('chatMessage', function(author, color, text)
   if author ~= "" then
     table.insert(args, 1, author)
   end
-  SendNUIMessage({
-    type = 'ON_MESSAGE',
-    message = {
-      color = color,
-      multiline = true,
-      args = args
-    }
-  })
+
+  if(not chatVisibilityToggle)then
+    SendNUIMessage({
+      type = 'ON_MESSAGE',
+      message = {
+        color = color,
+        multiline = true,
+        args = args
+      }
+    })
+  end
 end)
 
 AddEventHandler('__cfx_internal:serverPrint', function(msg)
   print(msg)
 
-  SendNUIMessage({
-    type = 'ON_MESSAGE',
-    message = {
-      color = { 0, 0, 0 },
-      multiline = true,
-      args = { msg }
-    }
-  })
+  if(not chatVisibilityToggle)then
+    SendNUIMessage({
+      type = 'ON_MESSAGE',
+      message = {
+        color = { 0, 0, 0 },
+        multiline = true,
+        args = { msg }
+      }
+    })
+  end
 end)
 
 AddEventHandler('chat:addMessage', function(message)
-  SendNUIMessage({
-    type = 'ON_MESSAGE',
-    message = message
-  })
+  if(not chatVisibilityToggle)then
+    SendNUIMessage({
+      type = 'ON_MESSAGE',
+      message = message
+    })
+  end
 end)
 
 AddEventHandler('chat:addSuggestion', function(name, help, params)
@@ -81,6 +90,25 @@ AddEventHandler('chat:clear', function(name)
   SendNUIMessage({
     type = 'ON_CLEAR'
   })
+end)
+
+AddEventHandler('chat:toggleChat',function()
+  chatVisibilityToggle = not chatVisibilityToggle
+
+  local state = (chatVisibilityToggle == true) and "^1disabled" or "^2enabled"
+
+  SendNUIMessage({
+    type = 'ON_MESSAGE',
+    message = {
+        color = {255,255,255},
+        multiline = true,
+        args = {"Chat Visibility has been "..state}
+      }
+    })
+end)
+
+RegisterCommand("togglechat",function()
+  TriggerEvent('chat:toggleChat')
 end)
 
 RegisterNUICallback('chatResult', function(data, cb)
