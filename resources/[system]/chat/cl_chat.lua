@@ -94,7 +94,7 @@ end)
 
 AddEventHandler('chat:toggleChat',function(newState)
   if(newState == true or newState == false)then
-  	chatVisibilityToggle = newState
+  	chatVisibilityToggle = not newState
   else
   	chatVisibilityToggle = not chatVisibilityToggle
   end
