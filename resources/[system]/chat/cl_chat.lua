@@ -92,9 +92,13 @@ AddEventHandler('chat:clear', function(name)
   })
 end)
 
-AddEventHandler('chat:toggleChat',function()
-  chatVisibilityToggle = not chatVisibilityToggle
-
+AddEventHandler('chat:toggleChat',function(newState)
+  if(newState == true or newState == false)then
+  	chatVisibilityToggle = newState
+  else
+  	chatVisibilityToggle = not chatVisibilityToggle
+  end
+  TriggerEvent('chat:clear')
   local state = (chatVisibilityToggle == true) and "^1disabled" or "^2enabled"
 
   SendNUIMessage({
