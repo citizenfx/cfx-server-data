@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fivem runcode</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+	<style type="text/css">
+	body {
+		font-family: "Segoe UI", sans-serif;
+	}
+	</style>
+</head>
+<body>
+	<div id="code-container" style="width:800px;height:600px;border:1px solid grey"></div><br>
+	Password: <input type="password" id="password"> (use your rcon password)<br>
+	Client ID: <input type="text" id="client"> (leave blank for server)<br>
+	<div id="clients"></div>
+	<button id="run">Run</button>
+	<div id="result">
+	</div>
+
+	<!--
+	to use a local deployment, uncomment; do note currently the server isn't optimized to serve >1MB files
+	<script src="monaco-editor/vs/loader.js"></script>
+	-->
+
+	<script src="https://unpkg.com/monaco-editor@0.10.0/min/vs/loader.js"></script>
+
+	<script>
+		function fetchClients() {
+			fetch('/runcode/clients').then(res => res.json()).then(res => {
+				const el = document.querySelector('#clients');
+				el.innerHTML = '';
+
+				const clients = res.clients;
+				clients.push(['All', -1]);
+
+				for (const client of clients) {
+					const l = document.createElement('a');
+					l.addEventListener('click', e => {
+						document.querySelector('#client').value = client[1];
+						e.preventDefault();
+					});
+
+					l.setAttribute('href', 'javascript:void(0)');
+					l.appendChild(document.createTextNode(client[0]));
+
+					el.appendChild(l);
+					el.appendChild(document.createTextNode(' '));
+				}
+			});
+		}
+
+		setInterval(() => fetchClients(), 1000);
+
+		require.config({ paths: { 'vs': 'https://unpkg.com/monaco-editor@0.10.0/min/vs' }});
+		require(['vs/editor/editor.main'], function() {
+			const editor = monaco.editor.create(document.getElementById('code-container'), {
+				value: 'return 42',
+				language: 'lua'
+			});
+
+			document.querySelector('#run').addEventListener('click', e => {
+				const text = editor.getValue();
+
+				fetch('/runcode/', {
+					method: 'post',
+					body: JSON.stringify({
+						password: document.querySelector('#password').value,
+						client: document.querySelector('#client').value,
+						code: text
+					})
+				}).then(res => res.json()).then(res => {
+					const resultElement = document.querySelector('#result');
+
+					if (res.error) {
+						resultElement.style.color = '#aa0000';
+					} else {
+						resultElement.style.color = '#000000';
+					}
+
+					resultElement.innerHTML = res.error || res.result;
+
+					if (res.from) {
+						resultElement.innerHTML += ' (from ' + res.from + ')';
+					}
+				});
+
+				e.preventDefault();
+			});
+		});
+	</script>
+
+</body>
+</html>
