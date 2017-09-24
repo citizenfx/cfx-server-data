@@ -85,7 +85,7 @@ end)
 
 RegisterCommand('clear', function(source, args, rawCommand)
     TriggerEvent('chat:clear')
-end)
+end, false)
 
 RegisterNUICallback('chatResult', function(data, cb)
   chatInputActive = false
