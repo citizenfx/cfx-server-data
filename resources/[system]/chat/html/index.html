@@ -18,7 +18,7 @@
   <!-- App Template -->
   <script type="text/x-template" id="app_template">
     <div id="app">
-      <div class="chat-window" :style="this.style" :class="{ 'fadeOut animated': !showWindow }">
+      <div class="chat-window" :style="this.style" :class="{ 'fadeOut animated': !showWindow, 'forceHidden': neverShowWindow }">
         <div class="chat-messages" ref="messages">
           <message v-for="msg in messages"
                    :templates="templates"

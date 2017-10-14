@@ -119,3 +119,8 @@ textarea:focus, input:focus {
 .suggestion {
   margin-bottom: 5px;
 }
+
+.forceHidden {
+  opacity: 0.0 !important;
+  visibility: none !important;
+}

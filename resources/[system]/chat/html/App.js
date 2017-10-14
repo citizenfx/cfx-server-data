@@ -6,6 +6,8 @@ window.APP = {
       style: CONFIG.style,
       showInput: false,
       showWindow: false,
+      neverShowWindow: false,
+      neverShowWindowFlag: false,
       suggestions: [],
       templates: CONFIG.templates,
       message: '',
@@ -32,7 +34,9 @@ window.APP = {
       if (this.showWindowTimer) {
         clearTimeout(this.showWindowTimer);
       }
-      this.showWindow = true;
+      if(this.neverShowWindowFlag == false){
+        this.showWindow = true;
+      }
       this.resetShowWindowTimer();
 
       const messagesObj = this.$refs.messages;
@@ -45,6 +49,8 @@ window.APP = {
     ON_OPEN() {
       this.showInput = true;
       this.showWindow = true;
+      this.neverShowWindow = false
+
       if (this.showWindowTimer) {
         clearTimeout(this.showWindowTimer);
       }
@@ -80,6 +86,12 @@ window.APP = {
         this.templates[template.id] = template.html;
       }
     },
+    ON_TOGGLE_CHAT({ toggle }){
+      if(toggle == true || toggle == false){
+        this.neverShowWindow = toggle
+        this.neverShowWindowFlag = toggle
+      }
+    },
     warn(msg) {
       this.messages.push({
         args: [msg],
@@ -94,6 +106,9 @@ window.APP = {
       this.showWindowTimer = setTimeout(() => {
         if (!this.showInput) {
           this.showWindow = false;
+          if(this.neverShowWindowFlag){
+            this.neverShowWindow = true
+          }
         }
       }, CONFIG.fadeTimeout);
     },

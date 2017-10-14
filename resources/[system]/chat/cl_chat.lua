@@ -1,5 +1,6 @@
 local chatInputActive = false
 local chatInputActivating = false
+local chatVisibilityToggle = false
 
 RegisterNetEvent('chatMessage')
 RegisterNetEvent('chat:addTemplate')
@@ -7,6 +8,7 @@ RegisterNetEvent('chat:addMessage')
 RegisterNetEvent('chat:addSuggestion')
 RegisterNetEvent('chat:removeSuggestion')
 RegisterNetEvent('chat:clear')
+RegisterNetEvent('chat:toggleChat')
 
 -- internal events
 RegisterNetEvent('__cfx_internal:serverPrint')
@@ -81,6 +83,34 @@ AddEventHandler('chat:clear', function(name)
   SendNUIMessage({
     type = 'ON_CLEAR'
   })
+end)
+
+AddEventHandler('chat:toggleChat',function(newState)
+  if(newState == true or newState == false)then
+    chatVisibilityToggle = not newState
+  else
+    chatVisibilityToggle = not chatVisibilityToggle
+  end
+
+  local state = (chatVisibilityToggle == true) and "^1disabled" or "^2enabled"
+
+  SendNUIMessage({
+    type = 'ON_TOGGLE_CHAT',
+    toggle = chatVisibilityToggle
+  })
+
+  SendNUIMessage({
+  type = 'ON_MESSAGE',
+  message = {
+    color = {255,255,255},
+    multiline = true,
+    args = {"Chat Visibility has been "..state}
+    }
+  })
+end)
+
+RegisterCommand("togglechat",function()
+  TriggerEvent('chat:toggleChat')
 end)
 
 RegisterNUICallback('chatResult', function(data, cb)
