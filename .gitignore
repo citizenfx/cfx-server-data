@@ -3,3 +3,10 @@ CitizenMP.Server.exe.config
 NLog.config
 /cache/
 /resources/\[local\]/
+/*.dll
+/FXServer.exe
+server.cfg
+/citizen/
+/CitizenFX.log
+/components.json
+/run.cmd
