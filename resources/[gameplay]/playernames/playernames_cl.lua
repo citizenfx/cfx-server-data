@@ -160,9 +160,6 @@ AddEventHandler('playernames:configure', function(id, key, ...)
     elseif key == 'rnme' then
         getSettings(id).rename = true
     elseif key == 'name' then
-        print(id, 'id')
-        print(getSettings(id))
-
         getSettings(id).serverName = args[1]
         getSettings(id).rename = true
     elseif key == 'tpl' then
@@ -175,8 +172,6 @@ AddEventHandler('playernames:configure', function(id, key, ...)
 end)
 
 AddEventHandler('playernames:extendContext', function(i, cb)
-    print(getSettings(GetPlayerServerId(i)))
-
     cb('serverName', getSettings(GetPlayerServerId(i)).serverName)
 end)
 
