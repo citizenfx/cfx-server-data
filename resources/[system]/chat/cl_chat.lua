@@ -15,18 +15,20 @@ RegisterNetEvent('_chat:messageEntered')
 
 --deprecated, use chat:addMessage
 AddEventHandler('chatMessage', function(author, color, text)
-  local args = { text }
-  if author ~= "" then
-    table.insert(args, 1, author)
-  end
-  SendNUIMessage({
-    type = 'ON_MESSAGE',
-    message = {
-      color = color,
-      multiline = true,
-      args = args
-    }
-  })
+  if not WasEventCanceled() then
+      local args = { text }
+      if author ~= "" then
+        table.insert(args, 1, author)
+      end
+      SendNUIMessage({
+        type = 'ON_MESSAGE',
+        message = {
+          color = color,
+          multiline = true,
+          args = args
+        }
+      })
+    end
 end)
 
 AddEventHandler('__cfx_internal:serverPrint', function(msg)
