@@ -5,6 +5,7 @@ RegisterNetEvent('chatMessage')
 RegisterNetEvent('chat:addTemplate')
 RegisterNetEvent('chat:addMessage')
 RegisterNetEvent('chat:addSuggestion')
+RegisterNetEvent('chat:addSuggestions')
 RegisterNetEvent('chat:removeSuggestion')
 RegisterNetEvent('chat:clear')
 
@@ -35,7 +36,7 @@ AddEventHandler('__cfx_internal:serverPrint', function(msg)
   SendNUIMessage({
     type = 'ON_MESSAGE',
     message = {
-      color = { 0, 0, 0 },
+      templateId = 'print',
       multiline = true,
       args = { msg }
     }
@@ -58,6 +59,15 @@ AddEventHandler('chat:addSuggestion', function(name, help, params)
       params = params or nil
     }
   })
+end)
+
+AddEventHandler('chat:addSuggestions', function(suggestions)
+  for _, suggestion in ipairs(suggestions) do
+    SendNUIMessage({
+      type = 'ON_SUGGESTION_ADD',
+      suggestion = suggestion
+    })
+  end
 end)
 
 AddEventHandler('chat:removeSuggestion', function(name)
@@ -103,8 +113,35 @@ RegisterNUICallback('chatResult', function(data, cb)
   cb('ok')
 end)
 
+local function refreshCommands()
+  if GetRegisteredCommands then
+    local registeredCommands = GetRegisteredCommands()
+
+    local suggestions = {}
+
+    for _, command in ipairs(registeredCommands) do
+        if IsAceAllowed(('command.%s'):format(command.name)) then
+            table.insert(suggestions, {
+                name = '/' .. command.name,
+                help = ''
+            })
+        end
+    end
+
+    TriggerEvent('chat:addSuggestions', suggestions)
+  end
+end
+
+AddEventHandler('onClientResourceStart', function(resName)
+  Wait(500)
+
+  refreshCommands()
+end)
+
 RegisterNUICallback('loaded', function(data, cb)
   TriggerServerEvent('chat:init');
+
+  refreshCommands()
 
   cb('ok')
 end)

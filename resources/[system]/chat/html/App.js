@@ -68,6 +68,9 @@ window.APP = {
       if (!suggestion.params) {
         suggestion.params = []; //TODO Move somewhere else
       }
+      if (this.suggestions.find(a => a.name == suggestion.name)) {
+        return;
+      }
       this.suggestions.push(suggestion);
     },
     ON_SUGGESTION_REMOVE({ name }) {
