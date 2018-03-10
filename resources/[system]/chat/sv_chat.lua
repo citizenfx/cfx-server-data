@@ -6,6 +6,7 @@ RegisterServerEvent('chat:removeSuggestion')
 RegisterServerEvent('_chat:messageEntered')
 RegisterServerEvent('chat:clear')
 RegisterServerEvent('__cfx_internal:commandFallback')
+RegisterServerEvent('chat:commandEntered')
 
 AddEventHandler('_chat:messageEntered', function(author, color, message)
     if not message or not author then
