@@ -23,8 +23,5 @@ end)
 
 -- Export end users can use
 function isResourceRunning(resourceName)
-	if resources[resourceName] == nil then
-		return
-	end
 	return resources[resourceName]
 end
