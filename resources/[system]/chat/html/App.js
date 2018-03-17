@@ -68,9 +68,20 @@ window.APP = {
       if (!suggestion.params) {
         suggestion.params = []; //TODO Move somewhere else
       }
-      if (this.suggestions.find(a => a.name == suggestion.name)) {
-        return;
-      }
+      for (index = 0; index < this.suggestions.length; ++index) {
+		      var suggest = this.suggestions[index];
+		      if (suggest.name == suggestion.name) {
+		      	if (suggest.help == '' && suggestion.help != '') {
+		      	  suggest.help = suggestion.help;
+		      	  suggest.params = suggestion.params;
+		      	  return;
+		      	}
+		      	return;
+		      }
+	    }
+      //if (this.suggestions.find(a => a.name == suggestion.name)) {
+      //  return;
+      //}
       this.suggestions.push(suggestion);
     },
     ON_SUGGESTION_REMOVE({ name }) {
