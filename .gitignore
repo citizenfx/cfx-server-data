@@ -4,3 +4,4 @@ NLog.config
 /cache/
 /resources/\[local\]/
 *.cfg
+!example.server.cfg
