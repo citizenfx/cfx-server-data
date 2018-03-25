@@ -36,8 +36,6 @@ AddEventHandler('onClientResourceStart', function(res)
         end
     end
 
-    print('map? ', res)
-
     -- handle starting
     loadMap(res)
 
