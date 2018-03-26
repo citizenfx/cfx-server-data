@@ -8,6 +8,7 @@ RegisterNetEvent('chat:addSuggestion')
 RegisterNetEvent('chat:addSuggestions')
 RegisterNetEvent('chat:removeSuggestion')
 RegisterNetEvent('chat:clear')
+RegisterNetEvent('chat:commandEntered')
 
 -- internal events
 RegisterNetEvent('__cfx_internal:serverPrint')
@@ -105,6 +106,8 @@ RegisterNUICallback('chatResult', function(data, cb)
 
     if data.message:sub(1, 1) == '/' then
       ExecuteCommand(data.message:sub(2))
+      TriggerEvent('chat:commandEntered', data.message:sub(2))
+      TriggerServerEvent('chat:commandEntered', data.message:sub(2))
     else
       TriggerServerEvent('_chat:messageEntered', GetPlayerName(id), { r, g, b }, data.message)
     end
