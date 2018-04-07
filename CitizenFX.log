@@ -1,0 +1,1717 @@
+[   7513015] Initializing Mono
+[   7513031] Initializing Mono completed
+[   7513047] Hello!
+[   7513093] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[   7513140] Found new resource fivem in C:/server-data/resources//fivem
+[   7513140] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[   7513156] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[   7513172] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[   7513172] Found new resource runcode in C:/server-data/resources//runcode
+[   7513187] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[   7513187] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[   7513203] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[   7513218] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[   7513218] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[   7513234] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[   7513234] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[   7513250] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[   7513265] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[   7513265] Found new resource chat in C:/server-data/resources//[system]/chat
+[   7513281] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[   7513281] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[   7513297] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[   7513312] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[   7513312] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[   7513328] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[   7513328] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[   7513343] Found new resource keks in C:/server-data/resources//[test]/keks
+[   7513375] Started resource sessionmanager
+[   7513781] Started resource mapmanager
+[   7513906] Started resource chat
+[   7513922] Started resource spawnmanager
+[   7513937] Started gametype Freeroam
+[   7513937] Started resource fivem
+[   7513953] Started resource hardcap
+[   7513968] Started resource rconlog
+[   7514015] Started resource scoreboard
+[   7514047] Started resource playernames
+[   7514047] Authenticating server license key...
+[   7514672] Server license key authentication succeeded. Welcome!
+[   7514734] Sending heartbeat to live-internal.fivem.net:30110
+[   7514750] Started map fivem-map-hipster
+[   7514750] Started resource fivem-map-hipster
+[   7526328] Connecting: 27ths
+[   7530734] Sending heartbeat to live-internal.fivem.net:30110
+[   7530968] Connecting: 27ths
+[   7603890] Initializing Mono
+[   7603906] Initializing Mono completed
+[   7603906] Hello!
+[   7603937] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[   7603968] Found new resource fivem in C:/server-data/resources//fivem
+[   7603984] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[   7603984] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[   7604000] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[   7604000] Found new resource runcode in C:/server-data/resources//runcode
+[   7604000] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[   7604015] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[   7604015] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[   7604031] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[   7604031] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[   7604047] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[   7604047] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[   7604062] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[   7604062] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[   7604062] Found new resource chat in C:/server-data/resources//[system]/chat
+[   7604078] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[   7604078] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[   7604093] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[   7604093] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[   7604109] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[   7604109] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[   7604109] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[   7604125] Found new resource keks in C:/server-data/resources//[test]/keks
+[   7604156] Started resource sessionmanager
+[   7604172] Started resource mapmanager
+[   7604187] Started resource chat
+[   7604187] Started resource spawnmanager
+[   7604203] Started gametype Freeroam
+[   7604203] Started resource fivem
+[   7604203] Started resource hardcap
+[   7604218] Started resource rconlog
+[   7604218] Started resource scoreboard
+[   7604234] Started resource playernames
+[   7604234] Authenticating server license key...
+[   7604890] Server license key authentication succeeded. Welcome!
+[   7604937] Sending heartbeat to live-internal.fivem.net:30110
+[   7604953] Started map fivem-map-hipster
+[   7604953] Started resource fivem-map-hipster
+[   7611547] Connecting: 27ths
+[   7611703] Sending heartbeat to live-internal.fivem.net:30110
+[   7623312] Sending heartbeat to live-internal.fivem.net:30110
+[   7661640] Connecting: 27ths
+[   7662125] Sending heartbeat to live-internal.fivem.net:30110
+[   7715547] 27ths: LUL
+[   7754703] Sending heartbeat to live-internal.fivem.net:30110
+[   7934734] Sending heartbeat to live-internal.fivem.net:30110
+[   7998828] Initializing Mono
+[   7998843] Initializing Mono completed
+[   7998859] Hello!
+[   7998875] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[   7998906] Found new resource fivem in C:/server-data/resources//fivem
+[   7998922] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[   7998922] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[   7998937] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[   7998937] Found new resource runcode in C:/server-data/resources//runcode
+[   7998953] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[   7998953] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[   7998968] Found new resource anticheat in C:/server-data/resources//[gameplay]/anticheat
+[   7998968] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[   7998984] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[   7998984] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[   7999000] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[   7999000] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[   7999015] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[   7999015] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[   7999031] Found new resource chat in C:/server-data/resources//[system]/chat
+[   7999031] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[   7999047] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[   7999047] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[   7999062] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[   7999062] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[   7999078] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[   7999078] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[   7999093] Found new resource keks in C:/server-data/resources//[test]/keks
+[   7999125] Started resource sessionmanager
+[   7999140] Started resource mapmanager
+[   7999140] Started resource chat
+[   7999156] Started resource spawnmanager
+[   7999156] Started gametype Freeroam
+[   7999172] Started resource fivem
+[   7999172] Started resource hardcap
+[   7999187] Started resource rconlog
+[   7999187] Started resource scoreboard
+[   7999203] Started resource playernames
+[   7999203] Authenticating server license key...
+[   7999859] Server license key authentication succeeded. Welcome!
+[   7999922] Sending heartbeat to live-internal.fivem.net:30110
+[   7999922] Started map fivem-map-hipster
+[   7999937] Started resource fivem-map-hipster
+[   8036515] Initializing Mono
+[   8036531] Initializing Mono completed
+[   8036531] Hello!
+[   8036562] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[   8036593] Found new resource fivem in C:/server-data/resources//fivem
+[   8036609] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[   8036609] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[   8036625] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[   8036625] Found new resource runcode in C:/server-data/resources//runcode
+[   8036625] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[   8036640] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[   8036640] Found new resource anticheat in C:/server-data/resources//[gameplay]/anticheat
+[   8036656] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[   8036656] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[   8036672] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[   8036687] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[   8036687] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[   8036703] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[   8036703] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[   8036718] Found new resource chat in C:/server-data/resources//[system]/chat
+[   8036718] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[   8036734] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[   8036734] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[   8036750] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[   8036750] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[   8036765] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[   8036765] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[   8036781] Found new resource keks in C:/server-data/resources//[test]/keks
+[   8036812] Started resource sessionmanager
+[   8036812] Started resource mapmanager
+[   8036828] Started resource chat
+[   8036843] Started resource spawnmanager
+[   8036843] Started gametype Freeroam
+[   8036843] Started resource fivem
+[   8036859] Started resource hardcap
+[   8036875] Started resource rconlog
+[   8036875] Started resource scoreboard
+[   8036890] Started resource playernames
+[   8036890] Authenticating server license key...
+[   8037500] Server license key authentication succeeded. Welcome!
+[   8037562] Sending heartbeat to live-internal.fivem.net:30110
+[   8037562] Started map fivem-map-skater
+[   8037578] Started resource fivem-map-skater
+[   8118937] Initializing Mono
+[   8118953] Initializing Mono completed
+[   8118953] Hello!
+[   8118984] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[   8119015] Found new resource fivem in C:/server-data/resources//fivem
+[   8119015] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[   8119031] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[   8119031] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[   8119047] Found new resource runcode in C:/server-data/resources//runcode
+[   8119062] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[   8119062] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[   8119078] Found new resource anticheat in C:/server-data/resources//[gameplay]/anticheat
+[   8119078] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[   8119093] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[   8119093] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[   8119109] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[   8119109] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[   8119125] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[   8119125] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[   8119140] Found new resource chat in C:/server-data/resources//[system]/chat
+[   8119140] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[   8119156] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[   8119156] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[   8119172] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[   8119172] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[   8119187] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[   8119187] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[   8119203] Found new resource keks in C:/server-data/resources//[test]/keks
+[   8119234] Started resource sessionmanager
+[   8119250] Started resource mapmanager
+[   8119250] Started resource chat
+[   8119265] Started resource spawnmanager
+[   8119265] Started gametype Freeroam
+[   8119281] Started resource fivem
+[   8119281] Started resource hardcap
+[   8119297] Started resource rconlog
+[   8119297] Started resource scoreboard
+[   8119312] Started resource playernames
+[   8119312] Authenticating server license key...
+[   8119953] Server license key authentication succeeded. Welcome!
+[   8120015] Sending heartbeat to live-internal.fivem.net:30110
+[   8120015] Started map fivem-map-hipster
+[   8120031] Started resource fivem-map-hipster
+[   8138422] Initializing Mono
+[   8138437] Initializing Mono completed
+[   8138453] Hello!
+[   8138468] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[   8138500] Found new resource fivem in C:/server-data/resources//fivem
+[   8138515] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[   8138515] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[   8138531] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[   8138531] Found new resource runcode in C:/server-data/resources//runcode
+[   8138547] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[   8138547] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[   8138562] Found new resource anticheat in C:/server-data/resources//[gameplay]/anticheat
+[   8138562] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[   8138578] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[   8138578] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[   8138593] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[   8138593] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[   8138609] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[   8138609] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[   8138625] Found new resource chat in C:/server-data/resources//[system]/chat
+[   8138625] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[   8138640] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[   8138640] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[   8138656] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[   8138656] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[   8138672] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[   8138672] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[   8138687] Found new resource keks in C:/server-data/resources//[test]/keks
+[   8138718] Started resource sessionmanager
+[   8138734] Started resource mapmanager
+[   8138734] Started resource chat
+[   8138750] Started resource spawnmanager
+[   8138750] Started gametype Freeroam
+[   8138765] Started resource fivem
+[   8138765] Started resource hardcap
+[   8138781] Started resource rconlog
+[   8138781] Started resource scoreboard
+[   8138797] Started resource playernames
+[   8138812] Authenticating server license key...
+[   8139422] Server license key authentication succeeded. Welcome!
+[   8139484] Sending heartbeat to live-internal.fivem.net:30110
+[   8139500] Started map fivem-map-hipster
+[   8139500] Started resource fivem-map-hipster
+[   8145547] Initializing Mono
+[   8145562] Initializing Mono completed
+[   8145578] Hello!
+[   8145593] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[   8145625] Found new resource fivem in C:/server-data/resources//fivem
+[   8145640] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[   8145640] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[   8145656] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[   8145656] Found new resource runcode in C:/server-data/resources//runcode
+[   8145672] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[   8145672] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[   8145687] Found new resource anticheat in C:/server-data/resources//[gameplay]/anticheat
+[   8145687] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[   8145703] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[   8145703] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[   8145718] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[   8145718] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[   8145734] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[   8145734] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[   8145750] Found new resource chat in C:/server-data/resources//[system]/chat
+[   8145750] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[   8145765] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[   8145765] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[   8145781] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[   8145781] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[   8145797] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[   8145797] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[   8145812] Found new resource keks in C:/server-data/resources//[test]/keks
+[   8145843] Started resource sessionmanager
+[   8145859] Started resource mapmanager
+[   8145875] Started resource chat
+[   8145875] Started resource spawnmanager
+[   8145875] Started gametype Freeroam
+[   8145890] Started resource fivem
+[   8145890] Started resource hardcap
+[   8145906] Started resource rconlog
+[   8145922] Started resource scoreboard
+[   8145922] Started resource playernames
+[   8145937] Authenticating server license key...
+[   8146547] Server license key authentication succeeded. Welcome!
+[   8146609] Sending heartbeat to live-internal.fivem.net:30110
+[   8146609] Started map fivem-map-hipster
+[   8146625] Started resource fivem-map-hipster
+[   8154562] Error parsing script anticheat_sv.lua in resource anticheat: anticheat_sv.lua:2: syntax error near <eof>
+[   8154578] Failed to load script anticheat_sv.lua.
+[   8154593] Started resource anticheat
+[   8171312] Stopping resource anticheat
+[   8174672] Started resource anticheat
+[   8184578] Stopping resource anticheat
+[   8186125] Test
+[   8186125] Started resource anticheat
+[   8188875] Stopping resource anticheat
+[   8283781] Initializing Mono
+[   8283797] Initializing Mono completed
+[   8283812] Hello!
+[   8283828] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[   8283875] Found new resource fivem in C:/server-data/resources//fivem
+[   8283875] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[   8283890] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[   8283890] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[   8283906] Found new resource runcode in C:/server-data/resources//runcode
+[   8283906] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[   8283922] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[   8283922] Found new resource anticheat in C:/server-data/resources//[gameplay]/anticheat
+[   8283937] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[   8283937] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[   8283953] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[   8283953] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[   8283968] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[   8283968] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[   8283984] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[   8283984] Found new resource chat in C:/server-data/resources//[system]/chat
+[   8284000] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[   8284000] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[   8284015] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[   8284015] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[   8284031] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[   8284047] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[   8284047] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[   8284062] Found new resource keks in C:/server-data/resources//[test]/keks
+[   8284093] Started resource sessionmanager
+[   8284109] Started resource mapmanager
+[   8284109] Started resource chat
+[   8284125] Started resource spawnmanager
+[   8284125] Started gametype Freeroam
+[   8284140] Started resource fivem
+[   8284140] Started resource hardcap
+[   8284156] Started resource rconlog
+[   8284156] Started resource scoreboard
+[   8284172] Started resource playernames
+[   8284187] Started resource anticheat
+[   8284187] Authenticating server license key...
+[   8284922] Server license key authentication succeeded. Welcome!
+[   8284984] Sending heartbeat to live-internal.fivem.net:30110
+[   8285000] Started map fivem-map-hipster
+[   8285000] Started resource fivem-map-hipster
+[   9335062] Initializing Mono
+[   9335078] Initializing Mono completed
+[   9335078] Hello!
+[   9335125] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[   9335140] Found new resource fivem in C:/server-data/resources//fivem
+[   9335140] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[   9335156] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[   9335156] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[   9335172] Found new resource runcode in C:/server-data/resources//runcode
+[   9335172] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[   9335187] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[   9335187] Found new resource anticheat in C:/server-data/resources//[gameplay]/anticheat
+[   9335203] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[   9335203] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[   9335218] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[   9335218] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[   9335234] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[   9335234] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[   9335250] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[   9335250] Found new resource chat in C:/server-data/resources//[system]/chat
+[   9335265] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[   9335265] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[   9335281] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[   9335281] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[   9335297] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[   9335297] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[   9335312] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[   9335312] Found new resource keks in C:/server-data/resources//[test]/keks
+[   9335343] Started resource sessionmanager
+[   9335359] Started resource mapmanager
+[   9335375] Started resource chat
+[   9335390] Started resource spawnmanager
+[   9335390] Started gametype Freeroam
+[   9335390] Started resource fivem
+[   9335406] Started resource hardcap
+[   9335422] Started resource rconlog
+[   9335422] Started resource scoreboard
+[   9335437] Started resource playernames
+[   9335453] Started resource anticheat
+[   9335453] Authenticating server license key...
+[   9336109] Server license key authentication succeeded. Welcome!
+[   9336172] Sending heartbeat to live-internal.fivem.net:30110
+[   9336172] Started map fivem-map-skater
+[   9336172] Started resource fivem-map-skater
+[   9345640] Connecting: 27ths
+[   9345875] Sending heartbeat to live-internal.fivem.net:30110
+[   9419843] Sending heartbeat to live-internal.fivem.net:30110
+[   9599875] Sending heartbeat to live-internal.fivem.net:30110
+[   9779890] Sending heartbeat to live-internal.fivem.net:30110
+[   9959953] Sending heartbeat to live-internal.fivem.net:30110
+[  10140000] Sending heartbeat to live-internal.fivem.net:30110
+[  10320015] Sending heartbeat to live-internal.fivem.net:30110
+[    223078] Initializing Mono
+[    223188] Initializing Mono completed
+[    223219] Hello!
+[    223266] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[    223359] Found new resource fivem in C:/server-data/resources//fivem
+[    223375] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[    223391] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[    223391] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[    223406] Found new resource runcode in C:/server-data/resources//runcode
+[    223406] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[    223422] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[    223422] Found new resource anticheat in C:/server-data/resources//[gameplay]/anticheat
+[    223438] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[    223438] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[    223453] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[    223453] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[    223469] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[    223469] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[    223484] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[    223484] Found new resource chat in C:/server-data/resources//[system]/chat
+[    223500] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[    223500] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[    223516] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[    223516] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[    223531] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[    223531] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[    223547] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[    223547] Found new resource keks in C:/server-data/resources//[test]/keks
+[    223609] Started resource sessionmanager
+[    223625] GlobalError: This server does not have a license key specified. Please set the sv_licenseKey console variable to a key from https://keymaster.fivem.net/. (for example, `set sv_licenseKey "key"` in the config, or `+set sv_licenseKey key` on the command line)
+[    237641] Initializing Mono
+[    237656] Initializing Mono completed
+[    237656] Hello!
+[    237688] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[    237719] Found new resource fivem in C:/server-data/resources//fivem
+[    237719] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[    237734] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[    237734] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[    237750] Found new resource runcode in C:/server-data/resources//runcode
+[    237750] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[    237766] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[    237766] Found new resource anticheat in C:/server-data/resources//[gameplay]/anticheat
+[    237781] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[    237781] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[    237797] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[    237797] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[    237813] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[    237813] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[    237828] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[    237828] Found new resource chat in C:/server-data/resources//[system]/chat
+[    237828] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[    237844] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[    237844] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[    237859] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[    237859] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[    237875] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[    237875] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[    237891] Found new resource keks in C:/server-data/resources//[test]/keks
+[    237922] Started resource sessionmanager
+[    237922] GlobalError: This server does not have a license key specified. Please set the sv_licenseKey console variable to a key from https://keymaster.fivem.net/. (for example, `set sv_licenseKey "key"` in the config, or `+set sv_licenseKey key` on the command line)
+[    266422] Initializing Mono
+[    266438] Initializing Mono completed
+[    266438] Hello!
+[    266469] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[    266500] Found new resource fivem in C:/server-data/resources//fivem
+[    266500] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[    266516] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[    266516] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[    266531] Found new resource runcode in C:/server-data/resources//runcode
+[    266531] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[    266547] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[    266547] Found new resource anticheat in C:/server-data/resources//[gameplay]/anticheat
+[    266563] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[    266563] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[    266578] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[    266578] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[    266594] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[    266594] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[    266609] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[    266609] Found new resource chat in C:/server-data/resources//[system]/chat
+[    266625] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[    266625] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[    266641] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[    266641] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[    266656] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[    266656] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[    266672] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[    266672] Found new resource keks in C:/server-data/resources//[test]/keks
+[    266703] Started resource sessionmanager
+[    266734] Started resource mapmanager
+[    266750] Started resource chat
+[    266766] Started resource spawnmanager
+[    266766] Started gametype Freeroam
+[    266781] Started resource fivem
+[    266797] Started resource hardcap
+[    266797] Started resource rconlog
+[    266813] Started resource scoreboard
+[    266828] Started resource playernames
+[    266844] Authenticating server license key...
+[    267547] Server license key authentication succeeded. Welcome!
+[    267609] Sending heartbeat to live-internal.fivem.net:30110
+[    267609] Started map fivem-map-hipster
+[    267625] Started resource fivem-map-hipster
+[    312688] Connecting: 27ths
+[    313172] Sending heartbeat to live-internal.fivem.net:30110
+[    493188] Sending heartbeat to live-internal.fivem.net:30110
+[    673203] Sending heartbeat to live-internal.fivem.net:30110
+[    853219] Sending heartbeat to live-internal.fivem.net:30110
+[   1033234] Sending heartbeat to live-internal.fivem.net:30110
+[   1166625] 27ths: t
+[   1213250] Sending heartbeat to live-internal.fivem.net:30110
+[   1393250] Sending heartbeat to live-internal.fivem.net:30110
+[   1573281] Sending heartbeat to live-internal.fivem.net:30110
+[   1753297] Sending heartbeat to live-internal.fivem.net:30110
+[   1933344] Sending heartbeat to live-internal.fivem.net:30110
+[   2113359] Sending heartbeat to live-internal.fivem.net:30110
+[   2293391] Sending heartbeat to live-internal.fivem.net:30110
+[   2473406] Sending heartbeat to live-internal.fivem.net:30110
+[   2529719] 27ths: dasdsa
+[   2653453] Sending heartbeat to live-internal.fivem.net:30110
+[   2833469] Sending heartbeat to live-internal.fivem.net:30110
+[   2863281] f: test
+[   2863828] f: test
+[   2863984] f: test
+[   2864172] f: test
+[   2864281] f: test
+[   2870438] f: test
+[   2870734] f: test
+[   2870891] f: test
+[   2874641] f: test
+[   2874781] f: test
+[   2874984] f: test
+[   2881844] Stopping resource chat
+[   2896563] Started resource chat
+[   2900844] f: test
+[   2901391] f: test
+[   2901547] f: test
+[   2901750] f: test
+[   3013500] Sending heartbeat to live-internal.fivem.net:30110
+[   3058859] f: test
+[   3062922] f: test
+[   3063063] f: test
+[   3063219] f: test
+[   3071125] f: test
+[   3071469] f: test
+[   3071625] f: test
+[   3071828] f: test
+[   3193531] Sending heartbeat to live-internal.fivem.net:30110
+[   3373563] Sending heartbeat to live-internal.fivem.net:30110
+[   3553578] Sending heartbeat to live-internal.fivem.net:30110
+[   3733594] Sending heartbeat to live-internal.fivem.net:30110
+[   3913609] Sending heartbeat to live-internal.fivem.net:30110
+[   4093625] Sending heartbeat to live-internal.fivem.net:30110
+[   4273641] Sending heartbeat to live-internal.fivem.net:30110
+[   4280250] Sending heartbeat to live-internal.fivem.net:30110
+[   4460250] Sending heartbeat to live-internal.fivem.net:30110
+[   4640266] Sending heartbeat to live-internal.fivem.net:30110
+[   4820281] Sending heartbeat to live-internal.fivem.net:30110
+[   5000328] Sending heartbeat to live-internal.fivem.net:30110
+[   5180344] Sending heartbeat to live-internal.fivem.net:30110
+[   5360359] Sending heartbeat to live-internal.fivem.net:30110
+[   5540391] Sending heartbeat to live-internal.fivem.net:30110
+[   5720391] Sending heartbeat to live-internal.fivem.net:30110
+[   5900406] Sending heartbeat to live-internal.fivem.net:30110
+[   6080438] Sending heartbeat to live-internal.fivem.net:30110
+[   6260453] Sending heartbeat to live-internal.fivem.net:30110
+[   6440484] Sending heartbeat to live-internal.fivem.net:30110
+[   6620500] Sending heartbeat to live-internal.fivem.net:30110
+[   6800531] Sending heartbeat to live-internal.fivem.net:30110
+[   6980547] Sending heartbeat to live-internal.fivem.net:30110
+[   7160609] Sending heartbeat to live-internal.fivem.net:30110
+[   7340625] Sending heartbeat to live-internal.fivem.net:30110
+[   7520656] Sending heartbeat to live-internal.fivem.net:30110
+[   7700672] Sending heartbeat to live-internal.fivem.net:30110
+[   7880688] Sending heartbeat to live-internal.fivem.net:30110
+[   8060719] Sending heartbeat to live-internal.fivem.net:30110
+[   8240719] Sending heartbeat to live-internal.fivem.net:30110
+[   8420734] Sending heartbeat to live-internal.fivem.net:30110
+[   8600750] Sending heartbeat to live-internal.fivem.net:30110
+[   8780766] Sending heartbeat to live-internal.fivem.net:30110
+[   8960781] Sending heartbeat to live-internal.fivem.net:30110
+[   9140797] Sending heartbeat to live-internal.fivem.net:30110
+[   9320797] Sending heartbeat to live-internal.fivem.net:30110
+[   9500828] Sending heartbeat to live-internal.fivem.net:30110
+[   9680844] Sending heartbeat to live-internal.fivem.net:30110
+[   9860859] Sending heartbeat to live-internal.fivem.net:30110
+[  10040906] Sending heartbeat to live-internal.fivem.net:30110
+[  10220906] Sending heartbeat to live-internal.fivem.net:30110
+[  10400938] Sending heartbeat to live-internal.fivem.net:30110
+[  10580969] Sending heartbeat to live-internal.fivem.net:30110
+[  10760969] Sending heartbeat to live-internal.fivem.net:30110
+[  10940984] Sending heartbeat to live-internal.fivem.net:30110
+[  11121031] Sending heartbeat to live-internal.fivem.net:30110
+[  11301047] Sending heartbeat to live-internal.fivem.net:30110
+[  11481063] Sending heartbeat to live-internal.fivem.net:30110
+[  11661078] Sending heartbeat to live-internal.fivem.net:30110
+[  11841094] Sending heartbeat to live-internal.fivem.net:30110
+[  12021109] Sending heartbeat to live-internal.fivem.net:30110
+[  12201125] Sending heartbeat to live-internal.fivem.net:30110
+[  12381141] Sending heartbeat to live-internal.fivem.net:30110
+[  12561156] Sending heartbeat to live-internal.fivem.net:30110
+[  12741172] Sending heartbeat to live-internal.fivem.net:30110
+[  12921203] Sending heartbeat to live-internal.fivem.net:30110
+[  13101219] Sending heartbeat to live-internal.fivem.net:30110
+[  13281250] Sending heartbeat to live-internal.fivem.net:30110
+[  13461266] Sending heartbeat to live-internal.fivem.net:30110
+[  13641281] Sending heartbeat to live-internal.fivem.net:30110
+[  13821297] Sending heartbeat to live-internal.fivem.net:30110
+[  14001297] Sending heartbeat to live-internal.fivem.net:30110
+[  14181313] Sending heartbeat to live-internal.fivem.net:30110
+[  14361344] Sending heartbeat to live-internal.fivem.net:30110
+[  14541375] Sending heartbeat to live-internal.fivem.net:30110
+[  14721375] Sending heartbeat to live-internal.fivem.net:30110
+[  14901391] Sending heartbeat to live-internal.fivem.net:30110
+[  15081406] Sending heartbeat to live-internal.fivem.net:30110
+[  15261422] Sending heartbeat to live-internal.fivem.net:30110
+[  15441453] Sending heartbeat to live-internal.fivem.net:30110
+[  15621453] Sending heartbeat to live-internal.fivem.net:30110
+[  15801469] Sending heartbeat to live-internal.fivem.net:30110
+[  15981500] Sending heartbeat to live-internal.fivem.net:30110
+[  16161547] Sending heartbeat to live-internal.fivem.net:30110
+[  16341563] Sending heartbeat to live-internal.fivem.net:30110
+[  16521578] Sending heartbeat to live-internal.fivem.net:30110
+[  16701578] Sending heartbeat to live-internal.fivem.net:30110
+[  16881594] Sending heartbeat to live-internal.fivem.net:30110
+[  17061641] Sending heartbeat to live-internal.fivem.net:30110
+[  17241672] Sending heartbeat to live-internal.fivem.net:30110
+[  17421688] Sending heartbeat to live-internal.fivem.net:30110
+[  17601703] Sending heartbeat to live-internal.fivem.net:30110
+[  17781719] Sending heartbeat to live-internal.fivem.net:30110
+[  17961766] Sending heartbeat to live-internal.fivem.net:30110
+[  18141828] Sending heartbeat to live-internal.fivem.net:30110
+[  18321828] Sending heartbeat to live-internal.fivem.net:30110
+[  18501844] Sending heartbeat to live-internal.fivem.net:30110
+[  18681875] Sending heartbeat to live-internal.fivem.net:30110
+[  18861875] Sending heartbeat to live-internal.fivem.net:30110
+[  19041938] Sending heartbeat to live-internal.fivem.net:30110
+[  19221984] Sending heartbeat to live-internal.fivem.net:30110
+[  19401984] Sending heartbeat to live-internal.fivem.net:30110
+[  19582047] Sending heartbeat to live-internal.fivem.net:30110
+[  19762047] Sending heartbeat to live-internal.fivem.net:30110
+[  19942094] Sending heartbeat to live-internal.fivem.net:30110
+[  20122141] Sending heartbeat to live-internal.fivem.net:30110
+[  20302188] Sending heartbeat to live-internal.fivem.net:30110
+[  20482203] Sending heartbeat to live-internal.fivem.net:30110
+[  20662250] Sending heartbeat to live-internal.fivem.net:30110
+[  20842281] Sending heartbeat to live-internal.fivem.net:30110
+[  21022297] Sending heartbeat to live-internal.fivem.net:30110
+[  21202313] Sending heartbeat to live-internal.fivem.net:30110
+[  21382313] Sending heartbeat to live-internal.fivem.net:30110
+[  21562359] Sending heartbeat to live-internal.fivem.net:30110
+[  21742375] Sending heartbeat to live-internal.fivem.net:30110
+[  21922391] Sending heartbeat to live-internal.fivem.net:30110
+[  22102438] Sending heartbeat to live-internal.fivem.net:30110
+[  22282469] Sending heartbeat to live-internal.fivem.net:30110
+[  22462484] Sending heartbeat to live-internal.fivem.net:30110
+[  22642500] Sending heartbeat to live-internal.fivem.net:30110
+[  22822547] Sending heartbeat to live-internal.fivem.net:30110
+[  23002547] Sending heartbeat to live-internal.fivem.net:30110
+[  23182594] Sending heartbeat to live-internal.fivem.net:30110
+[  23362656] Sending heartbeat to live-internal.fivem.net:30110
+[  23542703] Sending heartbeat to live-internal.fivem.net:30110
+[  23722750] Sending heartbeat to live-internal.fivem.net:30110
+[  23902750] Sending heartbeat to live-internal.fivem.net:30110
+[  24082766] Sending heartbeat to live-internal.fivem.net:30110
+[  24262813] Sending heartbeat to live-internal.fivem.net:30110
+[  24442859] Sending heartbeat to live-internal.fivem.net:30110
+[  24622875] Sending heartbeat to live-internal.fivem.net:30110
+[  24802891] Sending heartbeat to live-internal.fivem.net:30110
+[  24982938] Sending heartbeat to live-internal.fivem.net:30110
+[  25162984] Sending heartbeat to live-internal.fivem.net:30110
+[  25343031] Sending heartbeat to live-internal.fivem.net:30110
+[  25523078] Sending heartbeat to live-internal.fivem.net:30110
+[  25703094] Sending heartbeat to live-internal.fivem.net:30110
+[  25883141] Sending heartbeat to live-internal.fivem.net:30110
+[  26063172] Sending heartbeat to live-internal.fivem.net:30110
+[  26243188] Sending heartbeat to live-internal.fivem.net:30110
+[  26423234] Sending heartbeat to live-internal.fivem.net:30110
+[  26603234] Sending heartbeat to live-internal.fivem.net:30110
+[  26783297] Sending heartbeat to live-internal.fivem.net:30110
+[  26963297] Sending heartbeat to live-internal.fivem.net:30110
+[  27143359] Sending heartbeat to live-internal.fivem.net:30110
+[  27323391] Sending heartbeat to live-internal.fivem.net:30110
+[  27503453] Sending heartbeat to live-internal.fivem.net:30110
+[  27683453] Sending heartbeat to live-internal.fivem.net:30110
+[  27863516] Sending heartbeat to live-internal.fivem.net:30110
+[  28043516] Sending heartbeat to live-internal.fivem.net:30110
+[  28223563] Sending heartbeat to live-internal.fivem.net:30110
+[  28403625] Sending heartbeat to live-internal.fivem.net:30110
+[  28583641] Sending heartbeat to live-internal.fivem.net:30110
+[  28763641] Sending heartbeat to live-internal.fivem.net:30110
+[  28943688] Sending heartbeat to live-internal.fivem.net:30110
+[  29123703] Sending heartbeat to live-internal.fivem.net:30110
+[  29303734] Sending heartbeat to live-internal.fivem.net:30110
+[  29483781] Sending heartbeat to live-internal.fivem.net:30110
+[  29663828] Sending heartbeat to live-internal.fivem.net:30110
+[  29843891] Sending heartbeat to live-internal.fivem.net:30110
+[  30023906] Sending heartbeat to live-internal.fivem.net:30110
+[  30203969] Sending heartbeat to live-internal.fivem.net:30110
+[  30384016] Sending heartbeat to live-internal.fivem.net:30110
+[  30564016] Sending heartbeat to live-internal.fivem.net:30110
+[  30744047] Sending heartbeat to live-internal.fivem.net:30110
+[  30924047] Sending heartbeat to live-internal.fivem.net:30110
+[  31104063] Sending heartbeat to live-internal.fivem.net:30110
+[  31284094] Sending heartbeat to live-internal.fivem.net:30110
+[  31464141] Sending heartbeat to live-internal.fivem.net:30110
+[  31644188] Sending heartbeat to live-internal.fivem.net:30110
+[  31824234] Sending heartbeat to live-internal.fivem.net:30110
+[  32004281] Sending heartbeat to live-internal.fivem.net:30110
+[  32184328] Sending heartbeat to live-internal.fivem.net:30110
+[  32364344] Sending heartbeat to live-internal.fivem.net:30110
+[  32544344] Sending heartbeat to live-internal.fivem.net:30110
+[  32724391] Sending heartbeat to live-internal.fivem.net:30110
+[  32904422] Sending heartbeat to live-internal.fivem.net:30110
+[  33084469] Sending heartbeat to live-internal.fivem.net:30110
+[  33264531] Sending heartbeat to live-internal.fivem.net:30110
+[  33444547] Sending heartbeat to live-internal.fivem.net:30110
+[  33624578] Sending heartbeat to live-internal.fivem.net:30110
+[  33804641] Sending heartbeat to live-internal.fivem.net:30110
+[  33984688] Sending heartbeat to live-internal.fivem.net:30110
+[  34164703] Sending heartbeat to live-internal.fivem.net:30110
+[  34344750] Sending heartbeat to live-internal.fivem.net:30110
+[  34524766] Sending heartbeat to live-internal.fivem.net:30110
+[  34704797] Sending heartbeat to live-internal.fivem.net:30110
+[  34884813] Sending heartbeat to live-internal.fivem.net:30110
+[  35064844] Sending heartbeat to live-internal.fivem.net:30110
+[  35244859] Sending heartbeat to live-internal.fivem.net:30110
+[  35424859] Sending heartbeat to live-internal.fivem.net:30110
+[  35604922] Sending heartbeat to live-internal.fivem.net:30110
+[  35784938] Sending heartbeat to live-internal.fivem.net:30110
+[  35964984] Sending heartbeat to live-internal.fivem.net:30110
+[  36145016] Sending heartbeat to live-internal.fivem.net:30110
+[  36325078] Sending heartbeat to live-internal.fivem.net:30110
+[  36505109] Sending heartbeat to live-internal.fivem.net:30110
+[  36685156] Sending heartbeat to live-internal.fivem.net:30110
+[  36865172] Sending heartbeat to live-internal.fivem.net:30110
+[  37045219] Sending heartbeat to live-internal.fivem.net:30110
+[  37225266] Sending heartbeat to live-internal.fivem.net:30110
+[  37405313] Sending heartbeat to live-internal.fivem.net:30110
+[  37585359] Sending heartbeat to live-internal.fivem.net:30110
+[  37765406] Sending heartbeat to live-internal.fivem.net:30110
+[  37945453] Sending heartbeat to live-internal.fivem.net:30110
+[  38125469] Sending heartbeat to live-internal.fivem.net:30110
+[  38305500] Sending heartbeat to live-internal.fivem.net:30110
+[  38485547] Sending heartbeat to live-internal.fivem.net:30110
+[  38665609] Sending heartbeat to live-internal.fivem.net:30110
+[  38845641] Sending heartbeat to live-internal.fivem.net:30110
+[  39025703] Sending heartbeat to live-internal.fivem.net:30110
+[  39205750] Sending heartbeat to live-internal.fivem.net:30110
+[  39385797] Sending heartbeat to live-internal.fivem.net:30110
+[  39565828] Sending heartbeat to live-internal.fivem.net:30110
+[  39745875] Sending heartbeat to live-internal.fivem.net:30110
+[  39925938] Sending heartbeat to live-internal.fivem.net:30110
+[  40105938] Sending heartbeat to live-internal.fivem.net:30110
+[  40285984] Sending heartbeat to live-internal.fivem.net:30110
+[  40466047] Sending heartbeat to live-internal.fivem.net:30110
+[  40646078] Sending heartbeat to live-internal.fivem.net:30110
+[  40826141] Sending heartbeat to live-internal.fivem.net:30110
+[  41006188] Sending heartbeat to live-internal.fivem.net:30110
+[  41186203] Sending heartbeat to live-internal.fivem.net:30110
+[  41366250] Sending heartbeat to live-internal.fivem.net:30110
+[  41546297] Sending heartbeat to live-internal.fivem.net:30110
+[  41726359] Sending heartbeat to live-internal.fivem.net:30110
+[  41906375] Sending heartbeat to live-internal.fivem.net:30110
+[  42086422] Sending heartbeat to live-internal.fivem.net:30110
+[  42266453] Sending heartbeat to live-internal.fivem.net:30110
+[  42446469] Sending heartbeat to live-internal.fivem.net:30110
+[  42626484] Sending heartbeat to live-internal.fivem.net:30110
+[  42806484] Sending heartbeat to live-internal.fivem.net:30110
+[  42986547] Sending heartbeat to live-internal.fivem.net:30110
+[  43166594] Sending heartbeat to live-internal.fivem.net:30110
+[  43346641] Sending heartbeat to live-internal.fivem.net:30110
+[  43526688] Sending heartbeat to live-internal.fivem.net:30110
+[  43706734] Sending heartbeat to live-internal.fivem.net:30110
+[  43886781] Sending heartbeat to live-internal.fivem.net:30110
+[  44066828] Sending heartbeat to live-internal.fivem.net:30110
+[  44246875] Sending heartbeat to live-internal.fivem.net:30110
+[  44426891] Sending heartbeat to live-internal.fivem.net:30110
+[  44606891] Sending heartbeat to live-internal.fivem.net:30110
+[  44786938] Sending heartbeat to live-internal.fivem.net:30110
+[  44966984] Sending heartbeat to live-internal.fivem.net:30110
+[  45147047] Sending heartbeat to live-internal.fivem.net:30110
+[  45327094] Sending heartbeat to live-internal.fivem.net:30110
+[  45507141] Sending heartbeat to live-internal.fivem.net:30110
+[  45687156] Sending heartbeat to live-internal.fivem.net:30110
+[  45867203] Sending heartbeat to live-internal.fivem.net:30110
+[  46047266] Sending heartbeat to live-internal.fivem.net:30110
+[  46227313] Sending heartbeat to live-internal.fivem.net:30110
+[  46407328] Sending heartbeat to live-internal.fivem.net:30110
+[  46587344] Sending heartbeat to live-internal.fivem.net:30110
+[  46767359] Sending heartbeat to live-internal.fivem.net:30110
+[  46947359] Sending heartbeat to live-internal.fivem.net:30110
+[  47127375] Sending heartbeat to live-internal.fivem.net:30110
+[  47307438] Sending heartbeat to live-internal.fivem.net:30110
+[  47487453] Sending heartbeat to live-internal.fivem.net:30110
+[  47667500] Sending heartbeat to live-internal.fivem.net:30110
+[  47847516] Sending heartbeat to live-internal.fivem.net:30110
+[  48027531] Sending heartbeat to live-internal.fivem.net:30110
+[  48207578] Sending heartbeat to live-internal.fivem.net:30110
+[  48387594] Sending heartbeat to live-internal.fivem.net:30110
+[  48567594] Sending heartbeat to live-internal.fivem.net:30110
+[  48747609] Sending heartbeat to live-internal.fivem.net:30110
+[  48927656] Sending heartbeat to live-internal.fivem.net:30110
+[  49107688] Sending heartbeat to live-internal.fivem.net:30110
+[  49287703] Sending heartbeat to live-internal.fivem.net:30110
+[  49467719] Sending heartbeat to live-internal.fivem.net:30110
+[  49647734] Sending heartbeat to live-internal.fivem.net:30110
+[  49827750] Sending heartbeat to live-internal.fivem.net:30110
+[  50007781] Sending heartbeat to live-internal.fivem.net:30110
+[  50187813] Sending heartbeat to live-internal.fivem.net:30110
+[  50367828] Sending heartbeat to live-internal.fivem.net:30110
+[  50547828] Sending heartbeat to live-internal.fivem.net:30110
+[  50727844] Sending heartbeat to live-internal.fivem.net:30110
+[  50907875] Sending heartbeat to live-internal.fivem.net:30110
+[  51087891] Sending heartbeat to live-internal.fivem.net:30110
+[  51267906] Sending heartbeat to live-internal.fivem.net:30110
+[  51447938] Sending heartbeat to live-internal.fivem.net:30110
+[  51627953] Sending heartbeat to live-internal.fivem.net:30110
+[  51807969] Sending heartbeat to live-internal.fivem.net:30110
+[  51988000] Sending heartbeat to live-internal.fivem.net:30110
+[  52168000] Sending heartbeat to live-internal.fivem.net:30110
+[  52348016] Sending heartbeat to live-internal.fivem.net:30110
+[  52528016] Sending heartbeat to live-internal.fivem.net:30110
+[  52708047] Sending heartbeat to live-internal.fivem.net:30110
+[  52888047] Sending heartbeat to live-internal.fivem.net:30110
+[  53068063] Sending heartbeat to live-internal.fivem.net:30110
+[  53248078] Sending heartbeat to live-internal.fivem.net:30110
+[  53428109] Sending heartbeat to live-internal.fivem.net:30110
+[  53608125] Sending heartbeat to live-internal.fivem.net:30110
+[  53788156] Sending heartbeat to live-internal.fivem.net:30110
+[  53968172] Sending heartbeat to live-internal.fivem.net:30110
+[  54148219] Sending heartbeat to live-internal.fivem.net:30110
+[  54328219] Sending heartbeat to live-internal.fivem.net:30110
+[  54508234] Sending heartbeat to live-internal.fivem.net:30110
+[  54688281] Sending heartbeat to live-internal.fivem.net:30110
+[  54868328] Sending heartbeat to live-internal.fivem.net:30110
+[  55048344] Sending heartbeat to live-internal.fivem.net:30110
+[  55228391] Sending heartbeat to live-internal.fivem.net:30110
+[  55408438] Sending heartbeat to live-internal.fivem.net:30110
+[  55588484] Sending heartbeat to live-internal.fivem.net:30110
+[  55768500] Sending heartbeat to live-internal.fivem.net:30110
+[  55948516] Sending heartbeat to live-internal.fivem.net:30110
+[  56128547] Sending heartbeat to live-internal.fivem.net:30110
+[  56308563] Sending heartbeat to live-internal.fivem.net:30110
+[  56488609] Sending heartbeat to live-internal.fivem.net:30110
+[  56668656] Sending heartbeat to live-internal.fivem.net:30110
+[  56848719] Sending heartbeat to live-internal.fivem.net:30110
+[  57028734] Sending heartbeat to live-internal.fivem.net:30110
+[  57208781] Sending heartbeat to live-internal.fivem.net:30110
+[  57388828] Sending heartbeat to live-internal.fivem.net:30110
+[  57568875] Sending heartbeat to live-internal.fivem.net:30110
+[  57748891] Sending heartbeat to live-internal.fivem.net:30110
+[  57928906] Sending heartbeat to live-internal.fivem.net:30110
+[  58108922] Sending heartbeat to live-internal.fivem.net:30110
+[  58288953] Sending heartbeat to live-internal.fivem.net:30110
+[  58468969] Sending heartbeat to live-internal.fivem.net:30110
+[  58648969] Sending heartbeat to live-internal.fivem.net:30110
+[  58828984] Sending heartbeat to live-internal.fivem.net:30110
+[  59009000] Sending heartbeat to live-internal.fivem.net:30110
+[  59189047] Sending heartbeat to live-internal.fivem.net:30110
+[  59369063] Sending heartbeat to live-internal.fivem.net:30110
+[  59549063] Sending heartbeat to live-internal.fivem.net:30110
+[  59729125] Sending heartbeat to live-internal.fivem.net:30110
+[  59909172] Sending heartbeat to live-internal.fivem.net:30110
+[  60089219] Sending heartbeat to live-internal.fivem.net:30110
+[  60269266] Sending heartbeat to live-internal.fivem.net:30110
+[  60449297] Sending heartbeat to live-internal.fivem.net:30110
+[  60629297] Sending heartbeat to live-internal.fivem.net:30110
+[  60809328] Sending heartbeat to live-internal.fivem.net:30110
+[  60989391] Sending heartbeat to live-internal.fivem.net:30110
+[  61169438] Sending heartbeat to live-internal.fivem.net:30110
+[  61349453] Sending heartbeat to live-internal.fivem.net:30110
+[  61529469] Sending heartbeat to live-internal.fivem.net:30110
+[  61709484] Sending heartbeat to live-internal.fivem.net:30110
+[  61889531] Sending heartbeat to live-internal.fivem.net:30110
+[  62069547] Sending heartbeat to live-internal.fivem.net:30110
+[  62249547] Sending heartbeat to live-internal.fivem.net:30110
+[  62429594] Sending heartbeat to live-internal.fivem.net:30110
+[  62609625] Sending heartbeat to live-internal.fivem.net:30110
+[  62789641] Sending heartbeat to live-internal.fivem.net:30110
+[  62969656] Sending heartbeat to live-internal.fivem.net:30110
+[  63149672] Sending heartbeat to live-internal.fivem.net:30110
+[  71787125] Initializing Mono
+[  71787234] Initializing Mono completed
+[  71787266] Hello!
+[  71787328] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[  71787422] Found new resource fivem in C:/server-data/resources//fivem
+[  71787453] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[  71787453] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[  71787469] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[  71787469] Found new resource runcode in C:/server-data/resources//runcode
+[  71787484] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[  71787500] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[  71787500] Found new resource anticheat in C:/server-data/resources//[gameplay]/anticheat
+[  71787516] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[  71787531] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[  71787531] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[  71787547] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[  71787563] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[  71787563] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[  71787578] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[  71787594] Found new resource chat in C:/server-data/resources//[system]/chat
+[  71787594] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[  71787609] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[  71787625] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[  71787625] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[  71787641] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[  71787656] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[  71787656] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[  71787672] Found new resource keks in C:/server-data/resources//[test]/keks
+[  71787734] Started resource sessionmanager
+[  71787781] Started resource mapmanager
+[  71787922] Started resource chat
+[  71787938] Started resource spawnmanager
+[  71787953] Started gametype Freeroam
+[  71787953] Started resource fivem
+[  71787984] Started resource hardcap
+[  71788000] Started resource rconlog
+[  71788047] Started resource scoreboard
+[  71788078] Started resource playernames
+[  71788094] Authenticating server license key...
+[  71788828] Server license key authentication succeeded. Welcome!
+[  71788891] Sending heartbeat to live-internal.fivem.net:30110
+[  71788906] Started map fivem-map-hipster
+[  71788906] Started resource fivem-map-hipster
+[  71792406] Connecting: 27ths
+[  71792641] Sending heartbeat to live-internal.fivem.net:30110
+[  71972641] Sending heartbeat to live-internal.fivem.net:30110
+[  72152656] Sending heartbeat to live-internal.fivem.net:30110
+[  72332688] Sending heartbeat to live-internal.fivem.net:30110
+[  72410109] Sending heartbeat to live-internal.fivem.net:30110
+[  72590141] Sending heartbeat to live-internal.fivem.net:30110
+[  72750625] Connecting: 27ths
+[  72751141] Sending heartbeat to live-internal.fivem.net:30110
+[  72804766] Sending heartbeat to live-internal.fivem.net:30110
+[  72843531] Connecting: 27ths
+[  72843984] Sending heartbeat to live-internal.fivem.net:30110
+[  73024000] Sending heartbeat to live-internal.fivem.net:30110
+[  73204016] Sending heartbeat to live-internal.fivem.net:30110
+[  73384063] Sending heartbeat to live-internal.fivem.net:30110
+[  73564094] Sending heartbeat to live-internal.fivem.net:30110
+[  73744125] Sending heartbeat to live-internal.fivem.net:30110
+[  73924141] Sending heartbeat to live-internal.fivem.net:30110
+[  73968266] Sending heartbeat to live-internal.fivem.net:30110
+[  74072984] Connecting: 27ths
+[  74073406] Sending heartbeat to live-internal.fivem.net:30110
+[  74109422] Sending heartbeat to live-internal.fivem.net:30110
+[  74289438] Sending heartbeat to live-internal.fivem.net:30110
+[  74469453] Sending heartbeat to live-internal.fivem.net:30110
+[  74649484] Sending heartbeat to live-internal.fivem.net:30110
+[  74829500] Sending heartbeat to live-internal.fivem.net:30110
+[  75009516] Sending heartbeat to live-internal.fivem.net:30110
+[   2659469] Initializing Mono
+[   2659485] Initializing Mono completed
+[   2659485] Hello!
+[   2659532] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[   2659547] Found new resource fivem in C:/server-data/resources//fivem
+[   2659547] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[   2659563] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[   2659563] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[   2659578] Found new resource runcode in C:/server-data/resources//runcode
+[   2659578] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[   2659594] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[   2659594] Found new resource anticheat in C:/server-data/resources//[gameplay]/anticheat
+[   2659610] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[   2659610] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[   2659625] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[   2659625] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[   2659641] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[   2659641] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[   2659657] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[   2659657] Found new resource chat in C:/server-data/resources//[system]/chat
+[   2659672] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[   2659672] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[   2659672] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[   2659688] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[   2659688] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[   2659703] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[   2659703] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[   2659719] Found new resource keks in C:/server-data/resources//[test]/keks
+[   2659750] Started resource sessionmanager
+[   2659766] Started resource mapmanager
+[   2659891] Started resource chat
+[   2659907] Started resource spawnmanager
+[   2659907] Started gametype Freeroam
+[   2659922] Started resource fivem
+[   2659922] Started resource hardcap
+[   2659938] Started resource rconlog
+[   2659985] Started resource scoreboard
+[   2660000] Started resource playernames
+[   2660000] Authenticating server license key...
+[   2660688] Server license key authentication succeeded. Welcome!
+[   2660750] Sending heartbeat to live-internal.fivem.net:30110
+[   2660766] Started map fivem-map-skater
+[   2660766] Started resource fivem-map-skater
+[   2665782] Connecting: 27ths
+[   2666297] Sending heartbeat to live-internal.fivem.net:30110
+[   2846328] Sending heartbeat to live-internal.fivem.net:30110
+[   3026360] Sending heartbeat to live-internal.fivem.net:30110
+[   3206375] Sending heartbeat to live-internal.fivem.net:30110
+[   3386391] Sending heartbeat to live-internal.fivem.net:30110
+[   3566422] Sending heartbeat to live-internal.fivem.net:30110
+[   3696375] Sending heartbeat to live-internal.fivem.net:30110
+[   3862157] Connecting: 27ths
+[   3862594] Sending heartbeat to live-internal.fivem.net:30110
+[   4042625] Sending heartbeat to live-internal.fivem.net:30110
+[   4184282] Sending heartbeat to live-internal.fivem.net:30110
+[   4281375] Connecting: 27ths
+[   4281828] Sending heartbeat to live-internal.fivem.net:30110
+[   4373922] Sending heartbeat to live-internal.fivem.net:30110
+[   4454532] Connecting: 27ths
+[   4455016] Sending heartbeat to live-internal.fivem.net:30110
+[   4635047] Sending heartbeat to live-internal.fivem.net:30110
+[   4815063] Sending heartbeat to live-internal.fivem.net:30110
+[   4829828] Sending heartbeat to live-internal.fivem.net:30110
+[   5009844] Sending heartbeat to live-internal.fivem.net:30110
+[   5189875] Sending heartbeat to live-internal.fivem.net:30110
+[   5369891] Sending heartbeat to live-internal.fivem.net:30110
+[   5549907] Sending heartbeat to live-internal.fivem.net:30110
+[   5729922] Sending heartbeat to live-internal.fivem.net:30110
+[   5909969] Sending heartbeat to live-internal.fivem.net:30110
+[   6051532] Connecting: 27ths
+[   6052032] Sending heartbeat to live-internal.fivem.net:30110
+[   6134625] Sending heartbeat to live-internal.fivem.net:30110
+[   6314641] Sending heartbeat to live-internal.fivem.net:30110
+[   6494657] Sending heartbeat to live-internal.fivem.net:30110
+[   6674657] Sending heartbeat to live-internal.fivem.net:30110
+[   6854703] Sending heartbeat to live-internal.fivem.net:30110
+[   7034719] Sending heartbeat to live-internal.fivem.net:30110
+[   7214735] Sending heartbeat to live-internal.fivem.net:30110
+[   7394750] Sending heartbeat to live-internal.fivem.net:30110
+[   7574782] Sending heartbeat to live-internal.fivem.net:30110
+[   7754813] Sending heartbeat to live-internal.fivem.net:30110
+[   7934844] Sending heartbeat to live-internal.fivem.net:30110
+[   8114844] Sending heartbeat to live-internal.fivem.net:30110
+[   8294875] Sending heartbeat to live-internal.fivem.net:30110
+[   8474891] Sending heartbeat to live-internal.fivem.net:30110
+[   8654922] Sending heartbeat to live-internal.fivem.net:30110
+[   8834938] Sending heartbeat to live-internal.fivem.net:30110
+[   9014953] Sending heartbeat to live-internal.fivem.net:30110
+[   9194969] Sending heartbeat to live-internal.fivem.net:30110
+[   9375000] Sending heartbeat to live-internal.fivem.net:30110
+[   9555016] Sending heartbeat to live-internal.fivem.net:30110
+[   9735032] Sending heartbeat to live-internal.fivem.net:30110
+[   9915063] Sending heartbeat to live-internal.fivem.net:30110
+[  10095078] Sending heartbeat to live-internal.fivem.net:30110
+[  10275094] Sending heartbeat to live-internal.fivem.net:30110
+[  10455094] Sending heartbeat to live-internal.fivem.net:30110
+[  10635125] Sending heartbeat to live-internal.fivem.net:30110
+[  10733578] Connecting: 27ths
+[  10734032] Sending heartbeat to live-internal.fivem.net:30110
+[  10890844] Sending heartbeat to live-internal.fivem.net:30110
+[  11070860] Sending heartbeat to live-internal.fivem.net:30110
+[  11250875] Sending heartbeat to live-internal.fivem.net:30110
+[  11430891] Sending heartbeat to live-internal.fivem.net:30110
+[  11610907] Sending heartbeat to live-internal.fivem.net:30110
+[  11790938] Sending heartbeat to live-internal.fivem.net:30110
+[  11970953] Sending heartbeat to live-internal.fivem.net:30110
+[  12150985] Sending heartbeat to live-internal.fivem.net:30110
+[  12331016] Sending heartbeat to live-internal.fivem.net:30110
+[  12511047] Sending heartbeat to live-internal.fivem.net:30110
+[  12691063] Sending heartbeat to live-internal.fivem.net:30110
+[  12871078] Sending heartbeat to live-internal.fivem.net:30110
+[  13051110] Sending heartbeat to live-internal.fivem.net:30110
+[  13231125] Sending heartbeat to live-internal.fivem.net:30110
+[  13411157] Sending heartbeat to live-internal.fivem.net:30110
+[  13591188] Sending heartbeat to live-internal.fivem.net:30110
+[  13771203] Sending heartbeat to live-internal.fivem.net:30110
+[  13951235] Sending heartbeat to live-internal.fivem.net:30110
+[  14131235] Sending heartbeat to live-internal.fivem.net:30110
+[  14311250] Sending heartbeat to live-internal.fivem.net:30110
+[  14491266] Sending heartbeat to live-internal.fivem.net:30110
+[  14671266] Sending heartbeat to live-internal.fivem.net:30110
+[  14851297] Sending heartbeat to live-internal.fivem.net:30110
+[  15031328] Sending heartbeat to live-internal.fivem.net:30110
+[  15211344] Sending heartbeat to live-internal.fivem.net:30110
+[  15391375] Sending heartbeat to live-internal.fivem.net:30110
+[  15571391] Sending heartbeat to live-internal.fivem.net:30110
+[  15751391] Sending heartbeat to live-internal.fivem.net:30110
+[  15868453] Connecting: Safe Jew
+[  15868938] Sending heartbeat to live-internal.fivem.net:30110
+[  15928625] Started resource anticheat
+[  16048969] Sending heartbeat to live-internal.fivem.net:30110
+[  16105110] Stopping resource anticheat
+[  16106360] Started resource anticheat
+[  16124860] Stopping resource anticheat
+[  16126828] Started resource anticheat
+[  16186203] Stopping resource anticheat
+[  16189797] Started resource anticheat
+[  16214000] Stopping resource anticheat
+[  16215157] Started resource anticheat
+[  16225860] Sending heartbeat to live-internal.fivem.net:30110
+[  16405891] Sending heartbeat to live-internal.fivem.net:30110
+[  16585938] Sending heartbeat to live-internal.fivem.net:30110
+[  16765953] Sending heartbeat to live-internal.fivem.net:30110
+[  16945969] Sending heartbeat to live-internal.fivem.net:30110
+[  17125985] Sending heartbeat to live-internal.fivem.net:30110
+[  17306000] Sending heartbeat to live-internal.fivem.net:30110
+[  17486016] Sending heartbeat to live-internal.fivem.net:30110
+[  17666047] Sending heartbeat to live-internal.fivem.net:30110
+[  17846078] Sending heartbeat to live-internal.fivem.net:30110
+[  18026110] Sending heartbeat to live-internal.fivem.net:30110
+[  18206141] Sending heartbeat to live-internal.fivem.net:30110
+[  18386157] Sending heartbeat to live-internal.fivem.net:30110
+[  18566172] Sending heartbeat to live-internal.fivem.net:30110
+[  18746203] Sending heartbeat to live-internal.fivem.net:30110
+[  18926235] Sending heartbeat to live-internal.fivem.net:30110
+[  19106250] Sending heartbeat to live-internal.fivem.net:30110
+[  19286266] Sending heartbeat to live-internal.fivem.net:30110
+[  19466313] Sending heartbeat to live-internal.fivem.net:30110
+[  19646313] Sending heartbeat to live-internal.fivem.net:30110
+[  19826344] Sending heartbeat to live-internal.fivem.net:30110
+[  19969813] Stopping resource anticheat
+[   2061140] Initializing Mono
+[   2061171] Initializing Mono completed
+[   2061187] Hello!
+[   2061234] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[   2061250] Found new resource dunko_vrp in C:/server-data/resources//dunko_vrp
+[   2061250] Resource loading for dunko_vrp failed:
+[   2061250] Could not open resource metadata file C:/server-data/resources//dunko_vrp/__resource.lua.
+[   2061250] Found new resource fivem in C:/server-data/resources//fivem
+[   2061250] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[   2061250] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[   2061265] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[   2061265] Found new resource runcode in C:/server-data/resources//runcode
+[   2061265] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[   2061265] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[   2061265] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[   2061281] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[   2061281] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[   2061281] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[   2061281] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[   2061281] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[   2061296] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[   2061296] Found new resource chat in C:/server-data/resources//[system]/chat
+[   2061296] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[   2061296] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[   2061296] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[   2061312] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[   2061312] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[   2061312] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[   2061312] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[   2061312] Found new resource keks in C:/server-data/resources//[test]/keks
+[   2061343] Started resource sessionmanager
+[   2061359] Started resource mapmanager
+[   2061375] Started resource chat
+[   2061375] Started resource spawnmanager
+[   2061375] Started gametype Freeroam
+[   2061375] Started resource fivem
+[   2061375] Started resource hardcap
+[   2061390] Started resource rconlog
+[   2061390] Started resource scoreboard
+[   2061390] Started resource playernames
+[   2061390] Authenticating server license key...
+[   2062125] Server license key authentication succeeded. Welcome!
+[   2062171] Sending heartbeat to live-internal.fivem.net:30110
+[   2062187] Started map fivem-map-skater
+[   2062187] Started resource fivem-map-skater
+[   2065859] Connecting: Safe Jew
+[   2066281] Sending heartbeat to live-internal.fivem.net:30110
+[   2246296] Sending heartbeat to live-internal.fivem.net:30110
+[   2305828] Safe Jew: asd
+[   2329171] Safe Jew: dasd
+[   2426312] Sending heartbeat to live-internal.fivem.net:30110
+[   2466234] Sending heartbeat to live-internal.fivem.net:30110
+[   2646250] Sending heartbeat to live-internal.fivem.net:30110
+[   2826265] Sending heartbeat to live-internal.fivem.net:30110
+[   3006281] Sending heartbeat to live-internal.fivem.net:30110
+[   3186312] Sending heartbeat to live-internal.fivem.net:30110
+[         0] Initializing Mono
+[       110] Initializing Mono completed
+[       141] Hello!
+[       203] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[       297] Found new resource fivem in C:/server-data/resources//fivem
+[       313] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[       313] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[       328] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[       328] Found new resource runcode in C:/server-data/resources//runcode
+[       344] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[       344] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[       360] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[       375] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[       375] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[       391] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[       391] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[       406] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[       406] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[       422] Found new resource chat in C:/server-data/resources//[system]/chat
+[       438] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[       438] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[       453] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[       453] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[       469] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[       469] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[       485] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[       485] Found new resource keks in C:/server-data/resources//[test]/keks
+[       563] Started resource sessionmanager
+[       594] Started resource mapmanager
+[       703] Started resource chat
+[       719] Started resource spawnmanager
+[       735] Started gametype Freeroam
+[       735] Started resource fivem
+[       750] Started resource hardcap
+[       766] Started resource rconlog
+[       813] Started resource scoreboard
+[       844] Started resource playernames
+[       844] Authenticating server license key...
+[      1531] Server license key authentication succeeded. Welcome!
+[      1594] Sending heartbeat to live-internal.fivem.net:30110
+[      1610] Started map fivem-map-hipster
+[      1610] Started resource fivem-map-hipster
+[    181641] Sending heartbeat to live-internal.fivem.net:30110
+[    361672] Sending heartbeat to live-internal.fivem.net:30110
+[    541719] Sending heartbeat to live-internal.fivem.net:30110
+[    721750] Sending heartbeat to live-internal.fivem.net:30110
+[    901766] Sending heartbeat to live-internal.fivem.net:30110
+[   1081797] Sending heartbeat to live-internal.fivem.net:30110
+[   1261828] Sending heartbeat to live-internal.fivem.net:30110
+[   1441844] Sending heartbeat to live-internal.fivem.net:30110
+[   1621875] Sending heartbeat to live-internal.fivem.net:30110
+[   1801875] Sending heartbeat to live-internal.fivem.net:30110
+[   1981906] Sending heartbeat to live-internal.fivem.net:30110
+[   2161922] Sending heartbeat to live-internal.fivem.net:30110
+[   2341953] Sending heartbeat to live-internal.fivem.net:30110
+[   2521969] Sending heartbeat to live-internal.fivem.net:30110
+[   2702000] Sending heartbeat to live-internal.fivem.net:30110
+[   2882016] Sending heartbeat to live-internal.fivem.net:30110
+[   3062031] Sending heartbeat to live-internal.fivem.net:30110
+[   3242063] Sending heartbeat to live-internal.fivem.net:30110
+[   3422078] Sending heartbeat to live-internal.fivem.net:30110
+[   3602110] Sending heartbeat to live-internal.fivem.net:30110
+[   3782125] Sending heartbeat to live-internal.fivem.net:30110
+[   3962156] Sending heartbeat to live-internal.fivem.net:30110
+[   4142188] Sending heartbeat to live-internal.fivem.net:30110
+[   4322219] Sending heartbeat to live-internal.fivem.net:30110
+[   4502250] Sending heartbeat to live-internal.fivem.net:30110
+[   4682281] Sending heartbeat to live-internal.fivem.net:30110
+[   4862313] Sending heartbeat to live-internal.fivem.net:30110
+[   5042328] Sending heartbeat to live-internal.fivem.net:30110
+[   5222360] Sending heartbeat to live-internal.fivem.net:30110
+[   5402375] Sending heartbeat to live-internal.fivem.net:30110
+[   5582391] Sending heartbeat to live-internal.fivem.net:30110
+[   5762406] Sending heartbeat to live-internal.fivem.net:30110
+[   5942422] Sending heartbeat to live-internal.fivem.net:30110
+[   6122453] Sending heartbeat to live-internal.fivem.net:30110
+[   6302469] Sending heartbeat to live-internal.fivem.net:30110
+[   6482485] Sending heartbeat to live-internal.fivem.net:30110
+[   6662516] Sending heartbeat to live-internal.fivem.net:30110
+[   6842531] Sending heartbeat to live-internal.fivem.net:30110
+[   7022547] Sending heartbeat to live-internal.fivem.net:30110
+[   7202594] Sending heartbeat to live-internal.fivem.net:30110
+[   7382610] Sending heartbeat to live-internal.fivem.net:30110
+[   7562641] Sending heartbeat to live-internal.fivem.net:30110
+[   7742672] Sending heartbeat to live-internal.fivem.net:30110
+[   7922703] Sending heartbeat to live-internal.fivem.net:30110
+[   8102719] Sending heartbeat to live-internal.fivem.net:30110
+[   8282750] Sending heartbeat to live-internal.fivem.net:30110
+[   8462766] Sending heartbeat to live-internal.fivem.net:30110
+[   8642797] Sending heartbeat to live-internal.fivem.net:30110
+[   8822813] Sending heartbeat to live-internal.fivem.net:30110
+[   9002828] Sending heartbeat to live-internal.fivem.net:30110
+[   9182844] Sending heartbeat to live-internal.fivem.net:30110
+[   9362860] Sending heartbeat to live-internal.fivem.net:30110
+[   9542875] Sending heartbeat to live-internal.fivem.net:30110
+[   9722891] Sending heartbeat to live-internal.fivem.net:30110
+[   9902922] Sending heartbeat to live-internal.fivem.net:30110
+[  10082938] Sending heartbeat to live-internal.fivem.net:30110
+[  10262953] Sending heartbeat to live-internal.fivem.net:30110
+[  10442969] Sending heartbeat to live-internal.fivem.net:30110
+[  10623000] Sending heartbeat to live-internal.fivem.net:30110
+[  10803031] Sending heartbeat to live-internal.fivem.net:30110
+[  10983047] Sending heartbeat to live-internal.fivem.net:30110
+[  11163063] Sending heartbeat to live-internal.fivem.net:30110
+[  11343110] Sending heartbeat to live-internal.fivem.net:30110
+[  11523125] Sending heartbeat to live-internal.fivem.net:30110
+[  11703141] Sending heartbeat to live-internal.fivem.net:30110
+[  11883156] Sending heartbeat to live-internal.fivem.net:30110
+[  11962375] Connecting: asd
+[  11962938] Sending heartbeat to live-internal.fivem.net:30110
+[  12142969] Sending heartbeat to live-internal.fivem.net:30110
+[  12167219] 1 license:a4ab2aea3618f843d55d162e3d3edeb4b06bd6b4 asd 127.0.0.1 7
+[  12174219] 1 license:a4ab2aea3618f843d55d162e3d3edeb4b06bd6b4 asd 127.0.0.1 7
+[  12231797] Sending heartbeat to live-internal.fivem.net:30110
+[  12254547] Connecting: Safe Jew
+[  12255000] Sending heartbeat to live-internal.fivem.net:30110
+[  12435016] Sending heartbeat to live-internal.fivem.net:30110
+[  12451328] Safe Jew: cpu hates this lol
+[  12466875] Safe Jew: g
+[  12615047] Sending heartbeat to live-internal.fivem.net:30110
+[  12795078] Sending heartbeat to live-internal.fivem.net:30110
+[  12892906] ^3Couldn't find resource vsync.^7
+[  12895156] ^3Couldn't find resource vsync.^7
+[  12975813] Initializing Mono
+[  12975906] Initializing Mono completed
+[  12975938] Hello!
+[  12975969] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[  12976110] Found new resource fivem in C:/server-data/resources//fivem
+[  12976125] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[  12976125] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[  12976141] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[  12976156] Found new resource runcode in C:/server-data/resources//runcode
+[  12976172] Found new resource vSync in C:/server-data/resources//vSync
+[  12976172] Resource loading for vSync failed:
+[  12976172] Could not open resource metadata file C:/server-data/resources//vSync/__resource.lua.
+[  12976188] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[  12976203] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[  12976219] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[  12976235] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[  12976235] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[  12976250] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[  12976266] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[  12976281] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[  12976297] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[  12976297] Found new resource chat in C:/server-data/resources//[system]/chat
+[  12976313] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[  12976328] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[  12976344] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[  12976360] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[  12976360] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[  12976375] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[  12976391] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[  12976406] Found new resource keks in C:/server-data/resources//[test]/keks
+[  12976469] Started resource sessionmanager
+[  12976516] Started resource mapmanager
+[  12976672] Started resource chat
+[  12976688] Started resource spawnmanager
+[  12976719] Started gametype Freeroam
+[  12976719] Started resource fivem
+[  12976750] Started resource hardcap
+[  12976766] Started resource rconlog
+[  12976828] Started resource scoreboard
+[  12976860] Started resource playernames
+[  12976875] Started resource vSync
+[  12976891] Authenticating server license key...
+[  12977578] Server license key authentication succeeded. Welcome!
+[  12977641] Sending heartbeat to live-internal.fivem.net:30110
+[  12977656] Started map fivem-map-hipster
+[  12977656] Started resource fivem-map-hipster
+[  12994547] Connecting: Safe Jew
+[  12997656] Sending heartbeat to live-internal.fivem.net:30110
+[  12998016] Connecting: Safe Jew
+[  13029219] Initializing Mono
+[  13029219] Initializing Mono completed
+[  13029235] Hello!
+[  13029266] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[  13029297] Found new resource fivem in C:/server-data/resources//fivem
+[  13029297] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[  13029313] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[  13029313] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[  13029313] Found new resource runcode in C:/server-data/resources//runcode
+[  13029328] Found new resource vSync in C:/server-data/resources//vSync
+[  13029328] Resource loading for vSync failed:
+[  13029344] Could not open resource metadata file C:/server-data/resources//vSync/__resource.lua.
+[  13029344] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[  13029360] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[  13029360] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[  13029360] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[  13029375] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[  13029375] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[  13029391] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[  13029391] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[  13029406] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[  13029406] Found new resource chat in C:/server-data/resources//[system]/chat
+[  13029422] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[  13029422] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[  13029438] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[  13029438] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[  13029453] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[  13029453] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[  13029469] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[  13029469] Found new resource keks in C:/server-data/resources//[test]/keks
+[  13029500] Started resource sessionmanager
+[  13029516] Started resource mapmanager
+[  13029531] Started resource chat
+[  13029531] Started resource spawnmanager
+[  13029547] Started gametype Freeroam
+[  13029547] Started resource fivem
+[  13029547] Started resource hardcap
+[  13029563] Started resource rconlog
+[  13029578] Started resource scoreboard
+[  13029578] Started resource playernames
+[  13029594] Started resource vSync
+[  13029594] Authenticating server license key...
+[  13030266] Server license key authentication succeeded. Welcome!
+[  13030328] Sending heartbeat to live-internal.fivem.net:30110
+[  13030344] Started map fivem-map-skater
+[  13030344] Started resource fivem-map-skater
+[  13033516] Connecting: Safe Jew
+[  13047985] Initializing Mono
+[  13048000] Initializing Mono completed
+[  13048016] Hello!
+[  13048031] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[  13048063] Found new resource fivem in C:/server-data/resources//fivem
+[  13048078] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[  13048078] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[  13048094] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[  13048094] Found new resource runcode in C:/server-data/resources//runcode
+[  13048110] Found new resource vSync in C:/server-data/resources//vSync
+[  13048110] Resource loading for vSync failed:
+[  13048125] Could not open resource metadata file C:/server-data/resources//vSync/__resource.lua.
+[  13048125] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[  13048125] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[  13048141] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[  13048141] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[  13048156] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[  13048156] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[  13048172] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[  13048172] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[  13048188] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[  13048188] Found new resource chat in C:/server-data/resources//[system]/chat
+[  13048203] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[  13048203] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[  13048219] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[  13048219] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[  13048235] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[  13048235] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[  13048250] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[  13048250] Found new resource keks in C:/server-data/resources//[test]/keks
+[  13048281] Started resource sessionmanager
+[  13048297] Started resource mapmanager
+[  13048313] Started resource chat
+[  13048313] Started resource spawnmanager
+[  13048328] Started gametype Freeroam
+[  13048328] Started resource fivem
+[  13048344] Started resource hardcap
+[  13048344] Started resource rconlog
+[  13048360] Started resource scoreboard
+[  13048360] Started resource playernames
+[  13048375] Started resource vSync
+[  13048375] Authenticating server license key...
+[  13049063] Server license key authentication succeeded. Welcome!
+[  13049110] Sending heartbeat to live-internal.fivem.net:30110
+[  13049125] Started map fivem-map-hipster
+[  13049125] Started resource fivem-map-hipster
+[  13052172] Connecting: Safe Jew
+[  13055516] Sending heartbeat to live-internal.fivem.net:30110
+[  13055922] Connecting: Safe Jew
+[  13175969] Sending heartbeat to live-internal.fivem.net:30110
+[  13178906] Initializing Mono
+[  13178922] Initializing Mono completed
+[  13178938] Hello!
+[  13178953] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[  13178985] Found new resource fivem in C:/server-data/resources//fivem
+[  13179000] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[  13179000] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[  13179000] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[  13179016] Found new resource runcode in C:/server-data/resources//runcode
+[  13179016] Found new resource vsync in C:/server-data/resources//vsync
+[  13179031] Resource loading for vsync failed:
+[  13179031] Could not open resource metadata file C:/server-data/resources//vsync/__resource.lua.
+[  13179031] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[  13179047] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[  13179047] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[  13179063] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[  13179063] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[  13179063] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[  13179078] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[  13179078] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[  13179094] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[  13179094] Found new resource chat in C:/server-data/resources//[system]/chat
+[  13179110] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[  13179110] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[  13179110] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[  13179125] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[  13179125] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[  13179141] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[  13179141] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[  13179156] Found new resource keks in C:/server-data/resources//[test]/keks
+[  13179172] Started resource sessionmanager
+[  13179188] Started resource mapmanager
+[  13179203] Started resource chat
+[  13179203] Started resource spawnmanager
+[  13179219] Started gametype Freeroam
+[  13179219] Started resource fivem
+[  13179235] Started resource hardcap
+[  13179235] Started resource rconlog
+[  13179250] Started resource scoreboard
+[  13179250] Started resource playernames
+[  13179266] ^3Couldn't find resource vSync.^7
+[  13179266] Authenticating server license key...
+[  13179953] Server license key authentication succeeded. Welcome!
+[  13180000] Sending heartbeat to live-internal.fivem.net:30110
+[  13180016] Started map fivem-map-skater
+[  13180016] Started resource fivem-map-skater
+[  13216063] Initializing Mono
+[  13216063] Initializing Mono completed
+[  13216078] Hello!
+[  13216110] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[  13216141] Found new resource fivem in C:/server-data/resources//fivem
+[  13216141] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[  13216156] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[  13216156] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[  13216172] Found new resource runcode in C:/server-data/resources//runcode
+[  13216172] Found new resource vsync in C:/server-data/resources//vsync
+[  13216172] Resource loading for vsync failed:
+[  13216188] Could not open resource metadata file C:/server-data/resources//vsync/__resource.lua.
+[  13216188] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[  13216203] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[  13216203] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[  13216219] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[  13216219] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[  13216235] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[  13216235] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[  13216250] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[  13216250] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[  13216250] Found new resource chat in C:/server-data/resources//[system]/chat
+[  13216266] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[  13216266] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[  13216281] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[  13216281] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[  13216297] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[  13216297] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[  13216313] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[  13216313] Found new resource keks in C:/server-data/resources//[test]/keks
+[  13216344] Started resource sessionmanager
+[  13216360] Started resource mapmanager
+[  13216375] Started resource chat
+[  13216375] Started resource spawnmanager
+[  13216391] Started gametype Freeroam
+[  13216391] Started resource fivem
+[  13216406] Started resource hardcap
+[  13216406] Started resource rconlog
+[  13216422] Started resource scoreboard
+[  13216422] Started resource playernames
+[  13216438] Started resource vsync
+[  13216438] Authenticating server license key...
+[  13217078] Server license key authentication succeeded. Welcome!
+[  13217141] Sending heartbeat to live-internal.fivem.net:30110
+[  13217141] Started map fivem-map-hipster
+[  13217156] Started resource fivem-map-hipster
+[  13220500] Connecting: Safe Jew
+[  13252750] Initializing Mono
+[  13252766] Initializing Mono completed
+[  13252781] Hello!
+[  13252828] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[  13252828] Found new resource fivem in C:/server-data/resources//fivem
+[  13252844] Found new resource fivem-awesome1501 in C:/server-data/resources//fivem-awesome1501
+[  13252844] Found new resource fivem-map-hipster in C:/server-data/resources//fivem-map-hipster
+[  13252860] Found new resource fivem-map-skater in C:/server-data/resources//fivem-map-skater
+[  13252860] Found new resource runcode in C:/server-data/resources//runcode
+[  13252875] Found new resource vsync in C:/server-data/resources//vsync
+[  13252875] Resource loading for vsync failed:
+[  13252875] Could not open resource metadata file C:/server-data/resources//vsync/__resource.lua.
+[  13252891] Found new resource race in C:/server-data/resources//[gamemodes]/race
+[  13252891] Found new resource race-test in C:/server-data/resources//[gamemodes]/race-test
+[  13252906] Found new resource channelfeed in C:/server-data/resources//[gameplay]/channelfeed
+[  13252906] Found new resource irc in C:/server-data/resources//[gameplay]/irc
+[  13252922] Found new resource obituary in C:/server-data/resources//[gameplay]/obituary
+[  13252922] Found new resource obituary-deaths in C:/server-data/resources//[gameplay]/obituary-deaths
+[  13252922] Found new resource playernames in C:/server-data/resources//[gameplay]/playernames
+[  13252938] Found new resource mapmanager in C:/server-data/resources//[managers]/mapmanager
+[  13252938] Found new resource baseevents in C:/server-data/resources//[system]/baseevents
+[  13252953] Found new resource chat in C:/server-data/resources//[system]/chat
+[  13252953] Found new resource hardcap in C:/server-data/resources//[system]/hardcap
+[  13252969] Found new resource rconlog in C:/server-data/resources//[system]/rconlog
+[  13252969] Found new resource scoreboard in C:/server-data/resources//[system]/scoreboard
+[  13252985] Found new resource sessionmanager in C:/server-data/resources//[system]/sessionmanager
+[  13252985] Found new resource spawnmanager in C:/server-data/resources//[system]/spawnmanager
+[  13252985] Found new resource betaguns in C:/server-data/resources//[test]/betaguns
+[  13253000] Found new resource gameInit in C:/server-data/resources//[test]/gameInit
+[  13253000] Found new resource keks in C:/server-data/resources//[test]/keks
+[  13253031] Started resource sessionmanager
+[  13253047] Started resource mapmanager
+[  13253063] Started resource chat
+[  13253063] Started resource spawnmanager
+[  13253078] Started gametype Freeroam
+[  13253078] Started resource fivem
+[  13253094] Started resource hardcap
+[  13253094] Started resource rconlog
+[  13253110] Started resource scoreboard
+[  13253110] Started resource playernames
+[  13253125] Started resource vsync
+[  13253125] Authenticating server license key...
+[  13253797] Server license key authentication succeeded. Welcome!
+[  13253844] Sending heartbeat to live-internal.fivem.net:30110
+[  13253860] Started map fivem-map-hipster
+[  13253860] Started resource fivem-map-hipster
+[  13255438] Connecting: Safe Jew
+[  13259641] Sending heartbeat to live-internal.fivem.net:30110
+[  13259969] Connecting: Safe Jew
+[  13380047] Sending heartbeat to live-internal.fivem.net:30110
+[  13560078] Sending heartbeat to live-internal.fivem.net:30110
+[  13740110] Sending heartbeat to live-internal.fivem.net:30110
+[  13920125] Sending heartbeat to live-internal.fivem.net:30110
+[  14100125] Sending heartbeat to live-internal.fivem.net:30110
+[  14280141] Sending heartbeat to live-internal.fivem.net:30110
+[  14460156] Sending heartbeat to live-internal.fivem.net:30110
+[  14640172] Sending heartbeat to live-internal.fivem.net:30110
+[  14820188] Sending heartbeat to live-internal.fivem.net:30110
+[  15000203] Sending heartbeat to live-internal.fivem.net:30110
+[  15180219] Sending heartbeat to live-internal.fivem.net:30110
+[  15360250] Sending heartbeat to live-internal.fivem.net:30110
+[  15540266] Sending heartbeat to live-internal.fivem.net:30110
+[  15720281] Sending heartbeat to live-internal.fivem.net:30110
+[  15900297] Sending heartbeat to live-internal.fivem.net:30110
+[  16080328] Sending heartbeat to live-internal.fivem.net:30110
+[  16260360] Sending heartbeat to live-internal.fivem.net:30110
+[  16440375] Sending heartbeat to live-internal.fivem.net:30110
+[  16620406] Sending heartbeat to live-internal.fivem.net:30110
+[  16800422] Sending heartbeat to live-internal.fivem.net:30110
+[  16980438] Sending heartbeat to live-internal.fivem.net:30110
+[  17160469] Sending heartbeat to live-internal.fivem.net:30110
+[  17340516] Sending heartbeat to live-internal.fivem.net:30110
+[  17520531] Sending heartbeat to live-internal.fivem.net:30110
+[  17700578] Sending heartbeat to live-internal.fivem.net:30110
+[  17880610] Sending heartbeat to live-internal.fivem.net:30110
+[  18060656] Sending heartbeat to live-internal.fivem.net:30110
+[  18240688] Sending heartbeat to live-internal.fivem.net:30110
+[  18420703] Sending heartbeat to live-internal.fivem.net:30110
+[  18600719] Sending heartbeat to live-internal.fivem.net:30110
+[  18780735] Sending heartbeat to live-internal.fivem.net:30110
+[  18960750] Sending heartbeat to live-internal.fivem.net:30110
+[  19140766] Sending heartbeat to live-internal.fivem.net:30110
+[  19320781] Sending heartbeat to live-internal.fivem.net:30110
+[  19500813] Sending heartbeat to live-internal.fivem.net:30110
+[  19680828] Sending heartbeat to live-internal.fivem.net:30110
+[  19860891] Sending heartbeat to live-internal.fivem.net:30110
+[         0] Initializing Mono
+[        15] Initializing Mono completed
+[        31] Hello!
+[        46] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[        78] Found new resource fivem in C:/cfx/resources//fivem
+[        93] Found new resource fivem-awesome1501 in C:/cfx/resources//fivem-awesome1501
+[        93] Found new resource fivem-map-hipster in C:/cfx/resources//fivem-map-hipster
+[       109] Found new resource fivem-map-skater in C:/cfx/resources//fivem-map-skater
+[       109] Found new resource runcode in C:/cfx/resources//runcode
+[       109] Found new resource race in C:/cfx/resources//[gamemodes]/race
+[       125] Found new resource race-test in C:/cfx/resources//[gamemodes]/race-test
+[       125] Found new resource channelfeed in C:/cfx/resources//[gameplay]/channelfeed
+[       140] Found new resource irc in C:/cfx/resources//[gameplay]/irc
+[       140] Found new resource obituary in C:/cfx/resources//[gameplay]/obituary
+[       156] Found new resource obituary-deaths in C:/cfx/resources//[gameplay]/obituary-deaths
+[       156] Found new resource playernames in C:/cfx/resources//[gameplay]/playernames
+[       171] Found new resource mapmanager in C:/cfx/resources//[managers]/mapmanager
+[       171] Found new resource baseevents in C:/cfx/resources//[system]/baseevents
+[       171] Found new resource chat in C:/cfx/resources//[system]/chat
+[       187] Found new resource hardcap in C:/cfx/resources//[system]/hardcap
+[       187] Found new resource rconlog in C:/cfx/resources//[system]/rconlog
+[       203] Found new resource scoreboard in C:/cfx/resources//[system]/scoreboard
+[       203] Found new resource sessionmanager in C:/cfx/resources//[system]/sessionmanager
+[       218] Found new resource spawnmanager in C:/cfx/resources//[system]/spawnmanager
+[       218] Found new resource betaguns in C:/cfx/resources//[test]/betaguns
+[       234] Found new resource gameInit in C:/cfx/resources//[test]/gameInit
+[       234] Found new resource keks in C:/cfx/resources//[test]/keks
+[       265] Started resource sessionmanager
+[       281] Started resource mapmanager
+[       312] Started resource chat
+[       328] Started resource spawnmanager
+[       328] Started gametype Freeroam
+[       343] Started resource fivem
+[       343] Started resource hardcap
+[       359] Started resource rconlog
+[       375] Started resource scoreboard
+[       390] Started resource playernames
+[       406] ^3Couldn't find resource vsync.^7
+[       406] Authenticating server license key...
+[      1109] Server license key authentication succeeded. Welcome!
+[      1171] Sending heartbeat to live-internal.fivem.net:30110
+[      1171] Started map fivem-map-skater
+[      1187] Started resource fivem-map-skater
+[         0] Initializing Mono
+[        16] Initializing Mono completed
+[        16] Hello!
+[        47] Resolved live-internal.fivem.net:30110 to 62.210.162.18:30110
+[        79] Found new resource fivem in C:/cfx/resources//fivem
+[        79] Found new resource fivem-awesome1501 in C:/cfx/resources//fivem-awesome1501
+[        94] Found new resource fivem-map-hipster in C:/cfx/resources//fivem-map-hipster
+[        94] Found new resource fivem-map-skater in C:/cfx/resources//fivem-map-skater
+[        94] Found new resource runcode in C:/cfx/resources//runcode
+[       110] Found new resource race in C:/cfx/resources//[gamemodes]/race
+[       110] Found new resource race-test in C:/cfx/resources//[gamemodes]/race-test
+[       125] Found new resource channelfeed in C:/cfx/resources//[gameplay]/channelfeed
+[       125] Found new resource irc in C:/cfx/resources//[gameplay]/irc
+[       141] Found new resource obituary in C:/cfx/resources//[gameplay]/obituary
+[       141] Found new resource obituary-deaths in C:/cfx/resources//[gameplay]/obituary-deaths
+[       141] Found new resource playernames in C:/cfx/resources//[gameplay]/playernames
+[       157] Found new resource mapmanager in C:/cfx/resources//[managers]/mapmanager
+[       157] Found new resource baseevents in C:/cfx/resources//[system]/baseevents
+[       172] Found new resource chat in C:/cfx/resources//[system]/chat
+[       172] Found new resource hardcap in C:/cfx/resources//[system]/hardcap
+[       172] Found new resource rconlog in C:/cfx/resources//[system]/rconlog
+[       188] Found new resource scoreboard in C:/cfx/resources//[system]/scoreboard
+[       188] Found new resource sessionmanager in C:/cfx/resources//[system]/sessionmanager
+[       204] Found new resource spawnmanager in C:/cfx/resources//[system]/spawnmanager
+[       204] Found new resource betaguns in C:/cfx/resources//[test]/betaguns
+[       219] Found new resource gameInit in C:/cfx/resources//[test]/gameInit
+[       219] Found new resource keks in C:/cfx/resources//[test]/keks
+[       250] Started resource sessionmanager
+[       266] Started resource mapmanager
+[       282] Started resource chat
+[       282] Started resource spawnmanager
+[       282] Started gametype Freeroam
+[       297] Started resource fivem
+[       297] Started resource hardcap
+[       313] Started resource rconlog
+[       313] Started resource scoreboard
+[       329] Started resource playernames
+[       329] Authenticating server license key...
+[       625] Server license key authentication succeeded. Welcome!
+[       688] Sending heartbeat to live-internal.fivem.net:30110
+[       688] Started map fivem-map-hipster
+[       704] Started resource fivem-map-hipster
