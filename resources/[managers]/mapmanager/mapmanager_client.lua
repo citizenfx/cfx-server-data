@@ -1,35 +1,5 @@
-maps = {}
-gametypes = {}
-
-AddEventHandler('getResourceInitFuncs', function(isPreParse, add)
-    if not isPreParse then
-        add('map', function(file)
-            addMap(file, GetInvokingResource())
-        end)
-
-        add('resource_type', function(type)
-            return function(params)
-                local resourceName = GetInvokingResource()
-
-                if type == 'map' then
-                    maps[resourceName] = params
-                elseif type == 'gametype' then
-                    gametypes[resourceName] = params
-                end
-            end
-        end)
-    end
-end)
-
-mapFiles = {}
-
-function addMap(file, owningResource)
-    if not mapFiles[owningResource] then
-        mapFiles[owningResource] = {}
-    end
-
-    table.insert(mapFiles[owningResource], file)
-end
+local maps = {}
+local gametypes = {}
 
 AddEventHandler('onClientResourceStart', function(res)
     -- parse metadata for this resource
@@ -37,7 +7,7 @@ AddEventHandler('onClientResourceStart', function(res)
     -- map files
     local num = GetNumResourceMetadata(res, 'map')
 
-    if num then
+    if num > 0 then
         for i = 0, num-1 do
             local file = GetResourceMetadata(res, 'map', i)
 
@@ -51,8 +21,6 @@ AddEventHandler('onClientResourceStart', function(res)
     local type = GetResourceMetadata(res, 'resource_type', 0)
 
     if type then
-        Citizen.Trace("type " .. res .. " " .. type .. "\n")
-
         local extraData = GetResourceMetadata(res, 'resource_type_extra', 0)
 
         if extraData then
@@ -69,11 +37,7 @@ AddEventHandler('onClientResourceStart', function(res)
     end
 
     -- handle starting
-    if mapFiles[res] then
-        for _, file in ipairs(mapFiles[res]) do
-            parseMap(file, res)
-        end
-    end
+    loadMap(res)
 
     -- defer this to the next game tick to work around a lack of dependencies
     Citizen.CreateThread(function()
@@ -94,72 +58,8 @@ AddEventHandler('onResourceStop', function(res)
         TriggerEvent('onClientGameTypeStop', res)
     end
 
-    if undoCallbacks[res] then
-        for _, cb in ipairs(undoCallbacks[res]) do
-            cb()
-        end
-
-        undoCallbacks[res] = nil
-        mapFiles[res] = nil
-    end
+    unloadMap(res)
 end)
-
-undoCallbacks = {}
-
-function parseMap(file, owningResource)
-    if not undoCallbacks[owningResource] then
-        undoCallbacks[owningResource] = {}
-    end
-
-    local env = {
-        math = math, pairs = pairs, ipairs = ipairs, next = next, tonumber = tonumber, tostring = tostring,
-        type = type, table = table, string = string, _G = env
-    }
-
-    TriggerEvent('getMapDirectives', function(key, cb, undocb)
-        env[key] = function(...)
-            local state = {}
-
-            state.add = function(k, v)
-                state[k] = v
-            end
-
-            local result = cb(state, ...)
-            local args = table.pack(...)
-
-            table.insert(undoCallbacks[owningResource], function()
-                undocb(state)
-            end)
-
-            return result
-        end
-    end)
-
-    local mt = {
-        __index = function(t, k)
-            if rawget(t, k) ~= nil then return rawget(t, k) end
-
-            -- as we're not going to return nothing here (to allow unknown directives to be ignored)
-            local f = function()
-                return f
-            end
-
-            return function() return f end
-        end
-    }
-
-    setmetatable(env, mt)
-    
-    local fileData = LoadResourceFile(owningResource, file)
-    local mapFunction, err = load(fileData, file, 't', env)
-
-    if not mapFunction then
-        Citizen.Trace("Couldn't load map " .. file .. ": " .. err .. " (type of fileData: " .. type(fileData) .. ")\n")
-        return
-    end
-
-    mapFunction()
-end
 
 AddEventHandler('getMapDirectives', function(add)
     add('vehicle_generator', function(state, name)
@@ -181,16 +81,20 @@ AddEventHandler('getMapDirectives', function(add)
             color1 = opts.color1 or -1
             color2 = opts.color2 or -1
 
-            local hash = GetHashKey(name)
-            RequestModel(hash)
+            CreateThread(function()
+                local hash = GetHashKey(name)
+                RequestModel(hash)
 
-            LoadAllObjectsNow()
+                while not HasModelLoaded(hash) do
+                    Wait(0)
+                end
 
-            local carGen = CreateScriptVehicleGenerator(x, y, z, heading, 5.0, 3.0, hash, color1, color2, -1, -1, true, false, false, true, true, -1)
-            SetScriptVehicleGenerator(carGen, true)
-            SetAllVehicleGeneratorsActive(true)
+                local carGen = CreateScriptVehicleGenerator(x, y, z, heading, 5.0, 3.0, hash, color1, color2, -1, -1, true, false, false, true, true, -1)
+                SetScriptVehicleGenerator(carGen, true)
+                SetAllVehicleGeneratorsActive(true)
 
-            state.add('cargen', carGen)
+                state.add('cargen', carGen)
+            end)
         end
     end, function(state, arg)
         Citizen.Trace("deleting car gen " .. tostring(state.cargen) .. "\n")
