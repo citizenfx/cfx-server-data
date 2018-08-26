@@ -14,6 +14,6 @@ window.CONFIG = {
   style: {
     background: 'rgba(52, 73, 94, 0.7)',
     width: '38%',
-    height: '240px',
+    height: '22%',
   }
 };
