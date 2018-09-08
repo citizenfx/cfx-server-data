@@ -6,7 +6,8 @@ window.APP = {
       style: CONFIG.style,
       showInput: false,
       showWindow: false,
-      suggestions: [],
+      backingSuggestions: [],
+      removedSuggestions: [],
       templates: CONFIG.templates,
       message: '',
       messages: [],
@@ -41,6 +42,11 @@ window.APP = {
       });
     },
   },
+  computed: {
+    suggestions() {
+      return this.backingSuggestions.filter((el) => this.removedSuggestions.indexOf(el.name) <= -1);
+    },
+  },
   methods: {
     ON_OPEN() {
       this.showInput = true;
@@ -68,13 +74,15 @@ window.APP = {
       if (!suggestion.params) {
         suggestion.params = []; //TODO Move somewhere else
       }
-      if (this.suggestions.find(a => a.name == suggestion.name)) {
+      if (this.backingSuggestions.find(a => a.name == suggestion.name)) {
         return;
       }
-      this.suggestions.push(suggestion);
+      this.backingSuggestions.push(suggestion);
     },
     ON_SUGGESTION_REMOVE({ name }) {
-      this.suggestions = this.suggestions.filter((sug) => sug.name !== name)
+      if(this.removedSuggestions.indexOf(name) <= -1) {
+        this.removedSuggestions.push(name);
+      }
     },
     ON_TEMPLATE_ADD({ template }) {
       if (this.templates[template.id]) {
