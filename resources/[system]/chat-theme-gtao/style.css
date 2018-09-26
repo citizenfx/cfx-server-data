@@ -1,0 +1,116 @@
+* {
+    font-family: inherit;
+}
+
+.chat-window {
+    --size: calc((((2.7vw / 1.77777) * 1.2)) * 6);
+
+    position: absolute;
+    right: calc(1.56vw);
+    top: calc(50% - (var(--size) / 2));
+    height: var(--size) !important;
+
+    background: inherit !important;
+
+    text-align: right;
+
+    left: auto;
+
+    user-select: none;
+}
+
+@font-face {
+    font-family: 'Font2';
+    src: url(https://runtime.fivem.net/temp/ChaletLondonNineteenSixty.otf?a);
+}
+
+@font-face {
+    font-family: 'Font2_cond';
+    src: url(https://runtime.fivem.net/temp/chaletcomprime-colognesixty-webfont.ttf?a);
+}
+
+.msg {
+    font-family: Font2, sans-serif;
+    color: #fff;
+
+    font-size: calc(1.8vw / 1.77777); /* 13px in 720p, calc'd by width */
+    filter: url(#svgDropShadowFilter);
+
+    line-height: calc((2.7vw / 1.77777) * 1.2);
+
+    margin-bottom: 0;
+}
+
+.chat-messages {
+    margin: 0;
+    height: 100%;
+}
+
+.msg > span > span > b {
+    font-family: Font2_cond, sans-serif;
+    font-weight: normal;
+
+    vertical-align: baseline;
+    padding-right: 11px;
+
+    line-height: 1;
+
+    font-size: calc(2.7vw / 1.77777); /* 13px in 720p, calc'd by width */
+}
+
+.msg > span > span > span {
+    vertical-align: baseline;
+}
+
+.msg i:first-of-type {
+    font-style: normal;
+    color: #c0c0c0;
+}
+
+.chat-input {
+    position: absolute;
+    right: calc(1.56vw);
+    bottom: calc(1.56vw);
+
+    background: inherit !important;
+
+    text-align: right;
+
+    top: auto;
+    left: auto;
+
+    height: auto;
+
+    font-family: Font2, sans-serif;
+}
+
+.chat-input > div {
+    background-color: rgba(0, 0, 0, .6);
+    padding: calc(0.15625vw / 2);
+}
+
+.chat-input .prefix {
+    margin: 0;
+    margin-left: 0.7%;
+    margin-top: -0.1%;
+}
+
+.chat-input > div + div {
+    position: absolute;
+    bottom: calc(1.65vh + 0.15625vw + 0.15625vw + 0.15625vw + (0.15625vw / 2));
+    width: 99.6%;
+
+    text-align: left;
+}
+
+.suggestions {
+    border: calc(0.15625vw / 2) solid rgba(180, 180, 180, .6);
+    background: transparent;
+}
+
+textarea {
+    background: transparent;
+    border: calc(0.15625vw / 2) solid rgba(180, 180, 180, .6);
+    padding: calc(0.15625vw / 2);
+    padding-left: calc(3.5% + (0.15625vw / 2));
+}

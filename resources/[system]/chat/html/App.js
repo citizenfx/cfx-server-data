@@ -6,12 +6,16 @@ window.APP = {
       style: CONFIG.style,
       showInput: false,
       showWindow: false,
-      suggestions: [],
+      shouldHide: true,
+      backingSuggestions: [],
+      removedSuggestions: [],
       templates: CONFIG.templates,
       message: '',
       messages: [],
       oldMessages: [],
       oldMessagesIndex: -1,
+      tplBackups: [],
+      msgTplBackups: []
     };
   },
   destroyed() {
@@ -41,7 +45,15 @@ window.APP = {
       });
     },
   },
+  computed: {
+    suggestions() {
+      return this.backingSuggestions.filter((el) => this.removedSuggestions.indexOf(el.name) <= -1);
+    },
+  },
   methods: {
+    ON_SCREEN_STATE_CHANGE({ shouldHide }) {
+      this.shouldHide = shouldHide;
+    },
     ON_OPEN() {
       this.showInput = true;
       this.showWindow = true;
@@ -68,19 +80,100 @@ window.APP = {
       if (!suggestion.params) {
         suggestion.params = []; //TODO Move somewhere else
       }
-      if (this.suggestions.find(a => a.name == suggestion.name)) {
+      if (this.backingSuggestions.find(a => a.name == suggestion.name)) {
         return;
       }
-      this.suggestions.push(suggestion);
+      this.backingSuggestions.push(suggestion);
     },
     ON_SUGGESTION_REMOVE({ name }) {
-      this.suggestions = this.suggestions.filter((sug) => sug.name !== name)
+      if(this.removedSuggestions.indexOf(name) <= -1) {
+        this.removedSuggestions.push(name);
+      }
     },
     ON_TEMPLATE_ADD({ template }) {
       if (this.templates[template.id]) {
         this.warn(`Tried to add duplicate template '${template.id}'`)
       } else {
         this.templates[template.id] = template.html;
+      }
+    },
+    ON_UPDATE_THEMES({ themes }) {
+      this.removeThemes();
+
+      this.setThemes(themes);
+    },
+    removeThemes() {
+      for (let i = 0; i < document.styleSheets.length; i++) {
+        const styleSheet = document.styleSheets[i];
+        const node = styleSheet.ownerNode;
+        
+        if (node.getAttribute('data-theme')) {
+          node.parentNode.removeChild(node);
+        }
+      }
+
+      this.tplBackups.reverse();
+
+      for (const [ elem, oldData ] of this.tplBackups) {
+        elem.innerText = oldData;
+      }
+
+      this.tplBackups = [];
+
+      this.msgTplBackups.reverse();
+
+      for (const [ id, oldData ] of this.msgTplBackups) {
+        this.templates[id] = oldData;
+      }
+
+      this.msgTplBackups = [];
+    },
+    setThemes(themes) {
+      for (const [ id, data ] of Object.entries(themes)) {
+        if (data.style) {
+          const style = document.createElement('style');
+          style.type = 'text/css';
+          style.setAttribute('data-theme', id);
+          style.appendChild(document.createTextNode(data.style));
+
+          document.head.appendChild(style);
+        }
+        
+        if (data.styleSheet) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          link.href = data.baseUrl + data.styleSheet;
+          link.setAttribute('data-theme', id);
+
+          document.head.appendChild(link);
+        }
+
+        if (data.templates) {
+          for (const [ tplId, tpl ] of Object.entries(data.templates)) {
+            const elem = document.getElementById(tplId);
+
+            if (elem) {
+              this.tplBackups.push([ elem, elem.innerText ]);
+              elem.innerText = tpl;
+            }
+          }
+        }
+
+        if (data.script) {
+          const script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = data.baseUrl + data.script;
+
+          document.head.appendChild(script);
+        }
+
+        if (data.msgTemplates) {
+          for (const [ tplId, tpl ] of Object.entries(data.msgTemplates)) {
+            this.msgTplBackups.push([ tplId, this.templates[tplId] ]);
+            this.templates[tplId] = tpl;
+          }
+        }
       }
     },
     warn(msg) {
