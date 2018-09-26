@@ -18,7 +18,7 @@
   <!-- App Template -->
   <script type="text/x-template" id="app_template">
     <div id="app">
-      <div class="chat-window" :style="this.style" :class="{ 'fadeOut animated': !showWindow }">
+      <div class="chat-window" :style="this.style" :class="{ 'fadeOut animated': !showWindow, 'hidden': shouldHide }">
         <div class="chat-messages" ref="messages">
           <message v-for="msg in messages"
                    :templates="templates"
@@ -32,17 +32,19 @@
         </div>
       </div>
       <div class="chat-input" v-show="showInput">
-        <span class="prefix">➤</span>
-        <textarea v-model="message"
-                  ref="input"
-                  type="text"
-                  autofocus
-                  spellcheck="false"
-                  @keyup.esc="hideInput"
-                  @keyup="keyUp"
-                  @keydown="keyDown"
-                  @keypress.enter.prevent="send">
-        </textarea>
+        <div>
+          <span class="prefix">➤</span>
+          <textarea v-model="message"
+                    ref="input"
+                    type="text"
+                    autofocus
+                    spellcheck="false"
+                    @keyup.esc="hideInput"
+                    @keyup="keyUp"
+                    @keydown="keyDown"
+                    @keypress.enter.prevent="send">
+          </textarea>
+        </div>
         <suggestions :message="message" :suggestions="suggestions">
         </suggestions>
       </div>
@@ -58,28 +60,30 @@
 
   <!-- Suggestions Template -->
   <script type="text/x-template" id="suggestions_template">
-    <ul class="suggestions" v-show="currentSuggestions.length > 0">
-      <li class="suggestion" v-for="s in currentSuggestions">
-        <p>
-          <span :class="{ 'disabled': s.disabled }">
-            {{s.name}}
-          </span>
-          <span class="param"
-                v-for="(p, index) in s.params"
-                :class="{ 'disabled': p.disabled }">
-            [{{p.name}}]
-          </span>
-        </p>
-        <small class="help">
-          <template v-if="!s.disabled">
-            {{s.help}}
-          </template>
-          <template v-for="p in s.params" v-if="!p.disabled">
-            {{p.help}}
-          </template>
-        </small>
-      </li>
-    </ul>
+    <div class="suggestions-wrap" v-show="currentSuggestions.length > 0">
+      <ul class="suggestions">
+        <li class="suggestion" v-for="s in currentSuggestions">
+          <p>
+            <span :class="{ 'disabled': s.disabled }">
+              {{s.name}}
+            </span>
+            <span class="param"
+                  v-for="(p, index) in s.params"
+                  :class="{ 'disabled': p.disabled }">
+              [{{p.name}}]
+            </span>
+          </p>
+          <small class="help">
+            <template v-if="!s.disabled">
+              {{s.help}}
+            </template>
+            <template v-for="p in s.params" v-if="!p.disabled">
+              {{p.help}}
+            </template>
+          </small>
+        </li>
+      </ul>
+    </div>
   </script>
 
   <!-- Scripts -->
