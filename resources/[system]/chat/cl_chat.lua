@@ -22,15 +22,19 @@ AddEventHandler('chatMessage', function(author, color, text)
   if author ~= "" then
     table.insert(args, 1, author)
   end
-  SendNUIMessage({
-    type = 'ON_MESSAGE',
-    message = {
-      color = color,
-      multiline = true,
-      args = args
-    }
-  })
+  TriggerEvent("chat:cancelChatMessage")
+  if (not WasEventCanceled()) then
+    SendNUIMessage({
+      type = 'ON_MESSAGE',
+      message = {
+        color = color,
+        multiline = true,
+        args = args
+      }
+    })
+   end
 end)
+
 
 AddEventHandler('__cfx_internal:serverPrint', function(msg)
   print(msg)
@@ -46,10 +50,13 @@ AddEventHandler('__cfx_internal:serverPrint', function(msg)
 end)
 
 AddEventHandler('chat:addMessage', function(message)
-  SendNUIMessage({
-    type = 'ON_MESSAGE',
-    message = message
-  })
+  TriggerEvent("chat:cancelChatMessage")
+  if not WasEventCanceled() then
+    SendNUIMessage({
+      type = 'ON_MESSAGE',
+      message = message
+    })
+  end
 end)
 
 AddEventHandler('chat:addSuggestion', function(name, help, params)
