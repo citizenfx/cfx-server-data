@@ -20,7 +20,7 @@ end)
 AddEventHandler('playerConnecting', function(name, setReason)
   local cv = GetConvarInt('sv_maxclients', 32)
 
-  print('Connecting: ' .. name)
+  print('Connecting: ' .. name .. '^7')
 
   if playerCount >= cv then
     print('Full. :(')
