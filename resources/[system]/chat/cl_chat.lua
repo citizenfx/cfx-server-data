@@ -1,5 +1,7 @@
 local chatInputActive = false
 local chatInputActivating = false
+local chatHidden = true
+local chatLoaded = false
 
 RegisterNetEvent('chatMessage')
 RegisterNetEvent('chat:addTemplate')
@@ -132,16 +134,54 @@ local function refreshCommands()
   end
 end
 
+local function refreshThemes()
+  local themes = {}
+
+  for resIdx = 0, GetNumResources() - 1 do
+    local resource = GetResourceByFindIndex(resIdx)
+
+    if GetResourceState(resource) == 'started' then
+      local numThemes = GetNumResourceMetadata(resource, 'chat_theme')
+
+      if numThemes > 0 then
+        local themeName = GetResourceMetadata(resource, 'chat_theme')
+        local themeData = json.decode(GetResourceMetadata(resource, 'chat_theme_extra') or 'null')
+
+        if themeName and themeData then
+          themeData.baseUrl = 'nui://' .. resource .. '/'
+          themes[themeName] = themeData
+        end
+      end
+    end
+  end
+
+  SendNUIMessage({
+    type = 'ON_UPDATE_THEMES',
+    themes = themes
+  })
+end
+
 AddEventHandler('onClientResourceStart', function(resName)
   Wait(500)
 
   refreshCommands()
+  refreshThemes()
+end)
+
+AddEventHandler('onClientResourceStop', function(resName)
+  Wait(500)
+
+  refreshCommands()
+  refreshThemes()
 end)
 
 RegisterNUICallback('loaded', function(data, cb)
   TriggerServerEvent('chat:init');
 
   refreshCommands()
+  refreshThemes()
+
+  chatLoaded = true
 
   cb('ok')
 end)
@@ -169,6 +209,23 @@ Citizen.CreateThread(function()
         SetNuiFocus(true)
 
         chatInputActivating = false
+      end
+    end
+
+    if chatLoaded then
+      local shouldBeHidden = false
+
+      if IsScreenFadedOut() or IsPauseMenuActive() then
+        shouldBeHidden = true
+      end
+
+      if (shouldBeHidden and not chatHidden) or (not shouldBeHidden and chatHidden) then
+        chatHidden = shouldBeHidden
+
+        SendNUIMessage({
+          type = 'ON_SCREEN_STATE_CHANGE',
+          shouldHide = shouldBeHidden
+        })
       end
     end
   end
