@@ -18,7 +18,7 @@ AddEventHandler('_chat:messageEntered', function(author, color, message)
         TriggerClientEvent('chatMessage', -1, author,  { 255, 255, 255 }, message)
     end
 
-    print(author .. ': ' .. message)
+    print(author .. '^7: ' .. message .. '^7')
 end)
 
 AddEventHandler('__cfx_internal:commandFallback', function(command)
