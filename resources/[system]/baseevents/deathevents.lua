@@ -71,3 +71,13 @@ function GetPlayerByEntityID(id)
 	end
 	return nil
 end
+
+function GetPedVehicleSeat(ped)
+    local vehicle = GetVehiclePedIsIn(ped, false)
+    for k = -1, GetVehicleMaxNumberOfPassengers(vehicle) - 1  do
+        if GetPedInVehicleSeat(vehicle, k) == ped then
+            return k
+        end
+    end
+    return -2
+end
