@@ -74,9 +74,9 @@ end
 
 function GetPedVehicleSeat(ped)
     local vehicle = GetVehiclePedIsIn(ped, false)
-    for k = -1, GetVehicleMaxNumberOfPassengers(vehicle) - 1  do
-        if GetPedInVehicleSeat(vehicle, k) == ped then
-            return k
+    for seat = -1, GetVehicleMaxNumberOfPassengers(vehicle) - 1  do
+        if GetPedInVehicleSeat(vehicle, seat) == ped then
+            return seat
         end
     end
     return -2
