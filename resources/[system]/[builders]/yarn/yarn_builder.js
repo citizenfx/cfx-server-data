@@ -14,7 +14,7 @@ const yarnBuildTask = {
 			
 			try {
 				const yarnStat = fs.statSync(yarnLock);
-			
+				
 				if (packageStat.mtimeMs > yarnStat.mtimeMs) {
 					return true;
 				}
@@ -42,6 +42,15 @@ const yarnBuildTask = {
 				if (code != 0 || signal) {
 					cb(false, 'yarn failed!');
 					return;
+				}
+				
+				const resourcePath = GetResourcePath(resourceName);
+				const yarnLock = path.resolve(resourcePath, 'yarn.lock');
+				
+				try {
+					fs.utimesSync(yarnLock, new Date(), new Date());
+				} catch (e) {
+				
 				}
 			
 				cb(true);
