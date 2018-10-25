@@ -206,6 +206,9 @@ window.APP = {
       } else if (e.which == 34) {
         var buf = document.getElementsByClassName('chat-messages')[0];
         buf.scrollTop = buf.scrollTop + 100;
+      } else if (e.wich == 9) {
+        e.preventDefault();
+        this.autocomplete();
       }
     },
     moveOldMessageIndex(up) {
@@ -235,6 +238,12 @@ window.APP = {
         this.hideInput();
       } else {
         this.hideInput(true);
+      }
+    },
+    autocomplete() {
+      let firstSuggestion = this.backingSuggestions.filter((el) => el.name.match(this.message))[0];
+      if (firstSuggestion !== undefined) {
+        this.message = firstSuggestion.name + " ";
       }
     },
     hideInput(canceled = false) {
