@@ -25,30 +25,32 @@ Citizen.CreateThread(function()
 				isEnteringVehicle = false
 				isInVehicle = true
 				currentVehicle = GetVehiclePedIsUsing(ped)
-				currentSeat = GetPedVehicleSeat(ped)
+				currentSeat = GetPedVehicleSeat(currentVehicle, ped)
 				local model = GetEntityModel(currentVehicle)
-				local name = GetDisplayNameFromVehicleModel()
 				TriggerServerEvent('baseevents:enteredVehicle', currentVehicle, currentSeat, GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle)))
 			end
 		elseif isInVehicle then
-			if not IsPedInAnyVehicle(ped, false) or IsPlayerDead(PlayerId()) then
+			local isDead = IsPlayerDead(PlayerId())
+			if not IsPedInAnyVehicle(ped, false) or isDead then
 				-- bye, vehicle
 				local model = GetEntityModel(currentVehicle)
-				local name = GetDisplayNameFromVehicleModel()
 				TriggerServerEvent('baseevents:leftVehicle', currentVehicle, currentSeat, GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle)))
 				isInVehicle = false
 				currentVehicle = 0
 				currentSeat = 0
+			elseif GetPedInVehicleSeat(currentVehicle, currentSeat) ~= ped and not isDead then
+				-- Ped has Seat Swap or has been teleported to another seat
+				currentSeat = GetPedVehicleSeat(currentVehicle, ped)
+				TriggerServerEvent('baseevents:vehicleSeatChanged', currentVehicle, currentSeat)
 			end
 		end
 		Citizen.Wait(50)
 	end
 end)
 
-function GetPedVehicleSeat(ped)
-    local vehicle = GetVehiclePedIsIn(ped, false)
-    for i=-2,GetVehicleMaxNumberOfPassengers(vehicle) do
-        if(GetPedInVehicleSeat(vehicle, i) == ped) then return i end
+function GetPedVehicleSeat(currentVehicle, ped)
+    for i=-1,GetVehicleMaxNumberOfPassengers(currentVehicle) do
+        if(GetPedInVehicleSeat(currentVehicle, i) == ped) then return i end
     end
     return -2
 end
