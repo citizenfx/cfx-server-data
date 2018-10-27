@@ -77,11 +77,16 @@ window.APP = {
       this.oldMessagesIndex = -1;
     },
     ON_SUGGESTION_ADD({ suggestion }) {
+      const duplicateSuggestion = this.backingSuggestions.find(a => a.name == suggestion.name);
+      if (duplicateSuggestion) {
+        if(suggestion.help || suggestion.params) {
+          duplicateSuggestion.help = suggestion.help || "";
+          duplicateSuggestion.params = suggestion.params || [];
+        }
+        return;
+      }
       if (!suggestion.params) {
         suggestion.params = []; //TODO Move somewhere else
-      }
-      if (this.backingSuggestions.find(a => a.name == suggestion.name)) {
-        return;
       }
       this.backingSuggestions.push(suggestion);
     },
