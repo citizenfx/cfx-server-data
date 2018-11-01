@@ -11,6 +11,8 @@ AddEventHandler('hardcap:playerActivated', function()
 end)
 
 AddEventHandler('playerDropped', function()
+  print('Dropped: ' .. GetPlayerName(source) .. '^7')
+
   if list[source] then
     playerCount = playerCount - 1
     list[source] = nil
