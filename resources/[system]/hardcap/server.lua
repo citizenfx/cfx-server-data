@@ -12,7 +12,7 @@ AddEventHandler('playerConnecting', function(name, setReason)
     print(name .. '^7 tried to join but the server is full.')
 
     setReason('The server is full (past ' .. maxPlayers .. ' players).')
-    CancelEvent()
+    return CancelEvent()
   end
 
   print(name .. '^7 connected.')
