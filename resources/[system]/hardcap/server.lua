@@ -1,31 +1,20 @@
-local playerCount = 0
-local list = {}
+local players = GetNumPlayerIndices()
 
-RegisterServerEvent('hardcap:playerActivated')
-
-AddEventHandler('hardcap:playerActivated', function()
-  if not list[source] then
-    playerCount = playerCount + 1
-    list[source] = true
-  end
+AddEventHandler('playerDropped', function(reason)
+  print(GetPlayerName(source) .. '^7 left: ' .. reason)
+  players = players - 1
 end)
 
-AddEventHandler('playerDropped', function()
-  if list[source] then
-    playerCount = playerCount - 1
-    list[source] = nil
-  end
-end)
+AddEventHandler('playerConnecting', function(name, setReason)  
+  local maxPlayers = GetConvarInt('sv_maxClients', 32)
 
-AddEventHandler('playerConnecting', function(name, setReason)
-  local cv = GetConvarInt('sv_maxclients', 32)
+  if players >= maxPlayers then
+    print(name .. '^7 tried to join but the server is full.')
 
-  print('Connecting: ' .. name .. '^7')
-
-  if playerCount >= cv then
-    print('Full. :(')
-
-    setReason('This server is full (past ' .. tostring(cv) .. ' players).')
+    setReason('The server is full (past ' .. maxPlayers .. ' players).')
     CancelEvent()
   end
+
+  print(name .. '^7 connected.')
+  players = players + 1
 end)
