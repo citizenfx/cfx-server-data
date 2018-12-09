@@ -97,9 +97,16 @@ window.APP = {
     },
     ON_TEMPLATE_ADD({ template }) {
       if (this.templates[template.id]) {
-        this.warn(`Tried to add duplicate template '${template.id}'`)
+        this.warn(`Tried to add duplicate template '${template.id}'`);
       } else {
         this.templates[template.id] = template.html;
+      }
+    },
+    ON_TEMPLATE_REMOVE({ template }) {
+      if (this.templates[template.id]) {
+        this.templates[template.id] = null;
+      } else {
+        this.warn(`Tried to remove template '${template.id}' that doesn't exist`);
       }
     },
     ON_UPDATE_THEMES({ themes }) {

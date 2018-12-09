@@ -5,6 +5,7 @@ local chatLoaded = false
 
 RegisterNetEvent('chatMessage')
 RegisterNetEvent('chat:addTemplate')
+RegisterNetEvent('chat:removeTemplate')
 RegisterNetEvent('chat:addMessage')
 RegisterNetEvent('chat:addSuggestion')
 RegisterNetEvent('chat:addSuggestions')
@@ -85,6 +86,15 @@ AddEventHandler('chat:addTemplate', function(id, html)
     template = {
       id = id,
       html = html
+    }
+  })
+end)
+
+AddEventHandler('chat:removeTemplate', function(id)
+  SendNUIMessage({
+    type = 'ON_TEMPLATE_REMOVE',
+    template = {
+      id = id
     }
   })
 end)

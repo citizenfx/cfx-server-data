@@ -1,5 +1,6 @@
 RegisterServerEvent('chat:init')
 RegisterServerEvent('chat:addTemplate')
+RegisterServerEvent('chat:removeTemplate')
 RegisterServerEvent('chat:addMessage')
 RegisterServerEvent('chat:addSuggestion')
 RegisterServerEvent('chat:removeSuggestion')
