@@ -1,22 +1,68 @@
+const fs = require('fs');
 const path = require('path');
 const workerFarm = require('worker-farm');
 const async = require('async');
-
-const justBuilt = {};
 
 const webpackBuildTask = {
 	shouldBuild(resourceName) {
 		const numMetaData = GetNumResourceMetadata(resourceName, 'webpack_config');
 		
 		if (numMetaData > 0) {
-			if (!(resourceName in justBuilt)) {
-				return true;
+			for (let i = 0; i < numMetaData; i++) {
+				const configName = GetResourceMetadata(resourceName, 'webpack_config');
+
+				if (shouldBuild(configName)) {
+					return true;
+				}
 			}
-			
-			delete justBuilt[resourceName];
 		}
 		
 		return false;
+
+		function loadCache(config) {
+			const cachePath = `cache/${resourceName}/${config.replace(/\//g, '_')}.json`;
+	
+			try {
+				return JSON.parse(fs.readFileSync(cachePath, { encoding: 'utf8' }));
+			} catch {
+				return null;
+			}
+		}
+	
+		function shouldBuild(config) {
+			const cache = loadCache(config);
+	
+			if (!cache) {
+				return true;
+			}
+	
+			for (const file of cache) {
+				const stats = getStat(file.name);
+	
+				if (!stats ||
+					stats.mtime !== file.stats.mtime ||
+					stats.size !== file.stats.size ||
+					stats.inode !== file.stats.inode) {
+					return true;
+				}
+			}
+	
+			return false;
+		}
+		
+		function getStat(path) {
+			try {
+				const stat = fs.statSync(path);
+	
+				return stat ? {
+					mtime: stat.mtimeMs,
+					size: stat.size,
+					inode: stat.ino,
+				} : null;
+			} catch {
+				return null;
+			}
+		}
 	},
 	
 	build(resourceName, cb) {
@@ -29,6 +75,12 @@ const webpackBuildTask = {
 	
 		async.forEachOf(configs, (configName, i, acb) => {
 			const configPath = GetResourcePath(resourceName) + '/' + configName;
+
+			const cachePath = `cache/${resourceName}/${configName.replace(/\//g, '_')}.json`;
+
+			try {
+				fs.mkdirSync(path.dirname(cachePath));
+			} catch {}
 			
 			const config = require(configPath);
 			
@@ -39,7 +91,8 @@ const webpackBuildTask = {
 			
 				workers({
 					configPath,
-					resourcePath
+					resourcePath,
+					cachePath
 				}, (err, outp) => {
 					workerFarm.end(workers);
 				
@@ -60,6 +113,8 @@ const webpackBuildTask = {
 						acb("webpack got an error");
 						return;
 					}
+
+					console.log(`${resourceName}: built ${configName}`);
 					
 					acb();
 				});
@@ -74,8 +129,6 @@ const webpackBuildTask = {
 					cb(false, err);
 					return;
 				}
-				
-				justBuilt[resourceName] = true;
 				
 				cb(true);
 			});
