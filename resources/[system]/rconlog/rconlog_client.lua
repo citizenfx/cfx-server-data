@@ -1,15 +1,15 @@
 RegisterNetEvent('rlUpdateNames')
 
 AddEventHandler('rlUpdateNames', function()
-    local names = {}
+	local names = {}
 
-    for i = 0, 31 do
-        if NetworkIsPlayerActive(i) then
-            names[GetPlayerServerId(i)] = { id = i, name = GetPlayerName(i) }
-        end
-    end
+	for i = 0, 64 do
+		if NetworkIsPlayerActive(i) then
+			names[GetPlayerServerId(i)] = { id = i, name = GetPlayerName(i) }
+		end
+	end
 
-    TriggerServerEvent('rlUpdateNamesResult', names)
+	TriggerServerEvent('rlUpdateNamesResult', names)
 end)
 
 Citizen.CreateThread(function()

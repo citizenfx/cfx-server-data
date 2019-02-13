@@ -1,21 +1,30 @@
-RconLog({ msgType = 'serverStart', hostname = 'lovely', maxplayers = 32 })
+RconLog({ msgType = 'serverStart', hostname = 'lovely', maxplayers = 64 })
 
 RegisterServerEvent('rlPlayerActivated')
 
 local names = {}
+local trustedPlayer
+
+local function SetTrustedPlayer()
+    trustedPlayer = nil
+    for k,_ in pairs(names) do
+        trustedPlayer = k
+        break
+    end
+end
 
 AddEventHandler('rlPlayerActivated', function()
     RconLog({ msgType = 'playerActivated', netID = source, name = GetPlayerName(source), guid = GetPlayerIdentifiers(source)[1], ip = GetPlayerEP(source) })
 
     names[source] = { name = GetPlayerName(source), id = source }
 
-    TriggerClientEvent('rlUpdateNames', GetHostId())
+    TriggerClientEvent('rlUpdateNames', trustedPlayer or source)
 end)
 
 RegisterServerEvent('rlUpdateNamesResult')
 
 AddEventHandler('rlUpdateNamesResult', function(res)
-    if source ~= tonumber(GetHostId()) then
+    if source ~= trustedPlayer then
         print('bad guy')
         return
     end
@@ -43,6 +52,10 @@ AddEventHandler('playerDropped', function()
     RconLog({ msgType = 'playerDropped', netID = source, name = GetPlayerName(source) })
 
     names[source] = nil
+
+    if source == trustedPlayer then
+        SetTrustedPlayer()
+    end
 end)
 
 AddEventHandler('chatMessage', function(netID, name, message)
