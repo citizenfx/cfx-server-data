@@ -7,18 +7,18 @@ RegisterServerEvent('_chat:messageEntered')
 RegisterServerEvent('chat:clear')
 RegisterServerEvent('__cfx_internal:commandFallback')
 
-AddEventHandler('_chat:messageEntered', function(author, color, message)
-    if not message or not author then
+AddEventHandler('_chat:messageEntered', function(color, message)
+    if not message then
         return
     end
 
-    TriggerEvent('chatMessage', source, author, message)
+    TriggerEvent('chatMessage', source, GetPlayerName(source), message)
 
     if not WasEventCanceled() then
-        TriggerClientEvent('chatMessage', -1, author,  { 255, 255, 255 }, message)
+        TriggerClientEvent('chatMessage', -1, GetPlayerName(source),  { 255, 255, 255 }, message)
     end
 
-    print(author .. '^7: ' .. message .. '^7')
+    print(GetPlayerName(source) .. '^7: ' .. message .. '^7')
 end)
 
 AddEventHandler('__cfx_internal:commandFallback', function(command)
