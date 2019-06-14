@@ -66,7 +66,7 @@ RegisterCommand('clientkick', function(source, args, rawCommand)
     local msg = #args >= 2 and table.concat(args, ' ', 2) or 'No reason was provided.'
     if not playerId or not GetPlayerName(playerId) then return end
 
-    DropPlayer(playerId .. msg)    
+    DropPlayer(playerId, msg)    
 end, true)
 
 RegisterCommand('tempbanclient', function(source, args, rawCommand)
