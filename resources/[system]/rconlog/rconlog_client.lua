@@ -3,10 +3,8 @@ RegisterNetEvent('rlUpdateNames')
 AddEventHandler('rlUpdateNames', function()
 	local names = {}
 
-	for i = 0, 64 do
-		if NetworkIsPlayerActive(i) then
-			names[GetPlayerServerId(i)] = { id = i, name = GetPlayerName(i) }
-		end
+	for _, i in pairs(GetActivePlayers()) do
+		names[GetPlayerServerId(i)] = { id = i, name = GetPlayerName(i) }
 	end
 
 	TriggerServerEvent('rlUpdateNamesResult', names)
