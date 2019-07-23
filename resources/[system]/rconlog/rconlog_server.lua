@@ -17,6 +17,10 @@ AddEventHandler('rlPlayerActivated', function()
     RconLog({ msgType = 'playerActivated', netID = source, name = GetPlayerName(source), guid = GetPlayerIdentifiers(source)[1], ip = GetPlayerEP(source) })
 
     names[source] = { name = GetPlayerName(source), id = source }
+        
+    if not trustedPlayer then
+        trustedPlayer = source     
+    end
 
     TriggerClientEvent('rlUpdateNames', trustedPlayer or source)
 end)
