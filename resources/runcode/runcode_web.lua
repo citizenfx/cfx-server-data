@@ -21,6 +21,69 @@ end
 local codeId = 1
 local codes = {}
 
+local attempts = 0
+local lastAttempt
+
+local function handleRunCode(data, res)
+	if not data.lang then
+		data.lang = 'lua'
+	end
+
+	if not data.client or data.client == '' then
+		CreateThread(function()
+			local result, err = RunCode(data.lang, data.code)
+
+			res.send(json.encode({
+				result = result,
+				error = err
+			}))
+		end)
+	else
+		codes[codeId] = {
+			timeout = GetGameTimer() + 1000,
+			res = res
+		}
+
+		TriggerClientEvent('runcode:gotSnippet', tonumber(data.client), codeId, data.lang, data.code)
+
+		codeId = codeId + 1
+	end
+end
+
+RegisterNetEvent('runcode:runInBand')
+
+AddEventHandler('runcode:runInBand', function(id, data)
+	local s = source
+	local privs = GetPrivs(s)
+
+	local res = {
+		send = function(str)
+			TriggerClientEvent('runcode:inBandResult', s, id, str)
+		end
+	}
+
+	if (not data.client or data.client == '') and not privs.canServer then
+		res.send(json.encode({ error = 'Insufficient permissions.'}))
+		return
+	end
+
+	if (data.client and data.client ~= '') and not privs.canClient then
+		if privs.canSelf then
+			data.client = s
+		else
+			res.send(json.encode({ error = 'Insufficient permissions.'}))
+			return
+		end
+	end
+
+	SaveResourceFile(GetCurrentResourceName(), 'data.json', json.encode({
+		lastSnippet = data.code,
+		lastLang = data.lang or 'lua'
+	}), -1)
+
+	handleRunCode(data, res)
+end)
+
 local function handlePost(req, res)
 	req.setDataHandler(function(body)
 		local data = json.decode(body)
@@ -35,32 +98,28 @@ local function handlePost(req, res)
 			return
 		end
 
-		if data.password ~= GetConvar('rcon_password', '') then
+		if attempts > 5 or data.password ~= GetConvar('rcon_password', '') then
+			attempts = attempts + 1
+			lastAttempt = GetGameTimer()
+
 			res.send(json.encode({ error = 'Bad password.'}))
 			return
 		end
 
-		if not data.client or data.client == '' then
-			CreateThread(function()
-				local result, err = RunCode(data.code)
-
-				res.send(json.encode({
-					result = result,
-					error = err
-				}))
-			end)
-		else
-			codes[codeId] = {
-				timeout = GetGameTimer() + 1000,
-				res = res
-			}
-
-			TriggerClientEvent('runcode:gotSnippet', tonumber(data.client), codeId, data.code)
-
-			codeId = codeId + 1
-		end
+		handleRunCode(data, res)
 	end)
 end
+
+CreateThread(function()
+	while true do
+		Wait(1000)
+		
+		if attempts > 0 and (GetGameTimer() - lastAttempt) > 5000 then
+			attempts = 0
+			lastAttempt = 0
+		end
+	end
+end)
 
 local function returnCode(id, res, err)
 	if not codes[id] then
