@@ -33,7 +33,7 @@ end)
 refreshResources()
 
 AddEventHandler('onResourceStarting', function(resource)
-    -- Number of 'map' entires in this resource's manifest
+    -- Number of 'map' entries in this resource's manifest
     local num = GetNumResourceMetadata(resource, 'map')
 
     if num then
