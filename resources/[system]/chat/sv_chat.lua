@@ -8,6 +8,7 @@ RegisterServerEvent('chat:clear')
 RegisterServerEvent('__cfx_internal:commandFallback')
 
 AddEventHandler('_chat:messageEntered', function(author, color, message)
+    -- If an empty message is sent
     if not message or not author then
         return
     end
@@ -33,20 +34,22 @@ AddEventHandler('__cfx_internal:commandFallback', function(command)
     CancelEvent()
 end)
 
--- player join messages
+-- Player join message
 AddEventHandler('chat:init', function()
     TriggerClientEvent('chatMessage', -1, '', { 255, 255, 255 }, '^2* ' .. GetPlayerName(source) .. ' joined.')
 end)
 
+-- Player left message
 AddEventHandler('playerDropped', function(reason)
     TriggerClientEvent('chatMessage', -1, '', { 255, 255, 255 }, '^2* ' .. GetPlayerName(source) ..' left (' .. reason .. ')')
 end)
 
+-- /say command
 RegisterCommand('say', function(source, args, rawCommand)
     TriggerClientEvent('chatMessage', -1, (source == 0) and 'console' or GetPlayerName(source), { 255, 255, 255 }, rawCommand:sub(5))
 end)
 
--- command suggestions for clients
+-- Command suggestions for clients
 local function refreshCommands(player)
     if GetRegisteredCommands then
         local registeredCommands = GetRegisteredCommands()
@@ -66,6 +69,7 @@ local function refreshCommands(player)
     end
 end
 
+-- Loads command suggestions on client chat initialization
 AddEventHandler('chat:init', function()
     refreshCommands(source)
 end)
@@ -74,6 +78,7 @@ AddEventHandler('onServerResourceStart', function(resName)
     Wait(500)
 
     for _, player in ipairs(GetPlayers()) do
+        -- Refresh so this resource's commands are in the client's suggestions list
         refreshCommands(player)
     end
 end)

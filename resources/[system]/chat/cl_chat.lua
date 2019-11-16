@@ -11,12 +11,12 @@ RegisterNetEvent('chat:addSuggestions')
 RegisterNetEvent('chat:removeSuggestion')
 RegisterNetEvent('chat:clear')
 
--- internal events
+-- Internal events
 RegisterNetEvent('__cfx_internal:serverPrint')
 
 RegisterNetEvent('_chat:messageEntered')
 
---deprecated, use chat:addMessage
+-- Deprecated, use chat:addMessage
 AddEventHandler('chatMessage', function(author, color, text)
   local args = { text }
   if author ~= "" then
@@ -102,7 +102,7 @@ RegisterNUICallback('chatResult', function(data, cb)
   if not data.canceled then
     local id = PlayerId()
 
-    --deprecated
+    -- Deprecated
     local r, g, b = 0, 0x99, 255
 
     if data.message:sub(1, 1) == '/' then
