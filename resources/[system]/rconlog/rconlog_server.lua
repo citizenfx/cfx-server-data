@@ -17,10 +17,7 @@ end)
 RegisterServerEvent('rlUpdateNamesResult')
 
 AddEventHandler('rlUpdateNamesResult', function(res)
-    if source ~= tonumber(GetHostId()) then
-        print('bad guy')
-        return
-    end
+    if source ~= tonumber(GetHostId()) then return end
 
     for id, data in pairs(res) do
         if data then
@@ -54,12 +51,12 @@ end)
 AddEventHandler('rconCommand', function(commandName, args)
     if commandName == 'status' then
         for netid, data in pairs(names) do
-            local guid = GetPlayerIdentifiers(netid)
+            local guid = GetPlayerIdentifier(netid)
 
-            if guid and guid[1] and data then
+            if guid and data then
                 local ping = GetPlayerPing(netid)
 
-                RconPrint(netid .. ' ' .. guid[1] .. ' ' .. data.name .. ' ' .. GetPlayerEP(netid) .. ' ' .. ping .. "\n")
+                RconPrint(netid .. ' ' .. guid .. ' ' .. data.name .. ' ' .. GetPlayerEP(netid) .. ' ' .. ping .. "\n")
             end
         end
 
