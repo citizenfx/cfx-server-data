@@ -17,15 +17,15 @@ AddEventHandler('playerDropped', function()
   end
 end)
 
-AddEventHandler('playerConnecting', function(name, setReason)
+AddEventHandler('playerConnecting', function(Name, KickReason)
   local cv = GetConvarInt('sv_maxclients', 32)
 
-  print('Connecting: ' .. name .. '^7')
+  print("Player attempting to connect: " .. Name .. "^7")
 
   if playerCount >= cv then
-    print('Full. :(')
+    print("Player kicked: " .. Name .. " kicked due to the server being full.")
 
-    setReason('This server is full (past ' .. tostring(cv) .. ' players).')
+    KickReason("Sorry " .. Name .. ", the server is full (" .. tostring(cv) .. "/" .. tostring(cv) .. " players).")
     CancelEvent()
   end
 end)
