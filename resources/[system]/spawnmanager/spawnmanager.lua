@@ -103,7 +103,7 @@ function addSpawnPoint(spawn)
     end
 
     -- is the model actually a model?
-    if not IsModelInCdimage(model) then
+    if not IsModelInCdimage(spawn.model) then
         error("invalid spawn model")
     end
 
