@@ -4,7 +4,7 @@ local gametypes = {}
 AddEventHandler('onClientResourceStart', function(res)
     -- Parse metadata for this resource
 
-    -- Number of 'map' entires in this resource's manifest
+    -- Number of 'map' entries in this resource's manifest
     local num = GetNumResourceMetadata(res, 'map')
 
     if num > 0 then
