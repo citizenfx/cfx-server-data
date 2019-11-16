@@ -1,4 +1,4 @@
--- shared logic file for map manager - don't call any subsystem-specific functions here
+-- Shared logic file for map manager - don't call any subsystem-specific functions here
 mapFiles = {}
 
 function addMap(file, owningResource)
@@ -63,7 +63,7 @@ function parseMap(file, owningResource)
         __index = function(t, k)
             if rawget(t, k) ~= nil then return rawget(t, k) end
 
-            -- as we're not going to return nothing here (to allow unknown directives to be ignored)
+            -- As we're not going to return nothing here (to allow unknown directives to be ignored)
             local f = function()
                 return f
             end

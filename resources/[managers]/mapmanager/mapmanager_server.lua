@@ -1,14 +1,17 @@
--- loosely based on MTA's https://code.google.com/p/mtasa-resources/source/browse/trunk/%5Bmanagers%5D/mapmanager/mapmanager_main.lua
+-- Loosely based on MTA's https://code.google.com/p/mtasa-resources/source/browse/trunk/%5Bmanagers%5D/mapmanager/mapmanager_main.lua
 
 local maps = {}
 local gametypes = {}
 
 local function refreshResources()
+    -- Total number of server resources
     local numResources = GetNumResources()
 
+    -- Loop through all server resources
     for i = 0, numResources - 1 do
         local resource = GetResourceByFindIndex(i)
 
+        -- If this resource manifiest has 'resource_type' set 
         if GetNumResourceMetadata(resource, 'resource_type') > 0 then
             local type = GetResourceMetadata(resource, 'resource_type', 0)
             local params = json.decode(GetResourceMetadata(resource, 'resource_type_extra', 0))
@@ -26,16 +29,20 @@ AddEventHandler('onResourceListRefresh', function()
     refreshResources()
 end)
 
+-- Runs once when map manager starts
 refreshResources()
 
 AddEventHandler('onResourceStarting', function(resource)
+    -- Number of 'map' entires in this resource's manifest
     local num = GetNumResourceMetadata(resource, 'map')
 
     if num then
         for i = 0, num-1 do
+            -- Collect the file name of the map entry from the resource manifest
             local file = GetResourceMetadata(resource, 'map', i)
 
             if file then
+                -- Adds the map to the map manager
                 addMap(file, resource)
             end
         end
@@ -48,7 +55,7 @@ AddEventHandler('onResourceStarting', function(resource)
 
                 changeMap(resource)
             else
-                -- check if there's only one possible game type for the map
+                -- Check if there's only one possible game type for the map
                 local map = maps[resource]
                 local count = 0
                 local gt
@@ -87,9 +94,11 @@ local currentGameType = nil
 local currentMap = nil
 
 AddEventHandler('onResourceStart', function(resource)
+    -- If this resource has a map defined
     if maps[resource] then
         if not getCurrentGameType() then
             for gt, _ in pairs(maps[resource].gameTypes) do
+                -- Set a game type as one has not yet been set
                 changeGameType(gt)
                 break
             end
@@ -98,6 +107,7 @@ AddEventHandler('onResourceStart', function(resource)
         if getCurrentGameType() and not getCurrentMap() then
             if doesMapSupportGameType(currentGameType, resource) then
                 if TriggerEvent('onMapStart', resource, maps[resource]) then
+                    -- Set a map name as one has not yet been set
                     if maps[resource].name then
                         print('Started map ' .. maps[resource].name)
                         SetMapName(maps[resource].name)
@@ -112,6 +122,7 @@ AddEventHandler('onResourceStart', function(resource)
                 end
             end
         end
+    -- If resource does not have a map defined, but instead a game type
     elseif gametypes[resource] then
         if not getCurrentGameType() then
             if TriggerEvent('onGameTypeStart', resource, gametypes[resource]) then
@@ -119,11 +130,13 @@ AddEventHandler('onResourceStart', function(resource)
 
                 local gtName = gametypes[resource].name or resource
 
+                -- Set a game type as one has not yet been set
                 SetGameType(gtName)
 
                 print('Started gametype ' .. gtName)
 
                 SetTimeout(50, function()
+                    -- If a map has still not been set
                     if not currentMap then
                         local possibleMaps = {}
 
@@ -135,6 +148,7 @@ AddEventHandler('onResourceStart', function(resource)
 
                         if #possibleMaps > 0 then
                             local rnd = math.random(#possibleMaps)
+                            -- Set a random map, as one is required to spawn the player
                             changeMap(possibleMaps[rnd])
                         end
                     end
@@ -169,13 +183,14 @@ local function handleRoundEnd()
         changeMap(mapname)
     elseif #possibleMaps > 0 then
         local rnd = math.random(#possibleMaps)
+        -- Set a random map, as one is required to spawn the player
         changeMap(possibleMaps[rnd])
 	end
 end
 
 AddEventHandler('mapmanager:roundEnded', function()
-    -- set a timeout as we don't want to return to a dead environment
-    SetTimeout(50, handleRoundEnd) -- not a closure as to work around some issue in neolua?
+    -- Set a timeout as we don't want to return to a dead environment
+    SetTimeout(50, handleRoundEnd) -- Not a closure as to work around some issue in neolua?
 end)
 
 function roundEnded()
@@ -214,6 +229,7 @@ AddEventHandler('rconCommand', function(commandName, args)
             return
         end
 
+        -- If a game type is not yet set or requested map is not supported by the current game tpye
         if currentGameType == nil or not doesMapSupportGameType(currentGameType, args[1]) then
             local map = maps[args[1]]
             local count = 0
@@ -229,6 +245,7 @@ AddEventHandler('rconCommand', function(commandName, args)
             if count == 1 then
                 print("Changing map from " .. getCurrentMap() .. " to " .. args[1] .. " (gt " .. gt .. ")")
 
+                -- Change game type and map to fit requested map
                 changeGameType(gt)
                 changeMap(args[1])
 
