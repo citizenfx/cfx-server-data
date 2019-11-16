@@ -1,4 +1,4 @@
--- in-memory spawnpoint array for this script execution instance
+-- In-memory spawnpoint array for this script execution instance
 local spawnPoints = {}
 
 -- auto-spawn enabled flag
@@ -67,7 +67,6 @@ AddEventHandler('getMapDirectives', function(add)
     end)
 end)
 
-
 -- loads a set of spawn points from a JSON string
 function loadSpawns(spawnString)
     -- decode the JSON string
@@ -98,26 +97,15 @@ function addSpawnPoint(spawn)
         error("invalid spawn heading")
     end
 
-    -- model (try integer first, if not, hash it)
-    local model = spawn.model
-
     if not tonumber(spawn.model) then
-        model = GetHashKey(spawn.model)
+        -- overwrite the model since we hashed it
+        spawn.model = GetHashKey(spawn.model)
     end
 
     -- is the model actually a model?
     if not IsModelInCdimage(model) then
         error("invalid spawn model")
     end
-
-    -- is is even a ped?
-    -- not in V?
-    --[[if not IsThisModelAPed(model) then
-        error("this model ain't a ped!")
-    end]]
-
-    -- overwrite the model in case we hashed it
-    spawn.model = model
 
     -- add an index
     spawn.idx = spawnNum
@@ -151,8 +139,7 @@ function setAutoSpawnCallback(cb)
 end
 
 -- function as existing in original R* scripts
-local function freezePlayer(id, freeze)
-    local player = id
+local function freezePlayer(player, freeze)
     SetPlayerControl(player, not freeze, false)
 
     local ped = GetPlayerPed(player)
@@ -167,7 +154,6 @@ local function freezePlayer(id, freeze)
         end
 
         FreezeEntityPosition(ped, false)
-        --SetCharNeverTargetted(ped, false)
         SetPlayerInvincible(player, false)
     else
         if IsEntityVisible(ped) then
@@ -176,9 +162,7 @@ local function freezePlayer(id, freeze)
 
         SetEntityCollision(ped, false)
         FreezeEntityPosition(ped, true)
-        --SetCharNeverTargetted(ped, true)
         SetPlayerInvincible(player, true)
-        --RemovePtfxFromPed(ped)
 
         if not IsPedFatallyInjured(ped) then
             ClearPedTasksImmediately(ped)
@@ -200,12 +184,15 @@ end
 local spawnLock = false
 
 -- spawns the current player at a certain spawn point index (or a random one, for that matter)
-function spawnPlayer(spawnIdx, cb)
+function spawnPlayer(spawnIdx, cb, Health, RemoveWeapons)
     if spawnLock then
         return
     end
 
     spawnLock = true
+
+    Health = Health or false
+    RemoveWeapons = RemoveWeapons or false
 
     Citizen.CreateThread(function()
         -- if the spawn isn't set, select a random one
@@ -264,8 +251,7 @@ function spawnPlayer(spawnIdx, cb)
         RequestCollisionAtCoord(spawn.x, spawn.y, spawn.z)
 
         -- spawn the player
-        --ResurrectNetworkPlayer(GetPlayerId(), spawn.x, spawn.y, spawn.z, spawn.heading)
-        local ped = GetPlayerPed(-1)
+        local ped = PlayerPedId()
 
         -- V requires setting coords as well
         SetEntityCoordsNoOffset(ped, spawn.x, spawn.y, spawn.z, false, false, false, true)
@@ -274,21 +260,9 @@ function spawnPlayer(spawnIdx, cb)
 
         -- gamelogic-style cleanup stuff
         ClearPedTasksImmediately(ped)
-        --SetEntityHealth(ped, 300) -- TODO: allow configuration of this?
-        RemoveAllPedWeapons(ped) -- TODO: make configurable (V behavior?)
+        if Health then SetEntityHealth(ped, Health) end
+        if RemoveWeapons then RemoveAllPedWeapons(ped) end
         ClearPlayerWantedLevel(PlayerId())
-
-        -- why is this even a flag?
-        --SetCharWillFlyThroughWindscreen(ped, false)
-
-        -- set primary camera heading
-        --SetGameCamHeading(spawn.heading)
-        --CamRestoreJumpcut(GetGameCam())
-
-        -- load the scene; streaming expects us to do it
-        --ForceLoadingScreen(true)
-        --loadScene(spawn.x, spawn.y, spawn.z)
-        --ForceLoadingScreen(false)
 
         local time = GetGameTimer()
 
@@ -328,7 +302,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(50)
 
-        local playerPed = GetPlayerPed(-1)
+        local playerPed = PlayerPedId()
 
         if playerPed and playerPed ~= -1 then
             -- check if we want to autospawn
