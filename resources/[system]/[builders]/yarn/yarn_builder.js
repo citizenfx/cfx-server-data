@@ -1,6 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 const child_process = require('child_process');
+let buildingInProgress = false;
+let currentBuildingModule = '';
 
 const yarnBuildTask = {
 	shouldBuild(resourceName) {
@@ -30,33 +32,49 @@ const yarnBuildTask = {
 	},
 	
 	build(resourceName, cb) {
-		const process = child_process.fork(
-			require.resolve('./yarn_cli.js'),
-			['install'],
-			{
-				cwd: path.resolve(GetResourcePath(resourceName))
-			});
-			
-		process.on('exit', (code, signal) => {
-			setImmediate(() => {
-				if (code != 0 || signal) {
-					cb(false, 'yarn failed!');
-					return;
-				}
-				
-				const resourcePath = GetResourcePath(resourceName);
-				const yarnLock = path.resolve(resourcePath, 'yarn.lock');
-				
-				try {
-					fs.utimesSync(yarnLock, new Date(), new Date());
-				} catch (e) {
-				
-				}
-			
-				cb(true);
-			});
-		});
-	}
-}
+		let buildYarn = async () => {
+			while (buildingInProgress) {
+				console.log(`yarn is busy by another process: we are waiting to compile  ${resourceName}`);
+				await sleep(3000);
+			}
+			buildingInProgress = true;
+			currentBuildingModule = resourceName;
+			const process = child_process.fork(
+				require.resolve('./yarn_cli.js'),
+				['install'],
+				{
+					cwd: path.resolve(GetResourcePath(resourceName))
+				});
 
+			process.on('exit', (code, signal) => {
+				setImmediate(() => {
+					if (code != 0 || signal) {
+						buildingInProgress = false;
+						currentBuildingModule = '';
+						cb(false, 'yarn failed!');
+						return;
+					}
+
+					const resourcePath = GetResourcePath(resourceName);
+					const yarnLock = path.resolve(resourcePath, 'yarn.lock');
+
+					try {
+						fs.utimesSync(yarnLock, new Date(), new Date());
+					} catch (e) {
+
+					}
+
+					buildingInProgress = false;
+					currentBuildingModule = '';
+					cb(true);
+				});
+			});
+		};
+		buildYarn().then();
+	}
+};
+
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
 RegisterResourceBuildTaskFactory('yarn', () => yarnBuildTask);
