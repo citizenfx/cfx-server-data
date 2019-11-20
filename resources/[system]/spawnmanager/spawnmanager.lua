@@ -2,7 +2,7 @@
 local spawnPoints = {}
 
 -- auto-spawn enabled flag
-local autoSpawnEnabled = false
+local autoSpawnEnabled = true
 local autoSpawnCallback
 
 -- support for mapmanager maps
@@ -208,18 +208,20 @@ function spawnPlayer(spawnIdx, cb)
     spawnLock = true
 
     Citizen.CreateThread(function()
-        -- if the spawn isn't set, select a random one
-        if not spawnIdx then
-            spawnIdx = GetRandomIntInRange(1, #spawnPoints + 1)
-        end
-
         -- get the spawn from the array
         local spawn
 
-        if type(spawnIdx) == 'table' then
-            spawn = spawnIdx
-        else
-            spawn = spawnPoints[spawnIdx]
+        if not spawnIdx and #spawnPoints > 0 then
+            spawn = spawnPoints[math.random(1, #spawnPoints)]
+        elseif spawnIdx and type(spawnIdx) == 'table' then
+        	spawn = spawnIdx
+        end
+
+        -- validate the index
+        if not spawn then
+            Citizen.Trace("tried to spawn at an invalid spawn index\n")
+
+            spawn = { x = 0.0, y = 0.0, z = 71.0, heading = 0.0 }
         end
 
         if not spawn.skipFade then
@@ -230,26 +232,15 @@ function spawnPlayer(spawnIdx, cb)
             end
         end
 
-        -- validate the index
-        if not spawn then
-            Citizen.Trace("tried to spawn at an invalid spawn index\n")
-
-            spawnLock = false
-
-            return
-        end
-
         -- freeze the local player
         freezePlayer(PlayerId(), true)
 
         -- if the spawn has a model set
-        if spawn.model then
+        if spawn.model and IsModelInCdimage(spawn.model) then
             RequestModel(spawn.model)
 
             -- load the model for this spawn
             while not HasModelLoaded(spawn.model) do
-                RequestModel(spawn.model)
-
                 Wait(0)
             end
 
@@ -271,6 +262,7 @@ function spawnPlayer(spawnIdx, cb)
         SetEntityCoordsNoOffset(ped, spawn.x, spawn.y, spawn.z, false, false, false, true)
 
         NetworkResurrectLocalPlayer(spawn.x, spawn.y, spawn.z, spawn.heading, true, true, false)
+        ped = GetPlayerPed(-1) -- This needs to be updated
 
         -- gamelogic-style cleanup stuff
         ClearPedTasksImmediately(ped)
@@ -320,7 +312,7 @@ function spawnPlayer(spawnIdx, cb)
 end
 
 -- automatic spawning monitor thread, too
-local respawnForced
+local respawnForced = true
 local diedAt
 
 Citizen.CreateThread(function()
