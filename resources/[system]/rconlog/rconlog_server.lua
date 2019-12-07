@@ -9,7 +9,9 @@ AddEventHandler('rlPlayerActivated', function()
 
     names[source] = { name = GetPlayerName(source), id = source }
 
-    TriggerClientEvent('rlUpdateNames', GetHostId())
+	if GetHostId() then
+		TriggerClientEvent('rlUpdateNames', GetHostId())
+	end
 end)
 
 RegisterServerEvent('rlUpdateNamesResult')

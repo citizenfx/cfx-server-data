@@ -1,5 +1,12 @@
-function RunCode(code)
-	local code, err = load(code, '@runcode')
+local runners = {}
+
+function runners.lua(arg)
+	local code, err = load('return ' .. arg, '@runcode')
+
+	-- if failed, try without return
+	if err then
+		code, err = load(arg, '@runcode')
+	end
 
 	if err then
 		print(err)
@@ -11,7 +18,15 @@ function RunCode(code)
 
 	if status then
 		return result
-	else
-		return nil, result
 	end
+
+	return nil, result
+end
+
+function runners.js(arg)
+	return table.unpack(exports[GetCurrentResourceName()]:runJS(arg))
+end
+
+function RunCode(lang, str)
+	return runners[lang](str)
 end

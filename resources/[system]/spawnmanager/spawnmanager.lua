@@ -208,12 +208,6 @@ function spawnPlayer(spawnIdx, cb)
     spawnLock = true
 
     Citizen.CreateThread(function()
-        DoScreenFadeOut(500)
-
-        while IsScreenFadingOut() do
-            Citizen.Wait(0)
-        end
-
         -- if the spawn isn't set, select a random one
         if not spawnIdx then
             spawnIdx = GetRandomIntInRange(1, #spawnPoints + 1)
@@ -226,6 +220,14 @@ function spawnPlayer(spawnIdx, cb)
             spawn = spawnIdx
         else
             spawn = spawnPoints[spawnIdx]
+        end
+
+        if not spawn.skipFade then
+            DoScreenFadeOut(500)
+
+            while not IsScreenFadedOut() do
+                Citizen.Wait(0)
+            end
         end
 
         -- validate the index
@@ -288,16 +290,20 @@ function spawnPlayer(spawnIdx, cb)
         --loadScene(spawn.x, spawn.y, spawn.z)
         --ForceLoadingScreen(false)
 
-        while not HasCollisionLoadedAroundEntity(ped) do
+        local time = GetGameTimer()
+
+        while (not HasCollisionLoadedAroundEntity(ped) and (GetGameTimer() - time) < 5000) do
             Citizen.Wait(0)
         end
 
         ShutdownLoadingScreen()
 
-        DoScreenFadeIn(500)
+        if IsScreenFadedOut() then
+            DoScreenFadeIn(500)
 
-        while IsScreenFadingIn() do
-            Citizen.Wait(0)
+            while not IsScreenFadedIn() do
+                Citizen.Wait(0)
+            end
         end
 
         -- and unfreeze the player

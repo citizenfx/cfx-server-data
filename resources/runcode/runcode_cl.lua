@@ -1,7 +1,7 @@
 RegisterNetEvent('runcode:gotSnippet')
 
-AddEventHandler('runcode:gotSnippet', function(id, code)
-	local res, err = RunCode(code)
+AddEventHandler('runcode:gotSnippet', function(id, lang, code)
+	local res, err = RunCode(lang, code)
 
 	if not err then
 		if type(res) == 'vector3' then

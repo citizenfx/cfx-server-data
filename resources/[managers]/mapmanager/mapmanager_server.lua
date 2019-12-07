@@ -156,11 +156,20 @@ local function handleRoundEnd()
 		if data.gameTypes[currentGameType] then
 			table.insert(possibleMaps, map)
 		end
-	end
+    end
 
-	if #possibleMaps > 0 then
-		local rnd = math.random(#possibleMaps)
-		changeMap(possibleMaps[rnd])
+    if #possibleMaps > 1 then
+        local mapname = currentMap
+
+        while mapname == currentMap do
+            local rnd = math.random(#possibleMaps)
+            mapname = possibleMaps[rnd]
+        end
+
+        changeMap(mapname)
+    elseif #possibleMaps > 0 then
+        local rnd = math.random(#possibleMaps)
+        changeMap(possibleMaps[rnd])
 	end
 end
 
