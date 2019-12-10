@@ -12,12 +12,27 @@ local function refreshResources()
         if GetNumResourceMetadata(resource, 'resource_type') > 0 then
             local type = GetResourceMetadata(resource, 'resource_type', 0)
             local params = json.decode(GetResourceMetadata(resource, 'resource_type_extra', 0))
-
-            if type == 'map' then
-                maps[resource] = params
-            elseif type == 'gametype' then
-                gametypes[resource] = params
+            
+            local valid = false
+            
+            local games = GetNumResourceMetadata(resource, 'game')
+            if games > 0 then
+				for j = 0, games - 1 do
+					local game = GetResourceMetadata(resource, 'game', j)
+				
+					if game == GetConvar('gamename', 'gta5') or game == 'common' then
+						valid = true
+					end
+				end
             end
+
+			if valid then
+				if type == 'map' then
+					maps[resource] = params
+				elseif type == 'gametype' then
+					gametypes[resource] = params
+				end
+			end
         end
     end
 end
