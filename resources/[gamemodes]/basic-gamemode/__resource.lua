@@ -1,3 +1,3 @@
 resource_type 'gametype' { name = 'Freeroam' }
 
-client_script 'fivem_client.lua'
+client_script 'basic_client.lua'
