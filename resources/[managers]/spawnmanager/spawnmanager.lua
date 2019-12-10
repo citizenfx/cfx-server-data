@@ -187,6 +187,10 @@ local function freezePlayer(id, freeze)
 end
 
 function loadScene(x, y, z)
+	if not NewLoadSceneStart then
+		return
+	end
+
     NewLoadSceneStart(x, y, z, 0.0, 0.0, 0.0, 20.0, 0)
 
     while IsNewLoadSceneActive() do
@@ -258,14 +262,18 @@ function spawnPlayer(spawnIdx, cb)
 
             -- release the player model
             SetModelAsNoLongerNeeded(spawn.model)
+            
+            -- RDR3 player model bits
+            if N_0x283978a15512b2fe then
+				N_0x283978a15512b2fe(PlayerPedId(), true)
+            end
         end
 
         -- preload collisions for the spawnpoint
         RequestCollisionAtCoord(spawn.x, spawn.y, spawn.z)
 
         -- spawn the player
-        --ResurrectNetworkPlayer(GetPlayerId(), spawn.x, spawn.y, spawn.z, spawn.heading)
-        local ped = GetPlayerPed(-1)
+        local ped = PlayerPedId()
 
         -- V requires setting coords as well
         SetEntityCoordsNoOffset(ped, spawn.x, spawn.y, spawn.z, false, false, false, true)
@@ -328,7 +336,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(50)
 
-        local playerPed = GetPlayerPed(-1)
+        local playerPed = PlayerPedId()
 
         if playerPed and playerPed ~= -1 then
             -- check if we want to autospawn

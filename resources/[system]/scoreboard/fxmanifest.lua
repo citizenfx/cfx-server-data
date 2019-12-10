@@ -16,3 +16,6 @@ files {
     'html/res/futurastd-medium.ttf',
     'html/res/futurastd-medium.svg',
 }
+
+fx_version 'adamant'
+game 'gta5'

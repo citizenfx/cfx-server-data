@@ -41,7 +41,7 @@ const yarnBuildTask = {
 			currentBuildingModule = resourceName;
 			const process = child_process.fork(
 				require.resolve('./yarn_cli.js'),
-				['install'],
+				['install', '--ignore-scripts'],
 				{
 					cwd: path.resolve(GetResourcePath(resourceName))
 				});

@@ -62,6 +62,10 @@ AddEventHandler('onResourceStop', function(res)
 end)
 
 AddEventHandler('getMapDirectives', function(add)
+	if not CreateScriptVehicleGenerator then
+		return
+	end
+
     add('vehicle_generator', function(state, name)
         return function(opts)
             local x, y, z, heading
