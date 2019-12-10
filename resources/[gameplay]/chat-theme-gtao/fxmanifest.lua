@@ -8,3 +8,6 @@ chat_theme 'gtao' {
         default = '<b>{0}</b><span>{1}</span>'
     }
 }
+
+game 'common'
+fx_version 'adamant'

@@ -8,7 +8,7 @@ Citizen.CreateThread(function()
         if IsControlPressed(0, 27)--[[ INPUT_PHONE ]] then
             if not listOn then
                 local players = {}
-                ptable = GetPlayers()
+                local ptable = GetActivePlayers()
                 for _, i in ipairs(ptable) do
                     local wantedLevel = GetPlayerWantedLevel(i)
                     r, g, b = GetPlayerRgbColour(i)
@@ -34,18 +34,6 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
-function GetPlayers()
-    local players = {}
-
-    for i = 0, 31 do
-        if NetworkIsPlayerActive(i) then
-            table.insert(players, i)
-        end
-    end
-
-    return players
-end
 
 function sanitize(txt)
     local replacements = {
