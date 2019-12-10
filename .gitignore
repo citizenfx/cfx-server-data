@@ -1,5 +1,3 @@
-CitizenMP.Server.exe
-CitizenMP.Server.exe.config
-NLog.config
+*.cfg
 /cache/
 /resources/\[local\]/
