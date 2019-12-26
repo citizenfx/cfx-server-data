@@ -6,7 +6,7 @@ _The data repository for Cfx.re servers_
 2. Put custom resources in `resources/[local]/` if you don't want to be affected by any random messups.
 
 ### Advanced usage
-You can also consider using the repository as a submodule + symlink for your own Git repository:
+You can also consider using the repository as a submodule + symlink/directory-junction for your own Git repository:
 
 **Linux**:
 ```
@@ -17,7 +17,7 @@ $ ln -s vendor/server-data/resources/ 'resources/[base]/'
 **Windows**:
 ```
 > git submodule add https://github.com/citizenfx/cfx-server-data.git vendor/server-data
-> mklink /d resources\[base] vendor\server-data\resources
+> mklink /j resources\[base] vendor\server-data\resources
 ```
 
 ## Policy
