@@ -24,6 +24,8 @@ files {
     'html/vendor/fonts/LatoBold.woff2',
     'html/vendor/fonts/LatoBold2.woff2',
   }
+  
+export 'IsTyping' -- Returns boolean of chat window status (True = Typing)
 
 fx_version 'adamant'
 games { 'rdr3', 'gta5' }
