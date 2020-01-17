@@ -1,11 +1,13 @@
 local isRDR = not TerraingridActivate and true or false
 
+local chatEnabled = true
 local chatInputActive = false
 local chatInputActivating = false
 local chatHidden = true
 local chatLoaded = false
 
 RegisterNetEvent('chatMessage')
+RegisterNetEvent('chat:toggleEnabled')
 RegisterNetEvent('chat:addTemplate')
 RegisterNetEvent('chat:addMessage')
 RegisterNetEvent('chat:addSuggestion')
@@ -20,6 +22,10 @@ RegisterNetEvent('_chat:messageEntered')
 
 --deprecated, use chat:addMessage
 AddEventHandler('chatMessage', function(author, color, text)
+  if not chatEnabled then
+    return
+  end
+
   local args = { text }
   if author ~= "" then
     table.insert(args, 1, author)
@@ -47,7 +53,19 @@ AddEventHandler('__cfx_internal:serverPrint', function(msg)
   })
 end)
 
+AddEventHandler('chat:toggleEnabled', function(enabled)
+  if enabled == nil then
+    chatEnabled = not chatEnabled
+  else
+    chatEnabled = enabled
+  end
+end)
+
 AddEventHandler('chat:addMessage', function(message)
+  if not chatEnabled then
+    return
+  end
+
   SendNUIMessage({
     type = 'ON_MESSAGE',
     message = message
@@ -195,7 +213,7 @@ Citizen.CreateThread(function()
   while true do
     Wait(0)
 
-    if not chatInputActive then
+    if chatEnabled and not chatInputActive then
       if IsControlPressed(0, isRDR and `INPUT_MP_TEXT_CHAT_ALL` or 245) --[[ INPUT_MP_TEXT_CHAT_ALL ]] then
         chatInputActive = true
         chatInputActivating = true
@@ -217,7 +235,7 @@ Citizen.CreateThread(function()
     if chatLoaded then
       local shouldBeHidden = false
 
-      if IsScreenFadedOut() or IsPauseMenuActive() then
+      if not chatEnabled or IsScreenFadedOut() or IsPauseMenuActive() then
         shouldBeHidden = true
       end
 
