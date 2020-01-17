@@ -4,6 +4,7 @@ local chatInputActive = false
 local chatInputActivating = false
 local chatHidden = true
 local chatLoaded = false
+local onoff = false
 
 RegisterNetEvent('chatMessage')
 RegisterNetEvent('chat:addTemplate')
@@ -12,6 +13,7 @@ RegisterNetEvent('chat:addSuggestion')
 RegisterNetEvent('chat:addSuggestions')
 RegisterNetEvent('chat:removeSuggestion')
 RegisterNetEvent('chat:clear')
+RegisterNetEvent('onoff')
 
 -- internal events
 RegisterNetEvent('__cfx_internal:serverPrint')
@@ -32,6 +34,14 @@ AddEventHandler('chatMessage', function(author, color, text)
       args = args
     }
   })
+end)
+
+AddEventHandler('onoff',function()
+  if(onoff) then
+    onoff = false
+    else
+    onoff = true
+  end
 end)
 
 AddEventHandler('__cfx_internal:serverPrint', function(msg)
@@ -219,6 +229,10 @@ Citizen.CreateThread(function()
 
       if IsScreenFadedOut() or IsPauseMenuActive() then
         shouldBeHidden = true
+      end
+
+      if(onoff) then
+      shouldBeHidden = true
       end
 
       if (shouldBeHidden and not chatHidden) or (not shouldBeHidden and chatHidden) then

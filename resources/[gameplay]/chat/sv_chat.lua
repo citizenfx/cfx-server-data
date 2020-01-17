@@ -46,6 +46,10 @@ RegisterCommand('say', function(source, args, rawCommand)
     TriggerClientEvent('chatMessage', -1, (source == 0) and 'console' or GetPlayerName(source), { 255, 255, 255 }, rawCommand:sub(5))
 end)
 
+RegisterCommand('togglechat', function(source, args, rawCommand)
+    TriggerClientEvent('onoff', -1)
+end)
+
 -- command suggestions for clients
 local function refreshCommands(player)
     if GetRegisteredCommands then
