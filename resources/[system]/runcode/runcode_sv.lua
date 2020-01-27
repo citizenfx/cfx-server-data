@@ -6,6 +6,7 @@ function GetPrivs(source)
 	}
 end
 
+--Lua
 RegisterCommand('run', function(source, args, rawCommand)
 	local res, err = RunCode('lua', rawCommand:sub(4))
 end, true)
@@ -16,6 +17,19 @@ RegisterCommand('crun', function(source, args, rawCommand)
 	end
 
 	TriggerClientEvent('runcode:gotSnippet', source, -1, 'lua', rawCommand:sub(5))
+end, true)
+
+--Js
+RegisterCommand('jsrun', function(source, args, rawCommand)
+	local res, err = RunCode('js', rawCommand:sub(6))
+end, true)
+
+RegisterCommand('jscrun', function(source, args, rawCommand)
+	if not source then
+		return
+	end
+
+	TriggerClientEvent('runcode:gotSnippet', source, -1, 'js', rawCommand:sub(7))
 end, true)
 
 RegisterCommand('runcode', function(source, args, rawCommand)
