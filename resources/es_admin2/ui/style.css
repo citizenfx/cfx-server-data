@@ -1,0 +1,150 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300,100italic,100);
+
+body, html {
+	overflow-y: hidden;
+}
+
+#admin {
+	font-family: 'Roboto', sans-serif;
+	height: 700px;
+	background: rgb(60, 60, 60);
+	color: white;
+	width: 800px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -350px;
+	margin-left: -400px;
+	padding-bottom: 20px;
+}
+
+#main {
+	height: 640px;
+}
+
+#tabs {
+	height: 30px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.tab {
+	width: 100px;
+	height: 30px;
+	float: left;
+	border: none;
+	font-weight: bold;
+	color: white;
+	background: rgb(50, 50, 50);
+}
+
+.tab.selected {
+	background: rgb(75, 50, 50);
+}
+
+#list {
+	display: inline-block;
+	margin-bottom: 100px;
+	width: 200px;
+	height: 640px;
+	overflow-x: hidden;
+	-webkit-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.19);
+			box-shadow: 0 6px 20px rgba(0, 0, 0, 0.19);
+}
+
+#selected h3 {
+	margin-left: 5px;
+}
+
+.quick {
+	margin-left: 9px;
+	width: 31%;
+	background: rgb(151, 66, 66);
+	border: none;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+	color: white;
+	font-size: 17px;
+}
+
+.group_set {
+	display: inline-block;
+	float: left;
+	padding: 10px;
+	width: 278px;
+}
+
+.group_set button {
+	padding-left: 25px;
+	padding-right: 25px;
+	border: none;
+	width: 100%;
+	margin-top: 4px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: rgb(151, 66, 66);
+	color: white;
+	font-weight: bold;
+}
+
+.group_set input {
+	width: 100%;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.group_set label {
+	display: block;
+}
+
+#selected {
+	position: absolute;
+	display: inline-block;
+	width: 600px;
+	height: 640px;
+}
+
+#selected h1 {
+	margin-left: 20px;
+}
+
+.player {
+	width: 100%;
+	text-weight: bold;
+	text-indent: 10px;
+	padding: 5px;
+}
+
+.player:nth-child(odd) {
+	background: -webkit-linear-gradient(right, transparent 0%, rgb(85, 85, 85) 100%);
+}
+
+.player.selected {
+	background: -webkit-linear-gradient(right, transparent 0%, rgb(95, 65, 65) 100%);
+}
+
+.topbar {
+	height: 50px;
+	font-weight: bold;
+	font-size: 26px;
+	background: rgb(40, 40, 40);
+}
+
+.body {
+	height: 650px;
+}
+
+.topbar p {
+	top: 0;
+	margin-top: 0;
+	padding: 10px;
+	display: inline-block;
+}
+
+#close {
+	display: inline-block;
+	float: right;
+	padding: 5px;
+	padding-right: 10px;
+	color: rgb(255, 0, 0);
+}
