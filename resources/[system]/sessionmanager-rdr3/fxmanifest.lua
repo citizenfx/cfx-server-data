@@ -1,4 +1,4 @@
-fx_version 'adamant'
+fx_version 'bodacious'
 game 'common'
 
 dependencies {
