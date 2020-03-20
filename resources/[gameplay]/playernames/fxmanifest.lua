@@ -24,5 +24,5 @@ files {
 }
 
 -- support the latest resource manifest
-fx_version 'adamant'
+fx_version 'bodacious'
 game 'gta5'

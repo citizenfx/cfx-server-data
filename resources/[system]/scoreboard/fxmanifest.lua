@@ -17,5 +17,5 @@ files {
     'html/res/futurastd-medium.svg',
 }
 
-fx_version 'adamant'
+fx_version 'bodacious'
 game 'gta5'

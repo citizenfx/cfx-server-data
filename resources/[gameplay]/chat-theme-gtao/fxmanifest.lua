@@ -10,4 +10,4 @@ chat_theme 'gtao' {
 }
 
 game 'common'
-fx_version 'adamant'
+fx_version 'bodacious'
