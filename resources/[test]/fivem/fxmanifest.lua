@@ -1,5 +1,5 @@
 -- compatibility wrapper
-fx_version 'adamant'
+fx_version 'bodacious'
 game 'common'
 
 dependency 'basic-gamemode'
