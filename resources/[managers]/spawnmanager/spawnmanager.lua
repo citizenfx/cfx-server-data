@@ -211,6 +211,11 @@ function spawnPlayer(spawnIdx, cb)
 
     spawnLock = true
 
+    if #spawnPoints == 0 then
+        Citizen.Trace("no spawn points registered\n")
+        return
+    end
+
     Citizen.CreateThread(function()
         -- if the spawn isn't set, select a random one
         if not spawnIdx then
