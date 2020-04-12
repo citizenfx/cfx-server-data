@@ -33,6 +33,19 @@ end)
 
 local modes = {}
 
+local function getMatchingPlayers(seObject)
+    local players = GetPlayers()
+    local retval = {}
+
+    for _, v in ipairs(players) do
+        if IsPlayerAceAllowed(v, seObject) then
+            retval[#retval + 1] = v
+        end
+    end
+
+    return retval
+end
+
 exports('registerMode', function(modeData)
     if not modeData.name or not modeData.displayName or not modeData.cb then
         return false
@@ -43,11 +56,19 @@ exports('registerMode', function(modeData)
     modes[modeData.name] = modeData
     modes[modeData.name].resource = resource
 
-    TriggerClientEvent('chat:addMode', -1, {
+    local clObj = {
         name = modeData.name,
         displayName = modeData.displayName,
         color = modeData.color or '#fff'
-    })
+    }
+
+    if not modeData.seObject then
+        TriggerClientEvent('chat:addMode', -1, clObj)
+    else
+        for _, v in ipairs(getMatchingPlayers(modeData.seObject)) do
+            TriggerClientEvent('chat:addMode', v, clObj)
+        end
+    end
 
     return true
 end)
@@ -99,6 +120,14 @@ AddEventHandler('_chat:messageEntered', function(author, color, message, mode)
         outMessage.args = { author, message }
     end
 
+    if mode and modes[mode] then
+        local modeData = modes[mode]
+
+        if modeData.seObject and not IsPlayerAceAllowed(source, modeData.seObject) then
+            return
+        end
+    end
+
     local messageCanceled = false
     local routingTarget = -1
 
@@ -124,6 +153,10 @@ AddEventHandler('_chat:messageEntered', function(author, color, message, mode)
 
         cancel = function()
             messageCanceled = true
+        end,
+
+        setSeObject = function(object)
+            routingTarget = getMatchingPlayers(object)
         end,
 
         setRouting = function(target)
@@ -218,7 +251,20 @@ local function refreshCommands(player)
 end
 
 AddEventHandler('chat:init', function()
+    local source = source
     refreshCommands(source)
+
+    for _, modeData in pairs(modes) do
+        local clObj = {
+            name = modeData.name,
+            displayName = modeData.displayName,
+            color = modeData.color or '#fff'
+        }
+
+        if not modeData.seObject or IsPlayerAceAllowed(source, modeData.seObject) then
+            TriggerClientEvent('chat:addMode', source, clObj)
+        end
+    end
 end)
 
 AddEventHandler('onServerResourceStart', function(resName)
