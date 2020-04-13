@@ -228,7 +228,9 @@ local chatHideState = kvpEntry and tonumber(kvpEntry) or CHAT_HIDE_STATES.SHOW_W
 local isFirstHide = true
 
 if not isRDR then
-  RegisterKeyMapping('toggleChat', 'Toggle chat', 'keyboard', 'l')
+  if RegisterKeyMapping then
+    RegisterKeyMapping('toggleChat', 'Toggle chat', 'keyboard', 'l')
+  end
 
   RegisterCommand('toggleChat', function()
     if chatHideState == CHAT_HIDE_STATES.SHOW_WHEN_ACTIVE then
