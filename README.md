@@ -7,7 +7,7 @@ _The data repository for Cfx.re servers_
 
 ### Advanced usage
 You can also consider using the repository as a submodule + symlink for your own Git repository:
-
+ 
 **Linux**:
 ```
 $ git submodule add https://github.com/citizenfx/cfx-server-data.git vendor/server-data
