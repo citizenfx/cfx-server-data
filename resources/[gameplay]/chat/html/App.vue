@@ -35,7 +35,7 @@
         <suggestions :message="message" :suggestions="suggestions">
         </suggestions>
         <div class="chat-hide-state" v-show="showHideState">
-          Chat: {{hideStateString}}
+          {{hideStateString}}
         </div>
       </div>
     </div>
