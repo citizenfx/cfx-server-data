@@ -106,17 +106,16 @@ local function unregisterHooks(resource)
     end
 end
 
-AddEventHandler('_chat:messageEntered', function(author, color, message, mode)
-    if not message or not author then
-        return
+local function routeMessage(source, author, message, mode, fromConsole)
+    if source >= 1 then
+        author = GetPlayerName(source)
     end
-
-    local source = source
 
     local outMessage = {
         color = { 255, 255, 255 },
         multiline = true,
-        args = { message }
+        args = { message },
+        mode = mode
     }
 
     if author ~= "" then
@@ -167,18 +166,16 @@ AddEventHandler('_chat:messageEntered', function(author, color, message, mode)
         end
     }
 
-    if message:sub(1, 1) ~= '/' then
-        for _, hook in pairs(hooks) do
-            if hook.fn then
-                hook.fn(source, outMessage, hookRef)
-            end
+    for _, hook in pairs(hooks) do
+        if hook.fn then
+            hook.fn(source, outMessage, hookRef)
         end
+    end
 
-        if modes[mode] then
-            local m = modes[mode]
+    if modes[mode] then
+        local m = modes[mode]
 
-            m.cb(source, outMessage, hookRef)
-        end
+        m.cb(source, outMessage, hookRef)
     end
 
     if messageCanceled then
@@ -188,6 +185,9 @@ AddEventHandler('_chat:messageEntered', function(author, color, message, mode)
     TriggerEvent('chatMessage', source, #outMessage.args > 1 and outMessage.args[1] or '', outMessage.args[#outMessage.args])
 
     if not WasEventCanceled() then
+        -- remove the mode name, we don't need this for routing
+        outMessage.mode = nil
+
         if type(routingTarget) ~= 'table' then
             TriggerClientEvent('chat:addMessage', routingTarget, outMessage)
         else
@@ -197,17 +197,26 @@ AddEventHandler('_chat:messageEntered', function(author, color, message, mode)
         end
     end
 
-    print(author .. '^7' .. (modes[mode] and (' (' .. modes[mode].displayName .. ')') or '') .. ': ' .. message .. '^7')
+    if not fromConsole then
+        print(author .. '^7' .. (modes[mode] and (' (' .. modes[mode].displayName .. ')') or '') .. ': ' .. message .. '^7')
+    end
+end
+
+AddEventHandler('_chat:messageEntered', function(author, color, message, mode)
+    if not message or not author then
+        return
+    end
+
+    local source = source
+
+    routeMessage(source, author, message, mode)
 end)
 
 AddEventHandler('__cfx_internal:commandFallback', function(command)
     local name = GetPlayerName(source)
 
-    TriggerEvent('chatMessage', source, name, '/' .. command)
-
-    if not WasEventCanceled() then
-        TriggerClientEvent('chatMessage', -1, name, { 255, 255, 255 }, '/' .. command) 
-    end
+    -- route the message as if it were a /command
+    routeMessage(source, name, '/' .. command, nil, true)
 
     CancelEvent()
 end)
@@ -230,7 +239,7 @@ AddEventHandler('playerDropped', function(reason)
 end)
 
 RegisterCommand('say', function(source, args, rawCommand)
-    TriggerClientEvent('chatMessage', -1, (source == 0) and 'console' or GetPlayerName(source), { 255, 255, 255 }, rawCommand:sub(5))
+    routeMessage(source, (source == 0) and 'console' or GetPlayerName(source), rawCommand:sub(5), nil, true)
 end)
 
 -- command suggestions for clients
