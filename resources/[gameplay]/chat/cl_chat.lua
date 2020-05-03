@@ -278,13 +278,17 @@ Citizen.CreateThread(function()
 
     if chatLoaded then
       local forceHide = IsScreenFadedOut() or IsPauseMenuActive()
+      local wasForceHide = false
 
-      if forceHide then
-        origChatHideState = chatHideState
-        chatHideState = CHAT_HIDE_STATES.ALWAYS_HIDE
-      elseif origChatHideState ~= -1 then
+      if chatHideState ~= CHAT_HIDE_STATES.ALWAYS_HIDE then
+        if forceHide then
+          origChatHideState = chatHideState
+          chatHideState = CHAT_HIDE_STATES.ALWAYS_HIDE
+        end
+      elseif not forceHide and origChatHideState ~= -1 then
         chatHideState = origChatHideState
         origChatHideState = -1
+        wasForceHide = true
       end
 
       if chatHideState ~= lastChatHideState then
@@ -293,7 +297,7 @@ Citizen.CreateThread(function()
         SendNUIMessage({
           type = 'ON_SCREEN_STATE_CHANGE',
           hideState = chatHideState,
-          fromUserInteraction = not forceHide and not isFirstHide
+          fromUserInteraction = not forceHide and not isFirstHide and not wasForceHide
         })
 
         isFirstHide = false
