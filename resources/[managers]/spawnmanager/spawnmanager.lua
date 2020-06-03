@@ -369,3 +369,11 @@ function forceRespawn()
     spawnLock = false
     respawnForced = true
 end
+
+exports('spawnPlayer', spawnPlayer)
+exports('addSpawnPoint', addSpawnPoint)
+exports('removeSpawnPoint', removeSpawnPoint)
+exports('loadSpawns', loadSpawns)
+exports('setAutoSpawn', setAutoSpawn)
+exports('setAutoSpawnCallback', setAutoSpawnCallback)
+exports('forceRespawn', forceRespawn)
