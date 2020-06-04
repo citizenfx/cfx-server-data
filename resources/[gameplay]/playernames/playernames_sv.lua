@@ -27,16 +27,15 @@ local function detectUpdates()
 
     for i, tag in pairs(curTags) do
         if not activePlayers[i] then
-            curTags[i] = nil
+            curTags[i] = nil -- in case curTags doesnt get cleared when the player left, clear it now.
         end
     end
 end
 
 Citizen.CreateThread(function()
     AddEventHandler('playerDropped', function()
-        local src = source -- 🏎️
-        curTags[src] = nil
-        activePlayers[src] = nil
+        curTags[source] = nil
+        activePlayers[source] = nil
     end)
 end)
 
