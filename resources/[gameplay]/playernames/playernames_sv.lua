@@ -1,6 +1,8 @@
 local curTemplate
 local curTags = {}
 
+local activePlayers = {}
+
 local function detectUpdates()
     SetTimeout(500, detectUpdates)
 
@@ -14,23 +16,31 @@ local function detectUpdates()
 
     template = GetConvar('playerNames_svTemplate', '[{{id}}] {{name}}')
 
-    for _, v in ipairs(GetPlayers()) do
+    for v, _ in pairs(activePlayers) do
         local newTag = formatPlayerNameTag(v, template)
-
         if newTag ~= curTags[v] then
             setName(v, newTag)
-
+            
             curTags[v] = newTag
+        end
+    end
+
+    for i, tag in pairs(curTags) do
+        if not activePlayers[i] then
+            curTags[i] = nil -- in case curTags doesnt get cleared when the player left, clear it now.
         end
     end
 end
 
-
+AddEventHandler('playerDropped', function()
+    curTags[source] = nil
+    activePlayers[source] = nil
+end)
 
 RegisterNetEvent('playernames:init')
 AddEventHandler('playernames:init', function()
     reconfigure(source)
+    activePlayers[source] = true
 end)
 
-SetTimeout(500, detectUpdates)
 detectUpdates()
