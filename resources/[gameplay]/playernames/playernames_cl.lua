@@ -46,9 +46,9 @@ function updatePlayerNames()
     local localCoords = GetEntityCoords(PlayerPedId())
 
     -- for each valid player index
-    for i = 0, 255 do
+    for _, i in ipairs(GetActivePlayers()) do
         -- if the player exists
-        if NetworkIsPlayerActive(i) and i ~= PlayerId() then
+        if i ~= PlayerId() then
             -- get their ped
             local ped = GetPlayerPed(i)
             local pedCoords = GetEntityCoords(ped)
