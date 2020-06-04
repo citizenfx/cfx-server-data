@@ -20,7 +20,7 @@ local function detectUpdates()
         local newTag = formatPlayerNameTag(v, template)
         if newTag ~= curTags[v] then
             setName(v, newTag)
-
+            
             curTags[v] = newTag
         end
     end
@@ -32,11 +32,9 @@ local function detectUpdates()
     end
 end
 
-Citizen.CreateThread(function()
-    AddEventHandler('playerDropped', function()
-        curTags[source] = nil
-        activePlayers[source] = nil
-    end)
+AddEventHandler('playerDropped', function()
+    curTags[source] = nil
+    activePlayers[source] = nil
 end)
 
 RegisterNetEvent('playernames:init')
