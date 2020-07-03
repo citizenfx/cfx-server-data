@@ -196,6 +196,7 @@ Citizen.CreateThread(function()
     Wait(0)
 
     if not chatInputActive then
+        if not IsEntityDead(GetPlayerPed(-1)) then
       if IsControlPressed(0, isRDR and `INPUT_MP_TEXT_CHAT_ALL` or 245) --[[ INPUT_MP_TEXT_CHAT_ALL ]] then
         chatInputActive = true
         chatInputActivating = true
@@ -203,6 +204,7 @@ Citizen.CreateThread(function()
         SendNUIMessage({
           type = 'ON_OPEN'
         })
+        end
       end
     end
 
