@@ -290,7 +290,9 @@ function spawnPlayer(spawnIdx, cb)
         end
         ClearPlayerWantedLevel(PlayerId())
 
-        ResetPedVisibleDamage(ped) -- Closer to V behavior?
+        if ResetPedVisibleDamage then -- RDR3 compatibility
+            ResetPedVisibleDamage(ped) -- Closer to V behavior?
+        end
 
         -- why is this even a flag?
         --SetCharWillFlyThroughWindscreen(ped, false)
@@ -312,9 +314,7 @@ function spawnPlayer(spawnIdx, cb)
 
         ShutdownLoadingScreen()
 
-        -- if skipFade is specified, we should not be meddling in fading at all
-        -- NOTE: Could this be a breaking change for some?
-        if IsScreenFadedOut() and not spawn.skipFade then
+        if IsScreenFadedOut() and not spawn.skipFadeIn then
             DoScreenFadeIn(500)
 
             while not IsScreenFadedIn() do
