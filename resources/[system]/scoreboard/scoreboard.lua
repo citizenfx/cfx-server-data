@@ -1,4 +1,5 @@
 local listOn = false
+local PlayerList = {}
 
 Citizen.CreateThread(function()
     listOn = false
@@ -8,15 +9,17 @@ Citizen.CreateThread(function()
         if IsControlPressed(0, 27)--[[ INPUT_PHONE ]] then
             if not listOn then
                 local players = {}
-                local ptable = GetActivePlayers()
-                for _, i in ipairs(ptable) do
-                    local wantedLevel = GetPlayerWantedLevel(i)
-                    r, g, b = GetPlayerRgbColour(i)
-                    table.insert(players, 
-                    '<tr style=\"color: rgb(' .. r .. ', ' .. g .. ', ' .. b .. ')\"><td>' .. GetPlayerServerId(i) .. '</td><td>' .. sanitize(GetPlayerName(i)) .. '</td><td>' .. (wantedLevel and wantedLevel or tostring(0)) .. '</td></tr>'
+                for id, name in ipairs(PlayerList) do
+                  if name then
+                    local playerid = GetPlayerFromServerId(id)
+                    local wantedLevel = GetPlayerWantedLevel(playerid)
+                    r, g, b = GetPlayerRgbColour(playerid)
+                    table.insert(players,
+                    '<tr style=\"color: rgb(' .. r .. ', ' .. g .. ', ' .. b .. ')\"><td>' .. id .. '</td><td>' .. sanitize(name) .. '</td><td>' .. (wantedLevel and wantedLevel or tostring(0)) .. '</td></tr>'
                     )
+                  end
                 end
-                
+
                 SendNUIMessage({ text = table.concat(players) })
 
                 listOn = true
@@ -35,11 +38,26 @@ Citizen.CreateThread(function()
     end
 end)
 
+RegisterNetEvent("Scoreboard:GetPlayerList")
+AddEventHandler("Scoreboard:GetPlayerList", function(list)
+  PlayerList = list
+end)
+
+Citizen.CreateThread(function()
+	while true do
+		Wait(0)
+		if NetworkIsSessionStarted() then
+			TriggerServerEvent('Scoreboard:ClientInitialized')
+			return
+		end
+	end
+end)
+
 function sanitize(txt)
     local replacements = {
-        ['&' ] = '&amp;', 
-        ['<' ] = '&lt;', 
-        ['>' ] = '&gt;', 
+        ['&' ] = '&amp;',
+        ['<' ] = '&lt;',
+        ['>' ] = '&gt;',
         ['\n'] = '<br/>'
     }
     return txt

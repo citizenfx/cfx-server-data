@@ -4,6 +4,7 @@ description 'Scoreboard'
 ui_page 'html/scoreboard.html'
 
 client_script 'scoreboard.lua'
+server_script 'scoreboard_sv.lua'
 
 files {
     'html/scoreboard.html',
