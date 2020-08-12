@@ -13,7 +13,7 @@ Citizen.CreateThread(function()
                     local wantedLevel = GetPlayerWantedLevel(i)
                     r, g, b = GetPlayerRgbColour(i)
                     table.insert(players, 
-                    '<tr style=\"color: rgb(' .. r .. ', ' .. g .. ', ' .. b .. ')\"><td>' .. GetPlayerServerId(i) .. '</td><td>' .. sanitize(GetPlayerName(i)) .. '</td><td>' .. (wantedLevel and wantedLevel or tostring(0)) .. '</td></tr>'
+                    '<tr style=\"color: #fff;\"><td id="playerInfo">' .. GetPlayerServerId(i) .. '</td><td>' .. sanitize(GetPlayerName(i)) .. '</td><td>' .. (wantedLevel and wantedLevel or tostring(0)) .. '</td></tr>'
                     )
                 end
                 
