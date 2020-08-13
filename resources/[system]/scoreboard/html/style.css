@@ -13,8 +13,7 @@ html {
 	min-height: 185px;
 	margin-top: 10%;
 	margin-left: auto;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
+	opacity: 0.9;
 	margin-right: auto;
 	background-color: #2d3436;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
@@ -23,8 +22,8 @@ html {
 
 
 #playerInfo {
-	padding-top: 5px;
-	height: 30px;
+	padding-top: 7px;
+	height: 35px;
 }
 
 table {
@@ -38,13 +37,15 @@ th, td {
 th {
 	padding-top: 10px;
 	height: 40px;
-	border-bottom: 2px solid #b71540;
+	border-bottom: 2px solid rgb(244, 5, 82);
+	
+
 }
 
 tr {
 	background-color: #414a4d;
 	font-size: 120%;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Rubik', sans-serif;
 }
 
 tr p {
@@ -55,4 +56,5 @@ tr p {
 
 tr.heading {
 	background-color: rgba(16,16,16,0.95);
+	text-transform: uppercase;
 }
