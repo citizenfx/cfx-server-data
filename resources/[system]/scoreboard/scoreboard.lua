@@ -9,7 +9,7 @@ Citizen.CreateThread(function()
         if IsControlPressed(0, 27)--[[ INPUT_PHONE ]] then
             if not listOn then
                 local players = {}
-                for id, name in ipairs(PlayerList) do
+                for id, name in pairs(PlayerList) do
                   if name then
                     local playerid = GetPlayerFromServerId(id)
                     local wantedLevel = GetPlayerWantedLevel(playerid)
