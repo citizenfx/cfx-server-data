@@ -5,6 +5,8 @@ ui_page 'html/scoreboard.html'
 
 client_script 'scoreboard.lua'
 
+server_script 'sv_scoreboard.lua'
+
 files {
     'html/scoreboard.html',
     'html/style.css',

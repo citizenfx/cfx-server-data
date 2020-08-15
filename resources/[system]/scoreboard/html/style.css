@@ -1,15 +1,8 @@
-
-* {
-	@import url('res/futurastd-medium.css');
-	box-sizing: border-box;
-  }
-
-html {
-	color: #fff;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+@import url('res/futurastd-medium.css');
 
 #wrap {
-	width: 500px;
+	width: 600px;
 	min-height: 185px;
 	margin-top: 10%;
 	margin-left: auto;
@@ -21,9 +14,10 @@ html {
 }
 
 
-#playerInfo {
+.playerInfo {
 	padding-top: 7px;
 	height: 35px;
+	color: #fff
 }
 
 table {
@@ -37,24 +31,19 @@ th, td {
 th {
 	padding-top: 10px;
 	height: 40px;
-	border-bottom: 2px solid rgb(244, 5, 82);
-	
-
 }
 
 tr {
 	background-color: #414a4d;
 	font-size: 120%;
-	font-family: 'Rubik', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 }
-
-tr p {
-	color: #fff;
-}
-
 
 
 tr.heading {
+	color: #fff;
+	border-bottom: 2px solid rgb(244, 5, 82);
+	font-family: 'Montserrat', sans-serif;
 	background-color: rgba(16,16,16,0.95);
 	text-transform: uppercase;
 }
