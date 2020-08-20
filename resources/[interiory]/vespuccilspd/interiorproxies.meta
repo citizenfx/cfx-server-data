@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SInteriorOrderData>
+  <startFrom value="2000" />
+  <proxies>
+	<Item>int_vesp_01_1_milo_</Item>
+	<Item>int_vesp_01_2_milo_</Item>
+	<Item>int_vesp_1_1_milo_</Item>
+	<Item>int_vesp_1_2_milo_</Item>
+	<Item>int_vesp_02_1_milo_</Item>
+	<Item>int_vesp_02_2_milo_</Item>
+	<Item>int_vesp_03_1_milo_</Item>
+	<Item>int_vesp_3_1_milo_</Item>
+	<Item>int_vesp_3_2_milo_</Item>
+	<Item>int_vesp_4_2_milo_</Item>
+	<Item>int_vesp_5_2_milo_</Item>
+	<Item>int_vesp_big_lift_milo_</Item>
+	<Item>int_vesp_big_stair_milo_</Item>
+	<Item>int_vesp_slift_milo_</Item>
+	<Item>int_vesp_smole_stair_milo_</Item>
+  </proxies>
+</SInteriorOrderData>

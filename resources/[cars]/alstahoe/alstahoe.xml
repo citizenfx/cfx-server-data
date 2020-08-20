@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ELS VEHICLE CONFIGURATION FILE -->
+<vcfroot Description="Sample VCF" Author="Luxart" >
+	<!-- INTERFACE -->
+	<INTERFACE>
+		<LstgActivationType>manual</LstgActivationType>
+		<DefaultSirenMode>standby</DefaultSirenMode>
+		<InfoPanelHeaderColor>grey</InfoPanelHeaderColor>
+		<InfoPanelButtonLightColor>orange</InfoPanelButtonLightColor>
+	</INTERFACE>
+	<!-- EXTRAS OVERRIDE AND ENV LIGHTING-->
+	<EOVERRIDE>	
+		<Extra01 IsElsControlled="true" AllowEnvLight="true" Color="red" OffsetX="-0.70" OffsetY="-0.20" OffsetZ="0.50" />
+		<Extra02 IsElsControlled="true" AllowEnvLight="true" Color="white" OffsetX="-0.25" OffsetY="-0.20" OffsetZ="0.50" />
+		<Extra03 IsElsControlled="true" AllowEnvLight="true" Color="red" OffsetX="0.25" OffsetY="-0.20" OffsetZ="0.50" />
+		<Extra04 IsElsControlled="true" AllowEnvLight="true" Color="white" OffsetX="0.70" OffsetY="-0.20" OffsetZ="0.50" />
+		<Extra05 IsElsControlled="false" AllowEnvLight="true" Color="white" OffsetX="-0.70" OffsetY="-0.20" OffsetZ="0.50" />
+		<Extra06 IsElsControlled="false" AllowEnvLight="true" Color="white" OffsetX="0.70" OffsetY="-0.20" OffsetZ="0.50" />
+		<Extra07 IsElsControlled="true" AllowEnvLight="true" Color="amber" OffsetX="-0.40" OffsetY="-0.80" OffsetZ="0.40" />
+		<Extra08 IsElsControlled="true" AllowEnvLight="true" Color="amber" OffsetX="0.00" OffsetY="-0.80" OffsetZ="0.40" />
+		<Extra09 IsElsControlled="true" AllowEnvLight="true" Color="amber" OffsetX="0.40" OffsetY="-0.80" OffsetZ="0.40" />
+		<Extra10 IsElsControlled="false" />
+		<Extra11 IsElsControlled="true" />
+		<Extra12 IsElsControlled="false" />
+	</EOVERRIDE>
+	<!-- MISC -->
+	<MISC>
+		<VehicleIsSlicktop>false</VehicleIsSlicktop>
+		<ArrowboardType>off</ArrowboardType>
+		<UseSteadyBurnLights>false</UseSteadyBurnLights>
+		<DfltSirenLtsActivateAtLstg>3</DfltSirenLtsActivateAtLstg>
+		<Takedowns AllowUse="true" Mirrored="false" />
+		<SceneLights AllowUse="true" IlluminateSidesOnly="false" />	
+	</MISC>
+	<!-- CRUISE -->
+	<CRUISE>
+		<DisableAtLstg3>true</DisableAtLstg3>
+		<UseExtras Extra1="true" Extra2="true" Extra3="true" Extra4="true" />
+	</CRUISE>
+	<!-- AUX CORONAS -->
+	<ACORONAS>
+		<Headlights DfltPattern="0" ColorL="white" ColorR="white" />
+		<TailLights DfltPattern="0" ColorL="red" ColorR="red" />
+		<IndicatorsF DfltPattern="0" ColorL="white" ColorR="white" />
+		<IndicatorsB DfltPattern="0" ColorL="red" ColorR="red" />
+		<ReverseLights DfltPattern="0" ColorL="white" ColorR="white" />
+	</ACORONAS>
+	<!-- SOUNDS -->
+	<SOUNDS>
+		<MainHorn InterruptsSiren="true" AudioString="SIRENS_AIRHORN" />
+		<ManTone1 AllowUse="true" AudioString="VEHICLES_HORNS_SIREN_1" />
+		<ManTone2 AllowUse="true" AudioString="VEHICLES_HORNS_SIREN_2" />
+		<SrnTone1 AllowUse="true" AudioString="VEHICLES_HORNS_SIREN_1" />
+		<SrnTone2 AllowUse="true" AudioString="VEHICLES_HORNS_SIREN_2" />
+		<SrnTone3 AllowUse="true" AudioString="VEHICLES_HORNS_POLICE_WARNING" />
+		<SrnTone4 AllowUse="true" AudioString="VEHICLES_HORNS_AMBULANCE_WARNING" />
+		<AuxSiren AllowUse="true" AudioString="VEHICLES_HORNS_SIREN_1" />
+		<PanicMde AllowUse="true" AudioString="VEHICLES_HORNS_POLICE_WARNING" />
+	</SOUNDS>
+	<!-- WRNL -->
+	<WRNL LightingFormat="leds" >
+		<PresetPatterns>
+			<Lstg3 Enabled="true" Pattern="28" />
+		</PresetPatterns>
+		<ForcedPatterns>
+			<MainHorn Enabled="false" Pattern="11" />
+			<SrnTone1 Enabled="false" Pattern="11" />
+			<SrnTone2 Enabled="false" Pattern="11" />
+			<SrnTone3 Enabled="false" Pattern="11" />
+			<SrnTone4 Enabled="false" Pattern="11" />
+			<PanicMde Enabled="false" Pattern="11" />
+			<OutOfVeh Enabled="false" Pattern="11" />
+		</ForcedPatterns>
+		<ScanPatternCustomPool Enabled="false" Sequential="true" >
+			<Pattern>0</Pattern>
+			<Pattern>0</Pattern>
+			<Pattern>0</Pattern>
+		</ScanPatternCustomPool>
+	</WRNL>
+	<!-- PRML -->
+	<PRML LightingFormat="leds" ExtrasActiveAtLstg2="1and2" >
+		<PresetPatterns>
+			<Lstg2 Enabled="true" Pattern="136" />
+			<Lstg3 Enabled="true" Pattern="136" />
+		</PresetPatterns>
+		<ForcedPatterns>
+			<MainHorn Enabled="false" Pattern="80" />
+			<SrnTone1 Enabled="false" Pattern="80" />
+			<SrnTone2 Enabled="false" Pattern="80" />
+			<SrnTone3 Enabled="false" Pattern="80" />
+			<SrnTone4 Enabled="false" Pattern="80" />
+			<PanicMde Enabled="false" Pattern="80" />
+			<OutOfVeh Enabled="false" Pattern="80" />
+		</ForcedPatterns>
+		<ScanPatternCustomPool Enabled="false" Sequential="true">
+			<Pattern>0</Pattern>
+			<Pattern>0</Pattern>
+			<Pattern>0</Pattern>
+		</ScanPatternCustomPool>
+	</PRML>
+	<!-- SECL -->
+	<SECL LightingFormat="leds" DisableAtLstg3="false" >
+		<PresetPatterns>
+			<Lstg1 Enabled="true" Pattern="61" />
+			<Lstg2 Enabled="true" Pattern="61" />
+			<Lstg3 Enabled="true" Pattern="61" />
+		</PresetPatterns>
+		<ForcedPatterns>
+			<MainHorn Enabled="false" Pattern="40" />
+			<SrnTone1 Enabled="false" Pattern="40" />
+			<SrnTone2 Enabled="false" Pattern="40" />
+			<SrnTone3 Enabled="false" Pattern="40" />
+			<SrnTone4 Enabled="false" Pattern="40" />
+			<PanicMde Enabled="false" Pattern="40" />
+			<OutOfVeh Enabled="false" Pattern="40" />
+		</ForcedPatterns>
+		<ScanPatternCustomPool Enabled="false" Sequential="true" >
+			<Pattern>0</Pattern>
+			<Pattern>0</Pattern>
+			<Pattern>0</Pattern>
+		</ScanPatternCustomPool>
+	</SECL>
+</vcfroot>

@@ -1,0 +1,58 @@
+<html>
+    <head>	
+	    <link href="style.css" rel="stylesheet" type="text/css" />	
+    </head>
+	
+        <div id="background">
+		<div class='center'>
+			<div class='title'>PizdaOgień<span style='color:red;'>RP</span></div>
+			<div style='width: 99%;'>
+				<div class="loadbar"><div class="load"></div></div>
+			</div>
+			<div class='text'>Ładuje twoją starą w pizde...</div>
+		</div>
+		
+		<div class="pyro">
+            <div class="before"></div>
+            <div class="after"></div>
+        </div>
+		
+		<script type="text/javascript">
+			var count = 0;
+			var thisCount = 0;
+			
+			const handlers = {
+				startInitFunctionOrder(data)
+				{
+					count = data.count;
+				},
+
+				initFunctionInvoking(data)
+				{
+					document.querySelector('.load').style.left = '0%';
+					document.querySelector('.load').style.width = ((data.idx / count) * 100) + '%';
+				},
+
+				startDataFileEntries(data)
+				{
+					count = data.count;
+				},
+
+				performMapLoadFunction(data)
+				{
+					++thisCount;
+
+					document.querySelector('.load').style.left = '0%';
+					document.querySelector('.load').style.width = ((thisCount / count) * 100) + '%';
+				}
+			};
+
+			window.addEventListener('message', function(e)
+			{
+				(handlers[e.data.eventName] || function() {})(e.data);
+			});
+			
+			window.onload = function() {};
+		</script>
+    </body>
+</html>
