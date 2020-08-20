@@ -13,7 +13,7 @@
       <nInitialDriveGears value="6" />
       <fInitialDriveForce value="0.364000" />
       <fDriveInertia value="1.000000" />
-      <fClutchChangeRateScaleUpShift value="3.100000" />
+      <fClutchChangeRateScaleUpShift value="3.200000" />
       <fClutchChangeRateScaleDownShift value="3.100000" />
       <fInitialDriveMaxFlatVel value="155.000000" />
       <fBrakeForce value="1.00000" />
