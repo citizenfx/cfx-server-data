@@ -250,6 +250,7 @@ window.APP = {
       }
       this.message = '';
       this.showInput = false;
+      this.oldMessagesIndex = -1;
       clearInterval(this.focusTimer);
       this.resetShowWindowTimer();
     },
