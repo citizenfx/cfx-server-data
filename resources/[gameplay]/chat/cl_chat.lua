@@ -54,15 +54,45 @@ AddEventHandler('chat:addMessage', function(message)
   })
 end)
 
-AddEventHandler('chat:addSuggestion', function(name, help, params)
-  SendNUIMessage({
-    type = 'ON_SUGGESTION_ADD',
-    suggestion = {
-      name = name,
-      help = help,
-      params = params or nil
-    }
-  })
+AddEventHandler('chat:addSuggestion', function(name, help, params, b_debug)
+	-- Grab the arguments and check if they are the right type before passing them to the 
+	-- SendNUIMessage(js) stopping errors created by other scripts.
+	local t_name = type(name);
+	local t_help = type(help);
+	local t_params = type(params);
+		
+	if t_name ~= "string" then
+		if b_debug then
+			print("[chat:addSuggestion](Failed): name expected a string and got "..t_name..", action terminated");
+			print("[chat:addSuggestion](Failed): name("..tostring(name).."), help("..tostring(help).."), params("..tostring(params)..")");
+		end
+		return false
+	end
+	if t_help ~= "string" then
+		if b_debug then
+			print("[chat:addSuggestion](Failed): help expected a string and got "..t_help..", action terminated");
+			print("[chat:addSuggestion](Failed): name("..tostring(name).."), help("..tostring(help).."), params("..tostring(params)..")");
+		end
+		return false
+	end
+	if t_params ~= "table" and t_params ~= "nil" then
+		if b_debug then
+			print("[chat:addSuggestion](Failed): params expected a table or nil and got "..t_params..", action terminated");
+			print("[chat:addSuggestion](Failed): name("..tostring(name).."), help("..tostring(help).."), params("..tostring(params)..")");
+		end
+		return false
+	end
+	if b_debug then
+		print("[chat:addSuggestion](Passed): name("..tostring(name).."), help("..tostring(help).."), params("..tostring(params).."), debug("..tostring(b_debug)..")");
+	end
+	SendNUIMessage({
+		type = 'ON_SUGGESTION_ADD',
+		suggestion = {
+		  name = name,
+		  help = help,
+		  params = params or nil
+		}
+	})
 end)
 
 AddEventHandler('chat:addSuggestions', function(suggestions)
