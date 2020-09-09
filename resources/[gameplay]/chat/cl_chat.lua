@@ -113,7 +113,8 @@ RegisterNUICallback('chatResult', function(data, cb)
       TriggerServerEvent('_chat:messageEntered', GetPlayerName(id), { r, g, b }, data.message)
     end
   end
-
+  
+  TriggerEvent('chat:closed')
   cb('ok')
 end)
 
@@ -188,6 +189,10 @@ RegisterNUICallback('loaded', function(data, cb)
   cb('ok')
 end)
 
+function IsTyping()
+  return chatInputActive
+end
+
 Citizen.CreateThread(function()
   SetTextChatEnabled(false)
   SetNuiFocus(false)
@@ -203,6 +208,7 @@ Citizen.CreateThread(function()
         SendNUIMessage({
           type = 'ON_OPEN'
         })
+        TriggerEvent('chat:opened')
       end
     end
 
