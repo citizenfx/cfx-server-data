@@ -235,7 +235,9 @@ window.APP = {
         post('http://chat/chatResult', JSON.stringify({
           message: this.message,
         }));
-        this.oldMessages.unshift(this.message);
+        if(this.message !== this.oldMessages[0]) {
+          this.oldMessages.unshift(this.message);
+        }
         this.oldMessagesIndex = -1;
         this.hideInput();
       } else {
@@ -248,6 +250,7 @@ window.APP = {
       }
       this.message = '';
       this.showInput = false;
+      this.oldMessagesIndex = -1;
       clearInterval(this.focusTimer);
       this.resetShowWindowTimer();
     },
