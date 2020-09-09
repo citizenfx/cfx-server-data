@@ -4,6 +4,8 @@ const child_process = require('child_process');
 let buildingInProgress = false;
 let currentBuildingModule = '';
 
+const initCwd = process.cwd();
+
 const yarnBuildTask = {
 	shouldBuild(resourceName) {
 		try {
@@ -32,20 +34,19 @@ const yarnBuildTask = {
 	},
 	
 	build(resourceName, cb) {
-		let buildYarn = async () => {
-			while (buildingInProgress) {
-				console.log(`yarn is busy by another process: we are waiting to compile  ${resourceName}`);
+		(async () => {
+			while (buildingInProgress && currentBuildingModule !== resourceName) {
+				console.log(`yarn is currently busy: we are waiting to compile ${resourceName}`);
 				await sleep(3000);
 			}
 			buildingInProgress = true;
 			currentBuildingModule = resourceName;
 			const process = child_process.fork(
 				require.resolve('./yarn_cli.js'),
-				['install', '--ignore-scripts'],
+				['install', '--ignore-scripts', '--cache-folder', path.join(initCwd, 'cache', 'yarn-cache'), '--mutex', 'file:' + path.join(initCwd, 'cache', 'yarn-mutex')],
 				{
 					cwd: path.resolve(GetResourcePath(resourceName))
 				});
-
 			process.on('exit', (code, signal) => {
 				setImmediate(() => {
 					if (code != 0 || signal) {
@@ -69,8 +70,7 @@ const yarnBuildTask = {
 					cb(true);
 				});
 			});
-		};
-		buildYarn().then();
+		})();
 	}
 };
 
