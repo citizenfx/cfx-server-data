@@ -12,8 +12,6 @@ RegisterNetEvent('chat:addSuggestion')
 RegisterNetEvent('chat:addSuggestions')
 RegisterNetEvent('chat:removeSuggestion')
 RegisterNetEvent('chat:clear')
-RegisterNetEvent('chat:startTyping')
-RegisterNetEvent('chat:stopTyping')
 
 -- internal events
 RegisterNetEvent('__cfx_internal:serverPrint')
