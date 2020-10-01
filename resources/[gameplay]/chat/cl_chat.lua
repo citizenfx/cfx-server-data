@@ -12,6 +12,8 @@ RegisterNetEvent('chat:addSuggestion')
 RegisterNetEvent('chat:addSuggestions')
 RegisterNetEvent('chat:removeSuggestion')
 RegisterNetEvent('chat:clear')
+RegisterNetEvent('chat:startTyping')
+RegisterNetEvent('chat:stopTyping')
 
 -- internal events
 RegisterNetEvent('__cfx_internal:serverPrint')
@@ -100,6 +102,7 @@ end)
 RegisterNUICallback('chatResult', function(data, cb)
   chatInputActive = false
   SetNuiFocus(false)
+  TriggerEvent('chat:stopTyping')
 
   if not data.canceled then
     local id = PlayerId()
@@ -199,6 +202,7 @@ Citizen.CreateThread(function()
       if IsControlPressed(0, isRDR and `INPUT_MP_TEXT_CHAT_ALL` or 245) --[[ INPUT_MP_TEXT_CHAT_ALL ]] then
         chatInputActive = true
         chatInputActivating = true
+        TriggerEvent('chat:startTyping')
 
         SendNUIMessage({
           type = 'ON_OPEN'
