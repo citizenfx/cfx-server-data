@@ -6,10 +6,20 @@ RegisterServerEvent('chat:removeSuggestion')
 RegisterServerEvent('_chat:messageEntered')
 RegisterServerEvent('chat:clear')
 RegisterServerEvent('__cfx_internal:commandFallback')
+RegisterServerEvent('chat:validationFailed')
+
+isServerValidationEnabled = GetConvar("chat_senderValidation", "false") == "true"
 
 AddEventHandler('_chat:messageEntered', function(author, color, message)
+    local src = source
+
     if not message or not author then
         return
+    end
+    
+    if isServerValidationEnabled and GetPlayerName(src) ~= author then
+        CancelEvent()
+        TriggerEvent("chat:validationFailed", src, author, message)
     end
 
     TriggerEvent('chatMessage', source, author, message)
