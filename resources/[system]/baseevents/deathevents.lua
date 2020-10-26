@@ -1,29 +1,27 @@
-Citizen.CreateThread(function()
-    local isDead = false
-    local hasBeenDead = false
-	local diedAt
+isDead, playerActive, player, ped = false, false
 
+CreateThread(function()
     while true do
-        Wait(0)
+        player = PlayerId()
+        ped = PlayerPedId()
+        playerActive = NetworkIsPlayerActive(player)
+        Wait(1000)
+    end
+end)
 
-        local player = PlayerId()
-
-        if NetworkIsPlayerActive(player) then
-            local ped = PlayerPedId()
-
+CreateThread(function()
+    local hasBeenDead, diedAt = false
+    
+    while true do Wait(0)
+        if playerActive then
             if IsPedFatallyInjured(ped) and not isDead then
                 isDead = true
-                if not diedAt then
-                	diedAt = GetGameTimer()
-                end
-
+                if not diedAt then diedAt = GetGameTimer() end
                 local killer, killerweapon = NetworkGetEntityKillerOfPlayer(player)
-				local killerentitytype = GetEntityType(killer)
-				local killertype = -1
-				local killerinvehicle = false
-				local killervehiclename = ''
-                local killervehicleseat = 0
-				if killerentitytype == 1 then
+                local killerentitytype = GetEntityType(killer)
+                local killertype, killerinvehicle, killervehiclename, killervehicleseat = -1, false, '', 0
+
+                if killerentitytype == 1 then
 					killertype = GetPedType(killer)
 					if IsPedInAnyVehicle(killer, false) == 1 then
 						killerinvehicle = true
@@ -31,13 +29,13 @@ Citizen.CreateThread(function()
                         killervehicleseat = GetPedVehicleSeat(killer)
 					else killerinvehicle = false
 					end
-				end
-
-				local killerid = GetPlayerByEntityID(killer)
+                end
+                
+                local killerid = GetPlayerByEntityID(killer)
 				if killer ~= ped and killerid ~= nil and NetworkIsPlayerActive(killerid) then killerid = GetPlayerServerId(killerid)
 				else killerid = -1
-				end
-
+                end
+                
                 if killer == ped or killer == -1 then
                     TriggerEvent('baseevents:onPlayerDied', killertype, { table.unpack(GetEntityCoords(ped)) })
                     TriggerServerEvent('baseevents:onPlayerDied', killertype, { table.unpack(GetEntityCoords(ped)) })
@@ -47,7 +45,7 @@ Citizen.CreateThread(function()
                     TriggerServerEvent('baseevents:onPlayerKilled', killerid, {killertype=killertype, weaponhash = killerweapon, killerinveh=killerinvehicle, killervehseat=killervehicleseat, killervehname=killervehiclename, killerpos={table.unpack(GetEntityCoords(ped))}})
                     hasBeenDead = true
                 end
-            elseif not IsPedFatallyInjured(ped) then
+            elseif not IsPedFatallyInjured(ped) and isDead then
                 isDead = false
                 diedAt = nil
             end
@@ -66,8 +64,6 @@ Citizen.CreateThread(function()
 end)
 
 function GetPlayerByEntityID(id)
-	for i=0,32 do
-		if(NetworkIsPlayerActive(i) and GetPlayerPed(i) == id) then return i end
-	end
-	return nil
+    for _, player in ipairs(GetActivePlayers()) do if NetworkIsPlayerActive(player) and GetPlayerPed(player) == id then return player end end
+    return nil
 end
