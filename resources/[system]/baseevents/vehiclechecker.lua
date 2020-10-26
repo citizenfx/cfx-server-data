@@ -1,15 +1,8 @@
-local isInVehicle = false
-local isEnteringVehicle = false
-local currentVehicle = 0
-local currentSeat = 0
-
-Citizen.CreateThread(function()
+CreateThread(function()
+	local isInVehicle, isEnteringVehicle, currentVehicle, currentSeat = false, false, 0, 0
 	while true do
-		Citizen.Wait(0)
-
-		local ped = PlayerPedId()
-
-		if not isInVehicle and not IsPlayerDead(PlayerId()) then
+		Wait(0)
+		if not isInVehicle and not isDead then
 			if DoesEntityExist(GetVehiclePedIsTryingToEnter(ped)) and not isEnteringVehicle then
 				-- trying to enter a vehicle!
 				local vehicle = GetVehiclePedIsTryingToEnter(ped)
@@ -33,7 +26,7 @@ Citizen.CreateThread(function()
 				TriggerServerEvent('baseevents:enteredVehicle', currentVehicle, currentSeat, GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle)), netId)
 			end
 		elseif isInVehicle then
-			if not IsPedInAnyVehicle(ped, false) or IsPlayerDead(PlayerId()) then
+			if not IsPedInAnyVehicle(ped, false) or isDead then
 				-- bye, vehicle
 				local model = GetEntityModel(currentVehicle)
 				local name = GetDisplayNameFromVehicleModel()
@@ -44,7 +37,7 @@ Citizen.CreateThread(function()
 				currentSeat = 0
 			end
 		end
-		Citizen.Wait(50)
+		Wait(50)
 	end
 end)
 
