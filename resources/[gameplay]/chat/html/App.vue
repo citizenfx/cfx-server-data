@@ -5,7 +5,7 @@
           'hidden': !showWindow
         }">
         <div class="chat-messages" ref="messages">
-          <message v-for="msg in messages"
+          <message v-for="msg in filteredMessages"
                    :templates="templates"
                    :multiline="msg.multiline"
                    :args="msg.args"

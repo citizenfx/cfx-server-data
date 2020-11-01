@@ -62,7 +62,9 @@ exports('registerMode', function(modeData)
     local clObj = {
         name = modeData.name,
         displayName = modeData.displayName,
-        color = modeData.color or '#fff'
+        color = modeData.color or '#fff',
+        isChannel = modeData.isChannel,
+        isGlobal = modeData.isGlobal,
     }
 
     if not modeData.seObject then
@@ -185,9 +187,6 @@ local function routeMessage(source, author, message, mode, fromConsole)
     TriggerEvent('chatMessage', source, #outMessage.args > 1 and outMessage.args[1] or '', outMessage.args[#outMessage.args])
 
     if not WasEventCanceled() then
-        -- remove the mode name, we don't need this for routing
-        outMessage.mode = nil
-
         if type(routingTarget) ~= 'table' then
             TriggerClientEvent('chat:addMessage', routingTarget, outMessage)
         else
@@ -270,7 +269,9 @@ AddEventHandler('chat:init', function()
         local clObj = {
             name = modeData.name,
             displayName = modeData.displayName,
-            color = modeData.color or '#fff'
+            color = modeData.color or '#fff',
+            isChannel = modeData.isChannel,
+            isGlobal = modeData.isGlobal,
         }
 
         if not modeData.seObject or IsPlayerAceAllowed(source, modeData.seObject) then

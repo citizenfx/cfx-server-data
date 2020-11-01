@@ -43,7 +43,8 @@ AddEventHandler('__cfx_internal:serverPrint', function(msg)
     message = {
       templateId = 'print',
       multiline = true,
-      args = { msg }
+      args = { msg },
+      mode = '_global'
     }
   })
 end)

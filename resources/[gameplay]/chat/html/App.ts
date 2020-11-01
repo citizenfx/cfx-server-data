@@ -13,6 +13,8 @@ export interface Message {
   multiline?: boolean;
   color?: [ number, number, number ];
   templateId?: number;
+  mode?: string;
+  modeData?: Mode;
 
   id?: string;
 }
@@ -31,6 +33,9 @@ export interface Mode {
   name: string;
   displayName: string;
   color: string;
+  hidden?: boolean;
+  isChannel?: boolean;
+  isGlobal?: boolean;
 }
 
 enum ChatHideStates {
@@ -43,6 +48,14 @@ const defaultMode: Mode = {
   name: 'all',
   displayName: 'All',
   color: '#fff'
+};
+
+const globalMode: Mode = {
+  name: '_global',
+  displayName: 'All',
+  color: '#fff',
+  isGlobal: true,
+  hidden: true
 };
 
 export default Vue.extend({
@@ -72,7 +85,7 @@ export default Vue.extend({
       showWindowTimer: 0,
       showHideStateTimer: 0,
       listener: (event: MessageEvent) => {},
-      modes: [defaultMode] as Mode[],
+      modes: [defaultMode, globalMode] as Mode[],
       modeIdx: 0,
     };
   },
@@ -118,6 +131,17 @@ export default Vue.extend({
     }
   },
   computed: {
+    filteredMessages(): Message[] {
+      return this.messages.filter(
+        // show messages that are
+        // - (if the current mode is a channel) global, or in the current mode
+        // - (if the message is a channel) in the current mode
+        el => (el.modeData?.isChannel || this.modes[this.modeIdx].isChannel) ?
+          (el.mode === this.modes[this.modeIdx].name || el.modeData?.isGlobal) :
+          true
+      );
+    },
+
     suggestions(): Suggestion[] {
       return this.backingSuggestions.filter(
         el => this.removedSuggestions.indexOf(el.name) <= -1
@@ -133,7 +157,7 @@ export default Vue.extend({
     },
 
     modePrefix(): string {
-      if (this.modes.length === 1) {
+      if (this.modes.length === 2) {
         return `➤`;
       }
 
@@ -201,6 +225,7 @@ export default Vue.extend({
     },
     ON_MESSAGE({ message }: { message: Message }) {
       message.id = `${new Date().getTime()}${Math.random()}`;
+      message.modeData = this.modes.find(mode => mode.name === message.mode);
       this.messages.push(message);
     },
     ON_CLEAR() {
@@ -360,13 +385,17 @@ export default Vue.extend({
         buf.scrollTop = buf.scrollTop + 100;
       } else if (e.which === 9) { // tab
         if (e.shiftKey || e.altKey) {
-          --this.modeIdx;
+          do {
+            --this.modeIdx;
 
-          if (this.modeIdx < 0) {
-            this.modeIdx = this.modes.length - 1;
-          }
+            if (this.modeIdx < 0) {
+              this.modeIdx = this.modes.length - 1;
+            }
+          } while (this.modes[this.modeIdx].hidden);
         } else {
-          this.modeIdx = (this.modeIdx + 1) % this.modes.length;
+          do {
+            this.modeIdx = (this.modeIdx + 1) % this.modes.length;
+          } while (this.modes[this.modeIdx].hidden);
         }
       }
 
