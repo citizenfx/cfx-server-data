@@ -1,11 +1,29 @@
-Vue.component('suggestions', {
-  template: '#suggestions_template',
-  props: ['message', 'suggestions'],
+import CONFIG from './config';
+import Vue, { PropType } from 'vue';
+
+export interface Suggestion {
+  name: string;
+  help: string;
+  params: string[];
+
+  disabled: boolean;
+}
+
+export default Vue.component('suggestions', {
+  props: {
+    message: {
+      type: String
+    },
+    
+    suggestions: {
+      type: Array as PropType<Suggestion[]>
+    }
+  },
   data() {
     return {};
   },
   computed: {
-    currentSuggestions() {
+    currentSuggestions(): Suggestion[] {
       if (this.message === '') {
         return [];
       }
@@ -34,6 +52,7 @@ Vue.component('suggestions', {
           const regex = new RegExp(`${s.name} (?:\\w+ ){${index}}(?:${wType}*)$`, 'g');
 
           // eslint-disable-next-line no-param-reassign
+          // @ts-ignore
           p.disabled = this.message.match(regex) == null;
         });
       });

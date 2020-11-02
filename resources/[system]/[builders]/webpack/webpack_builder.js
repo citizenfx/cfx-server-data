@@ -4,7 +4,11 @@ const workerFarm = require('worker-farm');
 const async = require('async');
 let buildingInProgress = false;
 let currentBuildingModule = '';
-let currentBuildingScript = '';
+
+// some modules will not like the custom stack trace logic
+const ops = Error.prepareStackTrace;
+Error.prepareStackTrace = undefined;
+
 const webpackBuildTask = {
     shouldBuild(resourceName) {
         const numMetaData = GetNumResourceMetadata(resourceName, 'webpack_config');
@@ -71,11 +75,13 @@ const webpackBuildTask = {
         let buildWebpack = async () => {
             let error = null;
             const configs = [];
+            const promises = [];
             const numMetaData = GetNumResourceMetadata(resourceName, 'webpack_config');
 
             for (let i = 0; i < numMetaData; i++) {
                 configs.push(GetResourceMetadata(resourceName, 'webpack_config', i));
             }
+
             for (const configName of configs) {
                 const configPath = GetResourcePath(resourceName) + '/' + configName;
 
@@ -94,53 +100,62 @@ const webpackBuildTask = {
                     const resourcePath = path.resolve(GetResourcePath(resourceName));
 
                     while (buildingInProgress) {
-                        console.log(`webpack is busy by another process: we are waiting to compile  ${resourceName} (${configName})`);
+                        console.log(`webpack is busy: we are waiting to compile ${resourceName} (${configName})`);
                         await sleep(3000);
                     }
+
                     buildingInProgress = true;
                     currentBuildingModule = resourceName;
-                    currentBuildingScript = configName;
-                    workers({
-                        configPath,
-                        resourcePath,
-                        cachePath
-                    }, (err, outp) => {
-                        workerFarm.end(workers);
 
-                        if (err) {
-                            console.error(err.stack || err);
-                            if (err.details) {
-                                console.error(err.details);
+                    promises.push(new Promise((resolve, reject) => {
+                        workers({
+                            configPath,
+                            resourcePath,
+                            cachePath
+                        }, (err, outp) => {
+                            workerFarm.end(workers);
+
+                            if (err) {
+                                console.error(err.stack || err);
+                                if (err.details) {
+                                    console.error(err.details);
+                                }
+
+                                buildingInProgress = false;
+                                currentBuildingModule = '';
+                                currentBuildingScript = '';
+                                reject("worker farm webpack errored out");
+                                return;
                             }
 
-                            buildingInProgress = false;
-                            currentBuildingModule = '';
-                            currentBuildingScript = '';
-                            error = "worker farm webpack errored out";
-                            console.error("worker farm webpack errored out");
-                            return;
-                        }
-
-                        if (outp.errors) {
-                            for (const error of outp.errors) {
-                                console.log(error);
+                            if (outp.errors) {
+                                for (const error of outp.errors) {
+                                    console.log(error);
+                                }
+                                buildingInProgress = false;
+                                currentBuildingModule = '';
+                                currentBuildingScript = '';
+                                reject("webpack got an error");
+                                return;
                             }
-                            buildingInProgress = false;
-                            currentBuildingModule = '';
-                            currentBuildingScript = '';
-                            error = "webpack got an error";
-                            console.error("webpack got an error");
-                            return;
-                        }
 
-                        console.log(`${resourceName}: built ${configName}`);
+                            console.log(`${resourceName}: built ${configName}`);
 
-                        buildingInProgress = false;
-                        currentBuildingModule = '';
-                        currentBuildingScript = '';
-                    });
+                            resolve();
+                        });
+                    }));
                 }
             }
+
+            try {
+                await Promise.all(promises);
+            } catch (e) {
+                error = e.toString();
+            }
+
+            buildingInProgress = false;
+            currentBuildingModule = '';
+
             if (error) {
                 cb(false, error);
             } else cb(true);

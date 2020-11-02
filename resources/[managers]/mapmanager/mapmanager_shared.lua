@@ -37,7 +37,8 @@ function parseMap(file, owningResource)
 
     local env = {
         math = math, pairs = pairs, ipairs = ipairs, next = next, tonumber = tonumber, tostring = tostring,
-        type = type, table = table, string = string, _G = env
+        type = type, table = table, string = string, _G = env,
+        vector3 = vector3, quat = quat, vec = vec, vector2 = vector2
     }
 
     TriggerEvent('getMapDirectives', function(key, cb, undocb)
