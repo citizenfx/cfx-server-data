@@ -1,3 +1,7 @@
+-- This resource is part of the default FiveM/RedM resource pack (aka cfx-server-data)
+-- Modifying or rewriting this resource for local use only is strongly discouraged.
+
+version '1.0.0'
 author 'The CitizenFX Collective'
 description 'Mapmanager is an included citizenfx resource that handles map changes, game types, and compatability between gametypes and maps.'
 repository 'https://github.com/citizenfx/cfx-server-data'
