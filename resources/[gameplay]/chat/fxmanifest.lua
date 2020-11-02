@@ -1,4 +1,10 @@
-description 'chat management stuff'
+-- This resource is part of the default FiveM/RedM resource pack (aka cfx-server-data)
+-- Modifying or rewriting this resource for local use only is strongly discouraged.
+
+version '1.0.0'
+author 'The CitizenFX Collective'
+description 'The chat resource provides custom chat functionality for FiveM using a NUI-based interface. It is included and maintained at the cfx-server-data repository.'
+repository 'https://github.com/citizenfx/cfx-server-data'
 
 ui_page 'dist/ui.html'
 
