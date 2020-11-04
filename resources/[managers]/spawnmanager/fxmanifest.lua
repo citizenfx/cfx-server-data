@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective'
-description 'The spawnmanager is a base resource that handles the spawning of the player. It allows you to choose when and where to spawn the player and also control how they respawn'
+description 'Handles the spawning of the player. It allows you to choose when and where to spawn the player and also control how they respawn.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 client_script 'spawnmanager.lua'

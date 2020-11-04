@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective'
-description 'Mapmanager is an included citizenfx resource that handles map changes, game types, and compatability between gametypes and maps.'
+description 'Handles map changes, game types, and compatability between gametypes and maps.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 client_scripts {
