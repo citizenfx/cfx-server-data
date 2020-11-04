@@ -2,7 +2,7 @@
 -- Modifying or rewriting this resource for local use only is strongly discouraged.
 
 version '1.0.0'
--- description '????'
+description 'An example money system client.'
 author 'The CitizenFX Collective'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
