@@ -1,3 +1,11 @@
+-- This resource is part of the default FiveM/RedM resource pack (aka cfx-server-data)
+-- Modifying or rewriting this resource for local use only is strongly discouraged.
+
+version '1.0.0'
+author 'The CitizenFX Collective'
+description 'Currently this resource does nothing. It used to be a log accessible via HTTP.'
+repository 'https://github.com/citizenfx/cfx-server-data'
+
 client_script 'rconlog_client.lua'
 server_script 'rconlog_server.lua'
 

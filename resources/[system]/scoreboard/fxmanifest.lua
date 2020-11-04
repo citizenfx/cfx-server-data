@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective'
-description 'Scoreboard'
+description 'Basic player scoreboard.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 -- temporary!

@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective'
-description 'This resource adds basic events for developers to use in their scripts. Some third party resources may depend on this resource, if this is the case then you must start this resource before starting that third party resource.'
+description 'Adds basic events for developers to use in their scripts. Some third party resources may depend on this resource.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 client_script 'deathevents.lua'
