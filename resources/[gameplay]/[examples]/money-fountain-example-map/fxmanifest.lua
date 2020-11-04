@@ -2,7 +2,7 @@
 -- Modifying or rewriting this resource for local use only is strongly discouraged.
 
 version '1.0.0'
-description 'An example map for the example money system client containing a money fountain.'
+-- description '????'
 repository 'https://github.com/citizenfx/cfx-server-data'
 author 'The CitizenFX Collective'
 

@@ -2,8 +2,8 @@
 -- Modifying or rewriting this resource for local use only is strongly discouraged.
 
 version '1.0.0'
-description 'A basic resource for displaying player names.'
 author 'The CitizenFX Collective'
+description 'A basic resource for displaying player names.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 -- add scripts
