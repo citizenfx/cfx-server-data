@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective'
-description 'This resource adds an example loadingscreen.'
+description 'Example loadingscreen.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 files {
