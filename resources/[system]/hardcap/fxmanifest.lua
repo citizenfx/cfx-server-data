@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective'
-description 'Limits the number of players to the one set in sv_maxclients.'
+description 'Limits the number of players to the one set in sv_maxclients in the server.cfg.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 client_script 'client.lua'
