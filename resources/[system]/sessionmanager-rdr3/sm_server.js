@@ -108,7 +108,7 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 		};
 		
 		for (const [ playerSource, playerData ] of Object.entries(playerDatas)) {
-			if (id == source || !playerData.id) continue;
+			if (playerSource == source || !playerData.id) continue;
 		
 			emitAddPlayer(source, {
 				id: playerData.id,
