@@ -205,9 +205,9 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 		},
 		
 		async QueueForSession_Seamless(source, data) {
-			const slodId = assignSlotId();
+			const slotId = assignSlotId();
 
-			if (slodId === -1) {
+			if (slotId === -1) {
 				DropPlayer(source, 'sessionmanager-rdr3 has fail to asign you a slot id, retry to connect.');
 				return;
 			}
@@ -216,7 +216,7 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 			
 			playerDatas[source].req = req.requestId;
 			playerDatas[source].id = req.requestId.requestor;
-			playerDatas[source].slot = slodId;
+			playerDatas[source].slot = slotId;
 
 			await Delay(50);
 			
