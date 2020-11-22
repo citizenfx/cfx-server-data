@@ -1,9 +1,9 @@
--- This resource is part of the default FiveM/RedM resource pack (cfx-server-data)
--- Modifying or rewriting this resource for local use only is strongly discouraged.
+-- This resource is part of the default Cfx.re asset pack (cfx-server-data)
+-- Altering or recreating for local use only is strongly discouraged.
 
 version '1.0.0'
-author 'The CitizenFX Collective <pr@fivem.net>'
-description 'RedM map spawnpoints.'
+author 'Cfx.re <root@cfx.re>'
+description 'Example spawn points for RedM.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 resource_type 'map' { gameTypes = { ['basic-gamemode'] = true } }

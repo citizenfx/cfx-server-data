@@ -1,9 +1,9 @@
--- This resource is part of the default FiveM/RedM resource pack (cfx-server-data)
--- Modifying or rewriting this resource for local use only is strongly discouraged.
+-- This resource is part of the default Cfx.re asset pack (cfx-server-data)
+-- Altering or recreating for local use only is strongly discouraged.
 
 version '1.0.0'
-author 'The CitizenFX Collective <pr@fivem.net>'
-description 'Provides custom chat functionality using a NUI-based interface.'
+author 'Cfx.re <root@cfx.re>'
+description 'Provides baseline chat functionality using a NUI-based interface.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 ui_page 'dist/ui.html'

@@ -1,9 +1,9 @@
--- This resource is part of the default FiveM/RedM resource pack (cfx-server-data)
--- Modifying or rewriting this resource for local use only is strongly discouraged.
+-- This resource is part of the default Cfx.re asset pack (cfx-server-data)
+-- Altering or recreating for local use only is strongly discouraged.
 
 version '1.0.0'
-author 'The CitizenFX Collective <pr@fivem.net>'
-description 'Limits the number of players to the one set by sv_maxclients in your server.cfg.'
+author 'Cfx.re <root@cfx.re>'
+description 'Limits the number of players to the amount set by sv_maxclients in your server.cfg.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 client_script 'client.lua'
