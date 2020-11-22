@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective <pr@fivem.net>'
-description 'Builds resources with yarn. To know more: https://yarnpkg.com'
+description 'Builds resources with yarn. To learn more: https://yarnpkg.com'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 fx_version 'adamant'
