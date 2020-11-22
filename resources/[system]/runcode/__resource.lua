@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective <pr@fivem.net>'
-description 'Allows server owners to execute arbitrary server-side or client-side NodeJS/Lua code. *Consider only enabling it in development servers.'
+description 'Allows server owners to execute arbitrary server-side or client-side JavaScript/Lua code. *Consider only using this on development servers.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
