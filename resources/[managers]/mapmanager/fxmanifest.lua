@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective <pr@fivem.net>'
-description 'Handles map changes, game types, and compatability between gametypes and maps.'
+description 'Handles map changes, game types, and compatibility between gametypes and maps.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 client_scripts {
