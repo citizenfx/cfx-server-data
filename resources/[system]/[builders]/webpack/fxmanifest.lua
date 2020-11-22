@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective <pr@fivem.net>'
-description 'Builds resources with webpack. To know more: https://webpack.js.org'
+description 'Builds resources with webpack. To learn more: https://webpack.js.org'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 dependency 'yarn'
