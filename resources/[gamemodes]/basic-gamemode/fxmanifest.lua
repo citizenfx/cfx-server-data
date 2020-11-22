@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective <pr@fivem.net>'
-description 'Basic Freeroam gamemode that will signal spawnmanager to autospawn players.'
+description 'Basic freeroam gamemode which signals spawnmanager to autospawn players.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 resource_type 'gametype' { name = 'Freeroam' }
