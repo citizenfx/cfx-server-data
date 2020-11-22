@@ -2,7 +2,7 @@
 -- Modifying or rewriting this resource for local use only is strongly discouraged.
 
 version '1.0.0'
-description 'Basic resource to showcase player identifier storage.'
+description 'A basic resource for storing player identifiers.'
 author 'The CitizenFX Collective <pr@fivem.net>'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
