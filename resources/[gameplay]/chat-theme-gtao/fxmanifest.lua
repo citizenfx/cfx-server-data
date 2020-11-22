@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective <pr@fivem.net>'
-description 'A GTA Online theme for the included default chat resource.'
+description 'A GTA:Online theme for the included default chat resource.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 file 'style.css'
