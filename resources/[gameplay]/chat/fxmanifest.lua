@@ -3,7 +3,7 @@
 
 version '1.0.0'
 author 'The CitizenFX Collective <pr@fivem.net>'
-description 'Provides custom chat functionality for FiveM using a NUI-based interface.'
+description 'Provides custom chat functionality using a NUI-based interface.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 ui_page 'dist/ui.html'
