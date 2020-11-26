@@ -11,13 +11,13 @@ You can also consider using the repository as a submodule + symlink for your own
 **Linux**:
 ```
 $ git submodule add https://github.com/citizenfx/cfx-server-data.git vendor/server-data
-$ ln -s vendor/server-data/resources/ 'resources/[base]/'
+$ ln -s ../vendor/server-data/resources/ 'resources/[base]/'
 ```
 
 **Windows**:
 ```
 > git submodule add https://github.com/citizenfx/cfx-server-data.git vendor/server-data
-> mklink /d resources\[base] vendor\server-data\resources
+> mklink /d resources\[base] ..\vendor\server-data\resources
 ```
 
 ## Policy
