@@ -397,6 +397,9 @@ export default Vue.extend({
             this.modeIdx = (this.modeIdx + 1) % this.modes.length;
           } while (this.modes[this.modeIdx].hidden);
         }
+
+        const buf = document.getElementsByClassName('chat-messages')[0];
+        setTimeout(() => buf.scrollTop = buf.scrollHeight, 0);
       }
 
       this.resize();
