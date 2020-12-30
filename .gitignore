@@ -1,4 +1,5 @@
 *.cfg
 /cache/
 /resources/\[local\]/
+/resources/\[ESX\]/
 /db/
