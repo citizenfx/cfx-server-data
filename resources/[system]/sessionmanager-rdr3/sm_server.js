@@ -1,4 +1,5 @@
 const protobuf = require("@citizenfx/protobufjs");
+const Delay = (ms) => new Promise(res => setTimeout(res, ms));
 
 const playerDatas = {};
 let slotsUsed = 0;
@@ -84,6 +85,41 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 	function emitHostChanged(target, msg) {
 		emitSessionCmds(target, 5, 'HostChanged', msg);
 	}
+
+	function emitRemovePlayerToAll(removeId) {
+		for (const [ playerSource, playerData ] of Object.entries(playerDatas)) {
+			if (playerData.id == removeId) {
+				continue;
+			}
+			emitRemovePlayer(playerSource, {
+				id: removeId
+			});
+		}
+	}
+
+	function emitAddPlayerToAll(source) {
+		const meData = playerDatas[source];
+		
+		const aboutMe = {
+			id: meData.id,
+			gh: meData.gh,
+			addr: meData.peerAddress,
+			index: playerDatas[source].slot | 0
+		};
+		
+		for (const [ playerSource, playerData ] of Object.entries(playerDatas)) {
+			if (playerSource == source || !playerData.id) continue;
+		
+			emitAddPlayer(source, {
+				id: playerData.id,
+				gh: playerData.gh,
+				addr: playerData.peerAddress,
+				index: playerData.slot | 0
+			});
+			
+			emitAddPlayer(playerSource, aboutMe);
+		}
+	}
 	
 	onNet('playerDropped', () => {
 		try {
@@ -114,11 +150,7 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 				slotsUsed &= ~(1 << oData.slot);
 			}
 		
-			for (const [ id, data ] of Object.entries(playerDatas)) {
-				emitRemovePlayer(id, {
-					id: oData.id
-				});
-			}
+			emitRemovePlayerToAll(oData.id);
 		} catch (e) {
 			console.log(e);
 			console.log(e.stack);
@@ -173,72 +205,62 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 		},
 		
 		async QueueForSession_Seamless(source, data) {
+			const slotId = assignSlotId();
+
+			if (slotId === -1) {
+				DropPlayer(source, 'sessionmanager-rdr3 has fail to asign you a slot id, retry to connect.');
+				return;
+			}
+
 			const req = QueueForSession_Seamless_Parameters.decode(data);
 			
 			playerDatas[source].req = req.requestId;
 			playerDatas[source].id = req.requestId.requestor;
-			playerDatas[source].slot = assignSlotId();
+			playerDatas[source].slot = slotId;
+
+			await Delay(50);
 			
-			setTimeout(() => {
-				emitMsg(source, RpcMessage.encode({
-					Header: {
-						MethodName: 'QueueEntered'
-					},
-					Content: QueueEntered_Parameters.encode({
-						queueGroup: 69,
-						requestId: req.requestId,
-						optionFlags: req.optionFlags
-					}).finish()
-				}).finish());
-				
-				if (hostIndex === -1) {
-					hostIndex = playerDatas[source].slot | 0;
-				}
-				
-				emitSessionCmds(source, 0, 'EnterSession', {
-					index: playerDatas[source].slot | 0,
-					hindex: hostIndex,
-					sessionFlags: 0,
-					mode: 0,
-					size: Object.entries(playerDatas).filter(a => a[1].id).length,
-					//size: 2,
-					//size: Object.entries(playerDatas).length,
-					teamIndex: 0,
-					transitionId: {
-						value: {
-							a: 0,//2,
-							b: 0
-						}
-					},
-					sessionManagerType: 0,
-					slotCount: 32
-				});
-				
-				setTimeout(() => {
-					// tell player about everyone, and everyone about player
-					const meData = playerDatas[source];
-					
-					const aboutMe = {
-						id: meData.id,
-						gh: meData.gh,
-						addr: meData.peerAddress,
-						index: playerDatas[source].slot | 0
-					};
-					
-					for (const [ id, data ] of Object.entries(playerDatas)) {
-						if (id == source || !data.id) continue;
-					
-						emitAddPlayer(source, {
-							id: data.id,
-							gh: data.gh,
-							addr: data.peerAddress,
-							index: data.slot | 0
-						});
-						
-						emitAddPlayer(id, aboutMe);
+			emitMsg(source, RpcMessage.encode({
+				Header: {
+					MethodName: 'QueueEntered'
+				},
+				Content: QueueEntered_Parameters.encode({
+					queueGroup: 69,
+					requestId: req.requestId,
+					optionFlags: req.optionFlags
+				}).finish()
+			}).finish());
+			
+			if (hostIndex === -1) {
+				hostIndex = playerDatas[source].slot | 0;
+			}
+			
+			emitSessionCmds(source, 0, 'EnterSession', {
+				index: playerDatas[source].slot | 0,
+				hindex: hostIndex,
+				sessionFlags: 0,
+				mode: 0,
+				size: Object.entries(playerDatas).filter(a => a[1].id).length,
+				//size: 2,
+				//size: Object.entries(playerDatas).length,
+				teamIndex: 0,
+				transitionId: {
+					value: {
+						a: 0,//2,
+						b: 0
 					}
-				}, 150);
-			}, 50);
+				},
+				sessionManagerType: 0,
+				slotCount: 32
+			});
+
+			await Delay(50);
+			
+			emitRemovePlayerToAll(req.requestId.requestor);
+			
+			await Delay(100);
+			
+			emitAddPlayerToAll(source);
 			
 			return makeResponse(QueueForSessionResult, {
 				code: 1
