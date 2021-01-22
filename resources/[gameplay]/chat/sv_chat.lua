@@ -220,12 +220,43 @@ AddEventHandler('__cfx_internal:commandFallback', function(command)
     CancelEvent()
 end)
 
--- player join messages
+local registeredSuggestions = {}
+
+-- registering suggestions
+AddEventHandler('chat:addSuggestion', function(commandName, commandDescription, commandParameters)
+    local exists = false
+    for key, suggestion in pairs(registeredSuggestions) do
+        if suggestion.commandName == commandName then
+            exists = true
+        end
+    end
+    if not exists then
+        table.insert(registeredSuggestions, {commandName = commandName, commandDescription = commandDescription, commandParameters = commandParameters})
+        TriggerClientEvent('chat:addSuggestion', -1, commandName, commandDescription, commandParameters)
+    end
+end)
+
+-- unregistering suggestions
+AddEventHandler('chat:removeSuggestion', function(commandName)
+    for key, suggestion in pairs(registeredSuggestions) do
+        if suggestion.commandName == commandName then
+            table.remove(registeredSuggestions, key)
+            TriggerClientEvent('chat:removeSuggestion', -1, commandName)
+        end
+    end
+end)
+
+-- player join messages and sending the client the registered suggestions
 AddEventHandler('playerJoining', function()
-    if GetConvarInt('chat_showJoins', 1) == 0 then
-        return
+    if GetConvarInt('chat_registerSuggestionsOnServer', 1) ~= 0 then
+        for key, suggestion in pairs(registeredSuggestions) do
+            TriggerClientEvent('chat:addSuggestion', source, suggestion.commandName, suggestion.commandDescription, suggestion.commandParameters)
+        end
     end
 
+    if GetConvarInt('chat_showJoins', 1) == 0 then
+        return
+    end    
     TriggerClientEvent('chatMessage', -1, '', { 255, 255, 255 }, '^2* ' .. GetPlayerName(source) .. ' joined.')
 end)
 
