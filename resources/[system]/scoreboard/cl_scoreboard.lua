@@ -4,6 +4,10 @@ RegisterNetEvent('fivem:playerJoined', function(source, name)
 	plyTable[source] = name
 end)
 
+RegisterNetEvent('fivem:syncPlayerData', function(scoreTbl)
+	plyTable = scoreTbl
+end)
+
 RegisterNetEvent('fivem:playerLeft', function(source)
 	plyTable[source] = nil
 end)
@@ -29,7 +33,7 @@ RegisterCommand('-scoreboard', function()
 		meta = 'close'
 	})
 end)
-RegisterKeyMapping('+scoreboard', 'Opens Scoreboard', 'keyboard', GetConvar('scoreboard_toggleScoreboard', 'F12'))
+RegisterKeyMapping('+scoreboard', 'Opens Scoreboard', 'keyboard', GetConvar('scoreboard_toggleScoreboard', 'UP'))
 
 function sanitize(txt)
     local replacements = {

@@ -1,13 +1,17 @@
 -- prevent the possibility of someone spamming this event to try and net lag the server.
-local joined = {}
+local joinedTbl = {}
 RegisterNetEvent('playerJoined', function()
-	if not joined[source] then
-		joined[source] = true
-		TriggerClientEvent('fivem:playerJoined', -1, source, GetPlayerName(source))
+	local name = GetPlayerName(source)
+	if not joinedTbl[source] then
+		joinedTbl[source] = name
+		TriggerClientEvent('fivem:playerJoined', -1, source, name)
+		TriggerClientEvent('fivem:syncPlayerData', source, joinedTbl)
+	else
+		print(('%s [%s] tried sending the \'playerJoined\' net event, but they\'ve already joined!'):format(name, source))
 	end
 end)
 
 AddEventHandler('playerDropped', function()
-	joined[source] = nil
+	joinedTbl[source] = nil
 	TriggerClientEvent('fivem:playerLeft', -1, source)
 end)
