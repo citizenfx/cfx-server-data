@@ -1,0 +1,71 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>FiveM Servers / FXServer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&amp;family=Rubik:ital,wght@0,300;0,400;1,300;1,400" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    <div id="loadingscreen" class="box">
+        <div class="header">
+            <div class="logo item darkBg hover">
+                <svg viewBox="0 0 542 622">
+                    <g>
+                        <polygon points="261.7,169.9 258.5,180.9 175.9,98.3 181,82.8 262.8,164.6 "></polygon>
+                        <polygon points="426.1,281.5 192.6,48 206.2,7.1 398.8,199.7 "></polygon>
+                        <polygon points="130.4,620.9 2,620.9 164.3,133 248,216.8 "></polygon>
+                        <polygon points="539.2,620.9 410.9,620.9 311.3,280 482.8,451.5 "></polygon>
+                        <polygon points="214.6,2 332.9,2 392.1,179.5 "></polygon>
+                        <polygon points="459.6,382 292.2,214.6 283.6,185.4 449.3,351 "></polygon>
+                    </g>
+                </svg>
+            </div>
+            <div class="actions">
+                <span class="h2-info">www.discord.gg/fivem</span>
+                <a href="#" class="item darkBg hover">
+                    <img src="https://discord.com/assets/1c8a54f25d101bdc607cec7228247a9a.svg" height="34" viewBox="0 0 34 34" width="34">
+                </a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="loading border hover">
+                <div class="bg anim blur-20"></div>
+                <h1>Welcome to your brand new FXServer</h1>
+                <h2 class="dots">Loading</h2>
+                <div class="status" v-text="status"></div>
+            </div>
+            <div class="changelog hover">
+                <div class="bg blur-5"></div>
+                <h2>Changelog <span class="h2-info">You can also find this in Discord on #service-updates</span></h2>
+                <div class="dots" v-if="changelog === null">Loading</div>
+                <div class="list" v-else>
+                    <div class="day" v-for="(group, date) in changelog">
+                        <div class="heading">{{ date }}</div>
+                        <ul>
+                            <li v-for="line in group">
+                                {{ line.description.trim() }} ({{ line.author }})
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tips hover">
+                <div class="bg blur-5"></div>
+                <div class="title">Tips</div>
+                <p v-text="currentTip"></p>
+            </div>
+        </div>
+        <img id="cursor" src="assets/images/citizen_cursor.png">
+    </div>
+    <script src="lib/vue.min.js" type="text/javascript"></script>
+    <script src="lib/lodash.js" type="text/javascript"></script>
+    <script src="data/changelog.js" type="text/javascript"></script>
+    <script src="data/tips.js" type="text/javascript"></script>
+    <script src="script.js" type="text/javascript"></script>
+</body>
+</html>
