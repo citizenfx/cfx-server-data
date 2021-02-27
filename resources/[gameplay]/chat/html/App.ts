@@ -446,7 +446,7 @@ export default Vue.extend({
     hideInput(canceled = false) {
       setTimeout(() => {
         const input = this.$refs.input as HTMLInputElement;
-        delete input.style.height;
+        input.style.height = '';
       }, 50);
 
       if (canceled) {
