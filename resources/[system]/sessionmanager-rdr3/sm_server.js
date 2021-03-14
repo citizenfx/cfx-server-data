@@ -32,6 +32,8 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 	const QueueForSessionResult = root.lookupType("rline.QueueForSessionResult");
 	const QueueEntered_Parameters = root.lookupType("rline.QueueEntered_Parameters");
 	const TransitionReady_PlayerQueue_Parameters = root.lookupType("rline.TransitionReady_PlayerQueue_Parameters");
+	const TransitionToSession_Parameters = root.lookupType("rline.TransitionToSession_Parameters");
+	const TransitionToSessionResult = root.lookupType("rline.TransitionToSessionResult");
 	const scmds_Parameters = root.lookupType("rline.scmds_Parameters");
 
 	function toArrayBuffer(buf) {
@@ -173,6 +175,14 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 			return {};
 		},
 		
+		async TransitionToSession(source, data) {
+			const req = TransitionToSession_Parameters.decode(data);
+
+			return makeResponse(TransitionToSessionResult, {
+				code: 1 // in this message, 1 is success
+			});
+		},
+
 		async QueueForSession_Seamless(source, data) {
 			const req = QueueForSession_Seamless_Parameters.decode(data);
 			
