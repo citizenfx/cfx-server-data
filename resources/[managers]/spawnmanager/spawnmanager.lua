@@ -224,11 +224,11 @@ function spawnPlayer(spawnIdx, cb)
             spawn = spawnIdx
 
             -- prevent errors when passing spawn table
-            spawn.x = spawn.x + 0.0001
-            spawn.y = spawn.y + 0.0001
-            spawn.z = spawn.z + 0.0001
+            spawn.x = spawn.x + 0.00
+            spawn.y = spawn.y + 0.00
+            spawn.z = spawn.z + 0.00
 
-            spawn.heading = spawn.heading and (spawn.heading + 0.01) or 0
+            spawn.heading = spawn.heading and (spawn.heading + 0.00) or 0
         else
             spawn = spawnPoints[spawnIdx]
         end
