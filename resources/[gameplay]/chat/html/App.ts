@@ -234,6 +234,7 @@ export default Vue.extend({
       this.oldMessagesIndex = -1;
     },
     ON_SUGGESTION_ADD({ suggestion }: { suggestion: Suggestion }) {
+      this.removedSuggestions = this.removedSuggestions.filter(a => a !== suggestion.name);
       const duplicateSuggestion = this.backingSuggestions.find(
         a => a.name == suggestion.name
       );
