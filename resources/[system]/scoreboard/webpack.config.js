@@ -14,46 +14,46 @@ module.exports = {
   module: {
     rules: [
       {
-				test: /\.tsx?$/,
-				use: [
-					{
-						loader:'ts-loader',
-						options: {
-							transpileOnly: true
-						},
-					},
-				],
-				exclude: /node_modules/,
-			},
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader:'ts-loader',
+            options: {
+              transpileOnly: true
+            },
+          },
+        ],
+        exclude: /node_modules/,
+      },
       {
-				test: /\.css$/,
-				exclude: /node_modules/,
-				use: ['style-loader', 'css-loader']
-			},
-			{
-				test: /\.css$/,
-				include: /node_modules/,
-				use: ['style-loader', 'css-loader']
-			},
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader']
+      },
       {
-				test: /\.(jpg|png|gif)$/,
-				use: [
-					{
-						loader: 'url-loader',
-						options: {
-							// Inline files smaller than 10 kB
-							limit: 10 * 1024,
-						},
-					},
-				],
-			},
+        test: /\.css$/,
+        include: /node_modules/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(jpg|png|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              // Inline files smaller than 10 kB
+              limit: 10 * 1024,
+            },
+          },
+        ],
+      },
     ]
   },
 
   plugins: [
     new webpack.EnvironmentPlugin({
-			NODE_ENV: 'production'
-		}),
+      NODE_ENV: 'production'
+    }),
     new HtmlWebpackPlugin({
       template: "ui/index.html",
     }),
@@ -64,7 +64,7 @@ module.exports = {
 
 
   resolve: {
-		modules: ['src', 'node_modules'],
-		extensions: ['.js', '.jsx', '.ts', '.tsx', '.react.js']
-	}
+    modules: ['src', 'node_modules'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.react.js']
+  }
 }

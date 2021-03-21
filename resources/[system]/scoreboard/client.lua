@@ -1,8 +1,20 @@
-RegisterKeyMapping("+scoreboard", "Open the scoreboard.", "keyboard", "z")
+local isShowing = false
+local players = {}
+local lastUpdate = 0
 
+RegisterKeyMapping("+scoreboard", "Open the scoreboard.", "keyboard", "z")
 RegisterCommand("+scoreboard", function(source, args, rawcommand)
   if not isShowing then
-    TriggerServerEvent("scoreboard:getPlayers")
+    if GetGameTimer() >= lastUpdate + 3000 then
+      lastUpdate = GetGameTimer()
+      TriggerServerEvent("scoreboard:getPlayers")
+    end
+    sortedColumns = sortColumns(GlobalState.columns)
+    SendNUIMessage({
+      app = 'CfxScoreboard',
+      method = 'setColumns',
+      data = sortedColumns
+    })
     SendNUIMessage({
       app = 'CfxScoreboard',
       method = 'setVisibility',
@@ -15,10 +27,14 @@ RegisterCommand("+scoreboard", function(source, args, rawcommand)
     Citizen.CreateThread(function()
       while isShowing do
         Citizen.Wait(0)
-        DisableControlAction(0, 1, true)
-        DisableControlAction(0, 2, true)
-        DisableControlAction(0, 16, true)
-        DisableControlAction(0, 17, true)
+        DisableControlAction(0, 1, true) -- INPUT_LOOK_LR - Prevent moving camera when moving mouse.
+        DisableControlAction(0, 2, true) -- INPUT_LOOK_UD - Prevent moving camera when moving mouse.
+        DisableControlAction(0, 16, true) -- INPUT_SELECT_NEXT_WEAPON - Prevent switching weapon when scrolling through list.
+        DisableControlAction(0, 17, true) -- INPUT_SELECT_PREV_WEAPON	 - Prevent switching weapon when scrolling through list.
+        if GetGameTimer() >= lastUpdate + 3000 then
+          TriggerServerEvent("scoreboard:getPlayers")
+          lastUpdate = GetGameTimer()
+        end
       end
     end)
   end
@@ -35,43 +51,40 @@ RegisterCommand("-scoreboard", function(source, args, rawcommand)
   isShowing = false
 end, false)
 
-players = {}
-
 RegisterNetEvent("scoreboard:receivePlayers")
 AddEventHandler("scoreboard:receivePlayers", function(_players)
   players = _players
   local nuiData = {}
+  local sortedColumns = sortColumns(GlobalState.columns)
+  SendNUIMessage({
+    app = 'CfxScoreboard',
+    method = 'setColumns',
+    data = sortedColumns
+  })
   for playerId, playerData in pairs(players) do
     local nextId = #nuiData+1
     nuiData[nextId] = {}
-    for id, columnData in pairs(columns) do
-      nuiData[nextId][id] = playerData[columnData.friendlyName]
+    for id, columnData in pairs(sortedColumns) do
+      nuiData[nextId][id] = playerData[columnData.identifier]
     end
   end
   -- send to NUI to populate players
   SendNUIMessage({
-      app = 'CfxScoreboard',
-      method = 'setPlayers',
-      data = nuiData
-    })
+    app = 'CfxScoreboard',
+    method = 'setPlayers',
+    data = nuiData
+  })
 end)
 
-TriggerServerEvent("scoreboard:requestColumns")
+TriggerServerEvent("scoreboard:initialize")
 
-RegisterNetEvent("scoreboard:receiveColumns")
-AddEventHandler("scoreboard:receiveColumns", function(_columns)
-  table.sort(_columns, function(a, b)
+function sortColumns(unsortedTable)
+  table.sort(unsortedTable, function(a, b)
     if not a or not b then return end
     return a["position"] < b["position"]
   end)
-  columns = _columns
-  -- Send to NUI to populate columns
-  SendNUIMessage({
-    app = 'CfxScoreboard',
-    method = 'setColumns',
-    data = columns
-  })
-end)
+  return unsortedTable
+end
 
 --[[
 The following is stolen from the chat resource to allow for themes.

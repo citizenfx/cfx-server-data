@@ -7,63 +7,63 @@ function App() {
   useNuiService();
   const { visibility } = useScoreboard();
 
-  /*
-  setTimeout(() => {
-    window.dispatchEvent(
-      new MessageEvent('message', {
-        data: {
-          app: 'CfxScoreboard',
-          method: 'setVisibility',
-          data: true
-        }
-      })
-    )
-  }, 1000)
+  if (!(window as any).invokeNative) {
+    setTimeout(() => {
+      window.dispatchEvent(
+        new MessageEvent('message', {
+          data: {
+            app: 'CfxScoreboard',
+            method: 'setVisibility',
+            data: true
+          }
+        })
+      )
+    }, 1000)
 
-  setTimeout(() => {
-    window.dispatchEvent(
-      new MessageEvent('message', {
-        data: {
-          app: 'CfxScoreboard',
-          method: 'setColumns',
-          data: [
-            {
-              friendlyName: "ID",
-              defaultValue: 1,
-              position: 0
-            },
-            {
-              friendlyName: "Name",
-              defaultValue: "",
-              position: 1
-            },
-          ]
-        }
-      })
-    )
-  }, 1000)
-
-  setTimeout(() => {
-    window.dispatchEvent(
-      new MessageEvent('message', {
-        data: {
-          app: 'CfxScoreboard',
-          method: 'setPlayers',
-          data: [
-            [
-              1,
-              "Chip"
-            ],
-            [
-              2,
-              "Neco"
+    setTimeout(() => {
+      window.dispatchEvent(
+        new MessageEvent('message', {
+          data: {
+            app: 'CfxScoreboard',
+            method: 'setColumns',
+            data: [
+              {
+                friendlyName: "ID",
+                defaultValue: 1,
+                position: 0
+              },
+              {
+                friendlyName: "Name",
+                defaultValue: "",
+                position: 1
+              },
             ]
-          ]
-        }
-      })
-    )
-  }, 1000)
-  */
+          }
+        })
+      )
+    }, 1000)
+
+    setTimeout(() => {
+      window.dispatchEvent(
+        new MessageEvent('message', {
+          data: {
+            app: 'CfxScoreboard',
+            method: 'setPlayers',
+            data: [
+              [
+                1,
+                "Chip"
+              ],
+              [
+                2,
+                "Neco"
+              ]
+            ]
+          }
+        })
+      )
+    }, 1000)
+  }
 
   return (
     <div className="scoreboardWrapper">
