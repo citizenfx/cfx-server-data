@@ -10,7 +10,19 @@ RegisterServerEvent('__cfx_internal:commandFallback')
 -- this is a built-in event, but somehow needs to be registered
 RegisterNetEvent('playerJoining')
 
-exports('addMessage', function(target, author, message, mode)
+
+exports('addMessage', function(target, message)
+    if not message then
+        message = target
+        target = -1
+    end
+
+    if not target or not message then return end
+
+    TriggerClientEvent('chat:addMessage', target, message)
+end)
+
+exports('sendMessage', function(target, author, message, mode)
     routeMessage(target, author, message, mode, true, true)
 end)
 
