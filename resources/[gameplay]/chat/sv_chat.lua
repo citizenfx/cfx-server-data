@@ -10,15 +10,8 @@ RegisterServerEvent('__cfx_internal:commandFallback')
 -- this is a built-in event, but somehow needs to be registered
 RegisterNetEvent('playerJoining')
 
-exports('addMessage', function(target, message)
-    if not message then
-        message = target
-        target = -1
-    end
-
-    if not target or not message then return end
-
-    TriggerClientEvent('chat:addMessage', target, message)
+exports('addMessage', function(target, author, message, mode)
+    routeMessage(target, author, message, mode, true, true)
 end)
 
 local hooks = {}
@@ -108,8 +101,8 @@ local function unregisterHooks(resource)
     end
 end
 
-local function routeMessage(source, author, message, mode, fromConsole)
-    if source >= 1 then
+local function routeMessage(source, author, message, mode, fromConsole, fromServer)
+    if not fromServer and source >= 1 then
         author = GetPlayerName(source)
     end
 
@@ -170,14 +163,14 @@ local function routeMessage(source, author, message, mode, fromConsole)
 
     for _, hook in pairs(hooks) do
         if hook.fn then
-            hook.fn(source, outMessage, hookRef)
+            hook.fn(source, outMessage, hookRef, fromServer)
         end
     end
 
     if modes[mode] then
         local m = modes[mode]
 
-        m.cb(source, outMessage, hookRef)
+        m.cb(source, outMessage, hookRef, fromServer)
     end
 
     if messageCanceled then
