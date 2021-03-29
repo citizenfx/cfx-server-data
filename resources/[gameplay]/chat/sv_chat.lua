@@ -10,7 +10,6 @@ RegisterServerEvent('__cfx_internal:commandFallback')
 -- this is a built-in event, but somehow needs to be registered
 RegisterNetEvent('playerJoining')
 
-
 exports('addMessage', function(target, message)
     if not message then
         message = target
