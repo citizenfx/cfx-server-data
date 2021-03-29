@@ -189,7 +189,9 @@ local function routeMessage(source, author, message, mode, fromConsole, fromServ
         return
     end
 
-    TriggerEvent('chatMessage', source, #outMessage.args > 1 and outMessage.args[1] or '', outMessage.args[#outMessage.args])
+    if not fromServer then
+        TriggerEvent('chatMessage', source, #outMessage.args > 1 and outMessage.args[1] or '', outMessage.args[#outMessage.args])
+    end
 
     if not WasEventCanceled() then
         if type(routingTarget) ~= 'table' then
