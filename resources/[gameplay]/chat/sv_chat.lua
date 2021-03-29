@@ -132,7 +132,7 @@ local function routeMessage(source, author, message, mode, fromConsole, fromServ
     if mode and modes[mode] then
         local modeData = modes[mode]
 
-        if modeData.seObject and not IsPlayerAceAllowed(source, modeData.seObject) then
+        if modeData.seObject and (source >= 1 and not IsPlayerAceAllowed(source, modeData.seObject)) then
             return
         end
     end
