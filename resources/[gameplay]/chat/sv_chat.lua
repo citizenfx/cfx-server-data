@@ -137,7 +137,8 @@ local function routeMessage(source, author, message, mode, fromConsole, fromServ
     end
 
     local messageCanceled = false
-    local routingTarget = -1
+
+    local routingTarget = fromServer and source or -1
 
     local hookRef = {
         updateMessage = function(t)
@@ -188,9 +189,7 @@ local function routeMessage(source, author, message, mode, fromConsole, fromServ
         return
     end
 
-    if not fromServer then
-        TriggerEvent('chatMessage', source, #outMessage.args > 1 and outMessage.args[1] or '', outMessage.args[#outMessage.args])
-    end
+    TriggerEvent('chatMessage', fromServer and 0 or source, #outMessage.args > 1 and outMessage.args[1] or '', outMessage.args[#outMessage.args])
 
     if not WasEventCanceled() then
         if type(routingTarget) ~= 'table' then
