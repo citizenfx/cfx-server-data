@@ -144,6 +144,11 @@ function setAutoSpawn(enabled)
     autoSpawnEnabled = enabled
 end
 
+-- return the auto-spawn flag
+function getAutoSpawnEnabled()
+    return autoSpawnEnabled
+end
+
 -- sets a callback to execute instead of 'native' spawning when trying to auto-spawn
 function setAutoSpawnCallback(cb)
     autoSpawnCallback = cb
@@ -382,5 +387,6 @@ exports('addSpawnPoint', addSpawnPoint)
 exports('removeSpawnPoint', removeSpawnPoint)
 exports('loadSpawns', loadSpawns)
 exports('setAutoSpawn', setAutoSpawn)
+exports('getAutoSpawnEnabled', getAutoSpawnEnabled)
 exports('setAutoSpawnCallback', setAutoSpawnCallback)
 exports('forceRespawn', forceRespawn)
