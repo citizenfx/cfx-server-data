@@ -6,7 +6,8 @@ author 'Cfx.re <root@cfx.re>'
 description 'Handles the "host lock" for non-OneSync servers. Do not disable.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
-fx_version 'adamant'
+-- Resource Metadata
+fx_version 'cerulean
 games { 'rdr3', 'gta5' }
 
 server_script 'server/host_lock.lua'
