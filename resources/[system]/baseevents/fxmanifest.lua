@@ -2,7 +2,7 @@
 -- Altering or recreating for local use only is strongly discouraged.
 
 fx_version 'adamant'
-games { 'rdr3', 'gta5' }
+games { 'gta5' }
 
 version '1.0.0'
 author 'Cfx.re <root@cfx.re>'
