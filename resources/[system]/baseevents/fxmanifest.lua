@@ -9,3 +9,6 @@ repository 'https://github.com/citizenfx/cfx-server-data'
 client_script 'deathevents.lua'
 client_script 'vehiclechecker.lua'
 server_script 'server.lua'
+
+fx_version 'adamant'
+game 'gta5'
