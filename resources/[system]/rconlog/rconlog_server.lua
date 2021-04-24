@@ -51,34 +51,30 @@ AddEventHandler('chatMessage', function(netID, name, message)
     RconLog({ msgType = 'chatMessage', netID = netID, name = name, message = message, guid = GetPlayerIdentifiers(netID)[1] })
 end)
 
--- NOTE: DO NOT USE THIS METHOD FOR HANDLING COMMANDS
--- This resource has not been updated to use newer methods such as RegisterCommand.
-AddEventHandler('rconCommand', function(commandName, args)
-    if commandName == 'status' then
-        for netid, data in pairs(names) do
-            local guid = GetPlayerIdentifiers(netid)
+RegisterCommand('status', function(source, args, rawCommand)
+    for netId, data in pairs(names) do
+        local guid = GetPlayerIdentifiers(netId)
 
-            if guid and guid[1] and data then
-                local ping = GetPlayerPing(netid)
+        if guid and guid[1] and data then
+            local ping = GetPlayerPing(netId)
 
-                RconPrint(netid .. ' ' .. guid[1] .. ' ' .. data.name .. ' ' .. GetPlayerEP(netid) .. ' ' .. ping .. "\n")
-            end
+            print(netId .. ' ' .. guid[1] .. ' ' .. data.name .. ' ' .. GetPlayerEP(netId) .. ' ' .. ping .. '\n')
         end
-
-        CancelEvent()
-    elseif commandName:lower() == 'clientkick' then
-        local playerId = table.remove(args, 1)
-        local msg = table.concat(args, ' ')
-
-        DropPlayer(playerId, msg)
-
-        CancelEvent()
-    elseif commandName:lower() == 'tempbanclient' then
-        local playerId = table.remove(args, 1)
-        local msg = table.concat(args, ' ')
-
-        TempBanPlayer(playerId, msg)
-
-        CancelEvent()
     end
-end)
+end, true)
+
+RegisterCommand('clientkick', function(source, args, rawCommand)
+    local playerId = tonumber(args[1])
+    local msg = #args >= 2 and table.concat(args, ' ', 2) or 'No reason provided.'
+    if not playerId or not GetPlayerName(playerId) then return end
+
+    DropPlayer(playerId, msg)
+end, true)
+
+RegisterCommand('tempbanclient', function(source, args, rawCommand)
+    local playerId = tonumber(args[1])
+    local msg = #args >= 2 and table.concat(args, ' ', 2) or 'No reason provided.'
+    if not playerId or not GetPlayerName(playerId) then return end
+
+    TempBanClient(playerId, msg)
+end, true)
