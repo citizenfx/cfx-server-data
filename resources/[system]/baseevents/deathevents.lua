@@ -4,7 +4,7 @@ Citizen.CreateThread(function()
 	local diedAt
 
     while true do
-        Wait(0)
+        Citizen.Wait(0)
 
         local player = PlayerId()
 
@@ -65,8 +65,19 @@ Citizen.CreateThread(function()
     end
 end)
 
+function GetPlayers()
+    local players = {}
+
+    for _, i in ipairs(GetActivePlayers()) do
+        if NetworkIsPlayerActive(i) then
+            table.insert(players, i)
+        end
+    end
+
+    return players
+end
 function GetPlayerByEntityID(id)
-	for i=0,32 do
+	for _, i in ipairs(GetPlayers()) do
 		if(NetworkIsPlayerActive(i) and GetPlayerPed(i) == id) then return i end
 	end
 	return nil
