@@ -54,7 +54,7 @@ AddEventHandler('hostedSession', function()
     -- check if the client is the original locker
     if currentHosting ~= source then
         -- TODO: drop client as they're clearly lying
-        print(currentHosting, '~=', source)
+        DropPlayer(source, "sessionmanager: you have been kicked due to a networking issue.")
         return
     end
 
