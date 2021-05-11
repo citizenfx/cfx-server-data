@@ -10,6 +10,15 @@ const yarnBuildTask = {
 	shouldBuild(resourceName) {
 		try {
 			const resourcePath = GetResourcePath(resourceName);
+
+			const packageJsonLock = path.resolve(resourcePath, 'package-lock.json');
+			try {
+				if (fs.existsSync(packageJsonLock)) {
+					return false
+				}
+			} catch (e) {
+
+			}
 			
 			const packageJson = path.resolve(resourcePath, 'package.json');
 			const yarnLock = path.resolve(resourcePath, '.yarn.installed');
