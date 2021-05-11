@@ -6,7 +6,8 @@ author 'Cfx.re <root@cfx.re>'
 description 'Allows server owners to execute arbitrary server-side or client-side JavaScript/Lua code. *Consider only using this on development servers.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
-resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
+game 'common'
+fx_version 'bodacious'
 
 client_script 'runcode_cl.lua'
 server_script 'runcode_sv.lua'

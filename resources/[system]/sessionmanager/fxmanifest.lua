@@ -3,16 +3,11 @@
 
 version '1.0.0'
 author 'Cfx.re <root@cfx.re>'
-description 'Example loading screen.'
+description 'Handles the "host lock" for non-OneSync servers. Do not disable.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
-files {
-    'index.html',
-    'keks.css',
-    'bankgothic.ttf',
-    'loadscreen.jpg'
-}
+fx_version 'cerulean'
+games { 'gta4', 'gta5' }
 
-loadscreen 'index.html'
-
-resource_manifest_version '77731fab-63ca-442c-a67b-abc70f28dfa5'
+server_script 'server/host_lock.lua'
+client_script 'client/empty.lua'
