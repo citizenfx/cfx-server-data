@@ -31,6 +31,9 @@ RegisterCommand("+scoreboard", function(source, args, rawcommand)
         DisableControlAction(0, 2, true) -- INPUT_LOOK_UD - Prevent moving camera when moving mouse.
         DisableControlAction(0, 16, true) -- INPUT_SELECT_NEXT_WEAPON - Prevent switching weapon when scrolling through list.
         DisableControlAction(0, 17, true) -- INPUT_SELECT_PREV_WEAPON	 - Prevent switching weapon when scrolling through list.
+        DisableControlAction(0, 255, true) -- INPUT_MP_TEXT_CHAT_ALL - Prevent chat from opening.
+        DisableControlAction(0, 99, true) -- INPUT_VEH_SELECT_NEXT_WEAPON - Prevent switching weapon when scrolling through list in a vehicle.
+        DisableControlAction(0, 115, true) -- INPUT_VEH_FLY_SELECT_NEXT_WEAPON - Prevent switching weapon when scrolling through list in a vehicle.
         if GetGameTimer() >= lastUpdate + 3000 then
           TriggerServerEvent("scoreboard:getPlayers")
           lastUpdate = GetGameTimer()
