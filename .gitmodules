@@ -1,0 +1,19 @@
+[submodule "resources/[utils]/mysql-async"]
+	path = resources/[utils]/mysql-async
+	url = https://github.com/brouznouf/fivem-mysql-async.git
+[submodule "resources/[utils]/async"]
+	path = resources/[utils]/async
+	url = https://github.com/esx-framework/async.git
+[submodule "resources/[esx]/[ui]/esx_menu_default"]
+	path = resources/[esx]/[ui]/esx_menu_default
+	url = https://github.com/esx-framework/esx_menu_default
+[submodule "resources/[esx]/[ui]/esx_menu_dialog"]
+	path = resources/[esx]/[ui]/esx_menu_dialog
+	url = https://github.com/esx-framework/esx_menu_dialog
+[submodule "resources/[esx]/[ui]/esx_menu_list"]
+	path = resources/[esx]/[ui]/esx_menu_list
+	url = https://github.com/esx-framework/esx_menu_list
+[submodule "resources/es_extended"]
+	path = resources/es_extended
+	url = https://github.com/esx-framework/es_extended.git
+	branch = legacy
