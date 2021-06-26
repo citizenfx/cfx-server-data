@@ -15,5 +15,5 @@
 	url = https://github.com/esx-framework/esx_menu_list
 [submodule "resources/es_extended"]
 	path = resources/es_extended
-	url = https://github.com/esx-framework/es_extended.git
+	url = git@github.com:ThePhosphorus/aterny_es_extended.git
 	branch = legacy
