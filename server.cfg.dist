@@ -30,6 +30,7 @@ ensure esx_menu_dialog
 
 # Mapping
 exec mapping.cfg
+ensure fix_mapping
 
 # This allows players to use scripthook-based plugins such as the legacy Lambda Menu.
 # Set this to 1 to allow scripthook. Do note that this does _not_ guarantee players won't be able to use external plugins.

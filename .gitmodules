@@ -17,3 +17,6 @@
 	path = resources/es_extended
 	url = git@github.com:ThePhosphorus/aterny_es_extended.git
 	branch = legacy
+[submodule "resources/[utils]/fix_mapping"]
+	path = resources/[utils]/fix_mapping
+	url = https://github.com/Bob74/bob74_ipl.git
