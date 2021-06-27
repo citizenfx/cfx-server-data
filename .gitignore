@@ -1,5 +1,6 @@
 db.cfg
 keys.cfg
 /cache/
-/resources/\[local\]/
+/resources/\[local\]
+/resources/\[mappings\]
 /db/
