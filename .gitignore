@@ -1,4 +1,5 @@
-*.cfg
+server.cfg
 /cache/
-/resources/\[local\]/
+/resources/\[local\]
+/resources/\[mappings\]
 /db/
