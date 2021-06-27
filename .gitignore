@@ -1,4 +1,5 @@
-*.cfg
+db.cfg
+keys.cfg
 /cache/
 /resources/\[local\]/
 /db/
