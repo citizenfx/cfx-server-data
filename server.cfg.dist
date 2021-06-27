@@ -7,13 +7,13 @@ set mysql_slow_query_warning 5000
 
 # These resources will ensure by default.
 ensure mapmanager
-ensure chat
 ensure spawnmanager
 ensure baseevents
 ensure sessionmanager
 ensure hardcap
 ensure rconlog
 ensure yarn
+ensure chat
 
 add_principal group.admin group.user
 add_ace resource.es_extended command.add_ace allow

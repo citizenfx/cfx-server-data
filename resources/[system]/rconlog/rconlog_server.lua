@@ -48,7 +48,7 @@ AddEventHandler('playerDropped', function()
 end)
 
 AddEventHandler('chatMessage', function(netID, name, message)
-    RconLog({ msgType = 'chatMessage', netID = netID, name = name, message = message, guid = GetPlayerIdentifiers(netID)[1] })
+    RconLog({ msgType = 'chatMessage', netID = netID, name = name, message = message, guid = GetPlayerIdentifiers({netID})[1] })
 end)
 
 -- NOTE: DO NOT USE THIS METHOD FOR HANDLING COMMANDS
