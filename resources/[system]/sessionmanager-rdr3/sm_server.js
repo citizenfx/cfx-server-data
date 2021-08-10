@@ -10,18 +10,19 @@ function assignSlotId() {
 			return i;
 		}
 	}
-	
+
 	return -1;
 }
 
 let hostIndex = -1;
+const isOneSync = GetConvar("onesync", "off") !== "off";
 
 protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", function(err, root) {
 	if (err) {
 		console.log(err);
 		return;
 	}
-	
+
 	const RpcMessage = root.lookupType("rline.RpcMessage");
 	const RpcResponseMessage = root.lookupType("rline.RpcResponseMessage");
 	const InitSessionResponse = root.lookupType("rline.InitSessionResponse");
@@ -52,7 +53,7 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 	function emitSessionCmds(target, cmd, cmdname, msg) {
 		const stuff = {};
 		stuff[cmdname] = msg;
-	
+
 		emitMsg(target, RpcMessage.encode({
 			Header: {
 				MethodName: 'scmds'
@@ -79,26 +80,30 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 	function emitAddPlayer(target, msg) {
 		emitSessionCmds(target, 2, 'AddPlayer', msg);
 	}
-	
+
 	function emitRemovePlayer(target, msg) {
 		emitSessionCmds(target, 3, 'RemovePlayer', msg);
 	}
-	
+
 	function emitHostChanged(target, msg) {
 		emitSessionCmds(target, 5, 'HostChanged', msg);
 	}
-	
+
 	onNet('playerDropped', () => {
+		if (isOneSync) {
+			return;
+		}
+
 		try {
 			const oData = playerDatas[source];
 			delete playerDatas[source];
 
 			if (oData && hostIndex === oData.slot) {
 				const pda = Object.entries(playerDatas);
-				
+
 				if (pda.length > 0) {
 					hostIndex = pda[0][1].slot | 0; // TODO: actually use <=31 slot index *and* check for id
-					
+
 					for (const [ id, data ] of Object.entries(playerDatas)) {
 						emitHostChanged(id, {
 							index: hostIndex
@@ -108,15 +113,15 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 					hostIndex = -1;
 				}
 			}
-			
+
 			if (!oData) {
 				return;
 			}
-			
+
 			if (oData.slot > -1) {
 				slotsUsed &= ~(1 << oData.slot);
 			}
-		
+
 			for (const [ id, data ] of Object.entries(playerDatas)) {
 				emitRemovePlayer(id, {
 					id: oData.id
@@ -127,7 +132,7 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 			console.log(e.stack);
 		}
 	});
-	
+
 	function makeResponse(type, data) {
 		return {
 			Header: {
@@ -147,34 +152,36 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 				}*/
 			});
 		},
-		
+
 		async InitPlayer2(source, data) {
 			const req = InitPlayer2_Parameters.decode(data);
-			
-			playerDatas[source] = {
-				gh: req.gh,
-				peerAddress: req.peerAddress,
-				discriminator: req.discriminator,
-				slot: -1
-			};
-			
+
+			if (!isOneSync) {
+				playerDatas[source] = {
+					gh: req.gh,
+					peerAddress: req.peerAddress,
+					discriminator: req.discriminator,
+					slot: -1
+				};
+			}
+
 			return makeResponse(InitPlayerResult, {
 				code: 0
 			});
 		},
-		
+
 		async GetRestrictions(source, data) {
 			return makeResponse(GetRestrictionsResult, {
 				data: {
-				
+
 				}
 			});
 		},
-		
+
 		async ConfirmSessionEntered(source, data) {
 			return {};
 		},
-		
+
 		async TransitionToSession(source, data) {
 			const req = TransitionToSession_Parameters.decode(data);
 
@@ -185,10 +192,12 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 
 		async QueueForSession_Seamless(source, data) {
 			const req = QueueForSession_Seamless_Parameters.decode(data);
-			
-			playerDatas[source].req = req.requestId;
-			playerDatas[source].id = req.requestId.requestor;
-			playerDatas[source].slot = assignSlotId();
+
+			if (!isOneSync) {
+				playerDatas[source].req = req.requestId;
+				playerDatas[source].id = req.requestId.requestor;
+				playerDatas[source].slot = assignSlotId();
+			}
 
 			setTimeout(() => {
 				emitMsg(source, RpcMessage.encode({
@@ -201,8 +210,10 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 						optionFlags: req.optionFlags
 					}).finish()
 				}).finish());
-				
-				if (hostIndex === -1) {
+
+				if (isOneSync) {
+					hostIndex = 16
+				} else if (hostIndex === -1) {
 					hostIndex = playerDatas[source].slot | 0;
 				}
 
@@ -234,11 +245,11 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 
 				setTimeout(() => {
 					emitSessionCmds(source, 0, 'EnterSession', {
-						index: playerDatas[source].slot | 0,
+						index: (isOneSync) ? 16 : playerDatas[source].slot | 0,
 						hindex: hostIndex,
 						sessionFlags: 0,
 						mode: 0,
-						size: Object.entries(playerDatas).filter(a => a[1].id).length,
+						size: (isOneSync) ? 0 : Object.entries(playerDatas).filter(a => a[1].id).length,
 						//size: 2,
 						//size: Object.entries(playerDatas).length,
 						teamIndex: 0,
@@ -252,33 +263,35 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 						slotCount: 32
 					});
 				}, 50);
-				
-				setTimeout(() => {
-					// tell player about everyone, and everyone about player
-					const meData = playerDatas[source];
-					
-					const aboutMe = {
-						id: meData.id,
-						gh: meData.gh,
-						addr: meData.peerAddress,
-						index: playerDatas[source].slot | 0
-					};
-					
-					for (const [ id, data ] of Object.entries(playerDatas)) {
-						if (id == source || !data.id) continue;
-					
-						emitAddPlayer(source, {
-							id: data.id,
-							gh: data.gh,
-							addr: data.peerAddress,
-							index: data.slot | 0
-						});
-						
-						emitAddPlayer(id, aboutMe);
-					}
-				}, 150);
+
+				if (!isOneSync) {
+					setTimeout(() => {
+						// tell player about everyone, and everyone about player
+						const meData = playerDatas[source];
+
+						const aboutMe = {
+							id: meData.id,
+							gh: meData.gh,
+							addr: meData.peerAddress,
+							index: playerDatas[source].slot | 0
+						};
+
+						for (const [ id, data ] of Object.entries(playerDatas)) {
+							if (id == source || !data.id) continue;
+
+							emitAddPlayer(source, {
+								id: data.id,
+								gh: data.gh,
+								addr: data.peerAddress,
+								index: data.slot | 0
+							});
+
+							emitAddPlayer(id, aboutMe);
+						}
+					}, 150);
+				}
 			}, 250);
-			
+
 			return makeResponse(QueueForSessionResult, {
 				code: 1
 			});
@@ -292,20 +305,20 @@ protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", functi
 
 		return {};
 	}
-	
+
 	onNet('__cfx_internal:pbRlScSession', async (data) => {
 		const s = source;
-		
+
 		try {
 			const message = RpcMessage.decode(new Uint8Array(data));
 			const response = await handleMessage(s, message.Header.MethodName, message.Content);
-			
+
 			if (!response || !response.Header) {
 				return;
 			}
-			
+
 			response.Header.RequestId = message.Header.RequestId;
-			
+
 			emitMsg(s, RpcResponseMessage.encode(response).finish());
 		} catch (e) {
 			console.log(e);
