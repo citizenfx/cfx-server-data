@@ -41,13 +41,16 @@ const yarnBuildTask = {
 			}
 			buildingInProgress = true;
 			currentBuildingModule = resourceName;
-			const process = child_process.fork(
+			const proc = child_process.fork(
 				require.resolve('./yarn_cli.js'),
 				['install', '--ignore-scripts', '--cache-folder', path.join(initCwd, 'cache', 'yarn-cache'), '--mutex', 'file:' + path.join(initCwd, 'cache', 'yarn-mutex')],
 				{
-					cwd: path.resolve(GetResourcePath(resourceName))
+					cwd: path.resolve(GetResourcePath(resourceName)),
+					stdio: 'pipe',
 				});
-			process.on('exit', (code, signal) => {
+			proc.stdout.on('data', (data) => console.log('[yarn]', data.toString()));
+			proc.stderr.on('data', (data) => console.error('[yarn]', data.toString()));
+			proc.on('exit', (code, signal) => {
 				setImmediate(() => {
 					if (code != 0 || signal) {
 						buildingInProgress = false;
