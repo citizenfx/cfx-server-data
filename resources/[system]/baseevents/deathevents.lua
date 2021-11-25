@@ -33,7 +33,7 @@ Citizen.CreateThread(function()
 					end
 				end
 
-				local killerid = GetPlayerByEntityID(killer)
+				local killerid = NetworkGetPlayerIndexFromPed(killer)
 				if killer ~= ped and killerid ~= nil and NetworkIsPlayerActive(killerid) then killerid = GetPlayerServerId(killerid)
 				else killerid = -1
 				end
