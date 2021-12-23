@@ -52,7 +52,7 @@ const defaultMode: Mode = {
 
 const globalMode: Mode = {
   name: '_global',
-  displayName: 'Al',
+  displayName: 'All',
   color: '#fff',
   isGlobal: true,
   hidden: true
