@@ -52,7 +52,7 @@ const defaultMode: Mode = {
 
 const globalMode: Mode = {
   name: '_global',
-  displayName: 'All',
+  displayName: 'Al',
   color: '#fff',
   isGlobal: true,
   hidden: true
@@ -85,8 +85,8 @@ export default Vue.extend({
       showWindowTimer: 0,
       showHideStateTimer: 0,
       listener: (event: MessageEvent) => {},
-      modes: [defaultMode, globalMode] as Mode[],
-      modeIdx: 0,
+      modes: [globalMode, defaultMode] as Mode[],
+      modeIdx: 1,
     };
   },
   destroyed() {
