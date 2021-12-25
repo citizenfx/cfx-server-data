@@ -214,8 +214,10 @@ end)
 AddEventHandler('__cfx_internal:commandFallback', function(command)
     local name = GetPlayerName(source)
 
-    -- route the message as if it were a /command
-    routeMessage(source, name, '/' .. command, nil, true)
+    if (GetConvarInt('chat_showMissingCommands', 1)~=0) then
+        -- route the message as if it were a /command
+        routeMessage(source, name, '/' .. command, nil, true)
+    end
 
     CancelEvent()
 end)
