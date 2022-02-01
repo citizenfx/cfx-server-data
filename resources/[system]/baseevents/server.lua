@@ -1,10 +1,10 @@
-RegisterServerEvent('baseevents:onPlayerDied')
-RegisterServerEvent('baseevents:onPlayerKilled')
-RegisterServerEvent('baseevents:onPlayerWasted')
-RegisterServerEvent('baseevents:enteringVehicle')
-RegisterServerEvent('baseevents:enteringAborted')
-RegisterServerEvent('baseevents:enteredVehicle')
-RegisterServerEvent('baseevents:leftVehicle')
+RegisterNetEvent('baseevents:onPlayerDied')
+RegisterNetEvent('baseevents:onPlayerKilled')
+RegisterNetEvent('baseevents:onPlayerWasted')
+RegisterNetEvent('baseevents:enteringVehicle')
+RegisterNetEvent('baseevents:enteringAborted')
+RegisterNetEvent('baseevents:enteredVehicle')
+RegisterNetEvent('baseevents:leftVehicle')
 
 AddEventHandler('baseevents:onPlayerKilled', function(killedBy, data)
 	local victim = source
