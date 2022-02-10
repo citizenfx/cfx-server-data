@@ -37,7 +37,7 @@ local QBCore = nil
 if isESX then
     TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 else
-    exports["qb-core"]:GetCoreObject()
+    QBCore = exports["qb-core"]:GetCoreObject()
 end
 
 exports('registerMessageHook', function(hook)
