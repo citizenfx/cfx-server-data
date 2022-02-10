@@ -24,6 +24,22 @@ end)
 local hooks = {}
 local hookIdx = 1
 
+local EnterJoinMessageForStaffOnly = true
+local StaffGroups = {
+    'superadmin',
+    'admin',
+    'mod'
+}
+local isESX = false
+local ESX = nil
+local QBCore = nil
+
+if isESX then
+    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+else
+    QBCore = exports["qb-core"]:GetCoreObject()
+end
+
 exports('registerMessageHook', function(hook)
     local resource = GetInvokingResource()
     hooks[hookIdx + 1] = {
@@ -205,10 +221,6 @@ AddEventHandler('_chat:messageEntered', function(author, color, message, mode)
     if not message or not author then
         return
     end
-
-    local source = source
-
-    routeMessage(source, author, message, mode)
 end)
 
 AddEventHandler('__cfx_internal:commandFallback', function(command)
@@ -226,7 +238,11 @@ AddEventHandler('playerJoining', function()
         return
     end
 
-    TriggerClientEvent('chatMessage', -1, '', { 255, 255, 255 }, '^2* ' .. GetPlayerName(source) .. ' joined.')
+    showOnlyForAdmins(function(target)
+        if not EnterJoinMessageForStaffOnly then target = -1 end
+        TriggerEvent('okokChat:ServerMessage', "linear-gradient(90deg, rgba(42, 42, 42, 0.9) 0%, rgba(19, 138, 70, 0.9) 100%)", "#1ebc62", "fas fa-cog", "SYSTEM", "", '<b>'..GetPlayerName(source)..'</b> joined.', target)
+        -- this TriggerClientEvent('chatMessage', -1, '', { 255, 255, 255 }, '^2* ' .. GetPlayerName(source) .. ' joined.')
+    end)
 end)
 
 AddEventHandler('playerDropped', function(reason)
@@ -234,12 +250,41 @@ AddEventHandler('playerDropped', function(reason)
         return
     end
 
-    TriggerClientEvent('chatMessage', -1, '', { 255, 255, 255 }, '^2* ' .. GetPlayerName(source) ..' left (' .. reason .. ')')
+    showOnlyForAdmins(function(target)
+        if not EnterJoinMessageForStaffOnly then target = -1 end
+        TriggerEvent('okokChat:ServerMessage', "linear-gradient(90deg, rgba(42, 42, 42, 0.9) 0%, rgba(101, 0, 0, 0.9) 100%)", "#ff0000", "fas fa-cog", "SYSTEM", "", '<b>'..GetPlayerName(source)..'</b> left.', target)
+        -- this TriggerClientEvent('chatMessage', -1, '', { 255, 255, 255 }, '^2* ' .. GetPlayerName(source) ..' left (' .. reason .. ')')
+    end)
 end)
 
-RegisterCommand('say', function(source, args, rawCommand)
-    routeMessage(source, (source == 0) and 'console' or GetPlayerName(source), rawCommand:sub(5), nil, true)
-end)
+function isAdmin(xPlayer)
+    for k,v in ipairs(StaffGroups) do
+        if isESX then
+            if xPlayer.getGroup() == v then 
+                return true 
+            end
+        else
+            if QBCore.Functions.GetPermission(xPlayer.PlayerData.source) == v then 
+                return true 
+            end
+        end
+    end
+    return false
+end
+
+function showOnlyForAdmins(admins)
+    for k,v in ipairs(ESX.GetPlayers()) do
+        local xPlayer = nil
+        if isESX then
+            xPlayer = ESX.GetPlayerFromId(v)
+        else
+            xPlayer = QBCore.Functions.GetPlayer(v)
+        end
+        if isAdmin(xPlayer) then
+            admins(v)
+        end
+    end
+end
 
 -- command suggestions for clients
 local function refreshCommands(player)
