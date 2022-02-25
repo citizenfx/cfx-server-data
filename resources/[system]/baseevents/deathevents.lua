@@ -66,7 +66,8 @@ Citizen.CreateThread(function()
 end)
 
 function GetPlayerByEntityID(id)
-	for i=0,32 do
+	local maxclients = GetConvarInt('sv_maxclients', 32)
+    	for i = 1, maxclients do
 		if(NetworkIsPlayerActive(i) and GetPlayerPed(i) == id) then return i end
 	end
 	return nil
