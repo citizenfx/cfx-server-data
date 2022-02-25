@@ -1,5 +1,4 @@
-local gamename = GetGameName()
-local isRDR = gamename == "redm"
+local isRDR = GetGameName() == "redm"
 
 local chatInputActive = false
 local chatInputActivating = false
@@ -229,7 +228,7 @@ local kvpEntry = GetResourceKvpString('hideState')
 local chatHideState = kvpEntry and tonumber(kvpEntry) or CHAT_HIDE_STATES.SHOW_WHEN_ACTIVE
 local isFirstHide = true
 
-if not gamename == "redm" then
+if not isRDR then
   if RegisterKeyMapping then
     RegisterKeyMapping('toggleChat', 'Toggle chat', 'keyboard', 'l')
   end
