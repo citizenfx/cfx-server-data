@@ -1,4 +1,4 @@
-RconLog({ msgType = 'serverStart', hostname = 'lovely', maxplayers = 32 })
+RconLog({ msgType = 'serverStart', hostname = 'lovely', maxplayers = GetConvarInt('sv_maxclients', 32) })
 
 RegisterServerEvent('rlPlayerActivated')
 
