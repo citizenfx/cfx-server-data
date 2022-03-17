@@ -13,6 +13,10 @@ const yarnBuildTask = {
 			
 			const packageJson = path.resolve(resourcePath, 'package.json');
 			const yarnLock = path.resolve(resourcePath, '.yarn.installed');
+			const packageData = JSON.parse(fs.readFileSync(packageJson, 'utf8'));
+			if (!packageData.dependencies || !Object.keys(packageData.dependencies).length) {
+				return false;
+			}
 			
 			const packageStat = fs.statSync(packageJson);
 			
@@ -43,7 +47,7 @@ const yarnBuildTask = {
 			currentBuildingModule = resourceName;
 			const proc = child_process.fork(
 				require.resolve('./yarn_cli.js'),
-				['install', '--ignore-scripts', '--cache-folder', path.join(initCwd, 'cache', 'yarn-cache'), '--mutex', 'file:' + path.join(initCwd, 'cache', 'yarn-mutex')],
+				['install', '--production', '--ignore-scripts', '--cache-folder', path.join(initCwd, 'cache', 'yarn-cache'), '--mutex', 'file:' + path.join(initCwd, 'cache', 'yarn-mutex')],
 				{
 					cwd: path.resolve(GetResourcePath(resourceName)),
 					stdio: 'pipe',
