@@ -193,7 +193,7 @@ local function refreshThemes()
   })
 end
 
-AddEventHandler('onClientResourceStart', function(resName)
+AddEventHandler('onResourceStart', function(resName)
   Wait(500)
 
   refreshCommands()
