@@ -15,11 +15,12 @@ Citizen.CreateThread(function()
 
 				local vehicle = GetVehiclePedIsTryingToEnter(ped)
 				local model = GetEntityModel(vehicleIsTryingToEnter)
+				local vehicleName = GetDisplayNameFromVehicleModel(model)
 				local netId = VehToNet(vehicle)
 				local seat = GetSeatPedIsTryingToEnter(ped)
 
-				TriggerEvent('baseevents:enteringVehicle', vehicle, seat, model)
-				TriggerServerEvent('baseevents:enteringVehicle', vehicle, seat, model, netId)
+				TriggerEvent('baseevents:enteringVehicle', vehicle, seat, model, vehicleName)
+				TriggerServerEvent('baseevents:enteringVehicle', vehicle, seat, model, vehicleName, netId)
 			elseif not DoesEntityExist(GetVehiclePedIsTryingToEnter(ped)) and not IsPedInAnyVehicle(ped, true) and isEnteringVehicle then
 				-- Vehicle Entering Aborted
 				isEnteringVehicle = false
@@ -35,19 +36,21 @@ Citizen.CreateThread(function()
 				currentSeat = GetPedVehicleSeat(ped)
 				
 				local model = GetEntityModel(currentVehicle)
+				local vehicleName = GetDisplayNameFromVehicleModel(model)
 				local netId = VehToNet(currentVehicle)
 
-				TriggerEvent('baseevents:enteredVehicle', currentVehicle, currentSeat, model)
-				TriggerServerEvent('baseevents:enteredVehicle', currentVehicle, currentSeat, model, netId)
+				TriggerEvent('baseevents:enteredVehicle', currentVehicle, currentSeat, model, vehicleName)
+				TriggerServerEvent('baseevents:enteredVehicle', currentVehicle, currentSeat, model, vehicleName, netId)
 			end
 		elseif isInVehicle then
 			if not IsPedInAnyVehicle(ped, false) then
 				-- Exiting Vehicle
 				local model = GetEntityModel(currentVehicle)
+				local vehicleName = GetDisplayNameFromVehicleModel(model)
 				local netId = VehToNet(currentVehicle)
-
-				TriggerEvent('baseevents:leftVehicle', currentVehicle, currentSeat, model)
-				TriggerServerEvent('baseevents:leftVehicle', currentVehicle, currentSeat, model, netId)
+				
+				TriggerEvent('baseevents:leftVehicle', currentVehicle, currentSeat, model, vehicleName)
+				TriggerServerEvent('baseevents:leftVehicle', currentVehicle, currentSeat, model, vehicleName, netId)
 
 				isInVehicle = false
 				currentVehicle = 0
