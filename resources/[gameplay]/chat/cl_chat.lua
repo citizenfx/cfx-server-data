@@ -3,6 +3,9 @@ local isRDR = not TerraingridActivate and true or false
 local chatInputActive = false
 local chatInputActivating = false
 local chatLoaded = false
+-- these are defined as global local variables now
+local lastChatHideState = -1
+local origChatHideState = -1
 
 RegisterNetEvent('chatMessage')
 RegisterNetEvent('chat:addTemplate')
@@ -248,61 +251,52 @@ if not isRDR then
   end, false)
 end
 
-Citizen.CreateThread(function()
-  SetTextChatEnabled(false)
-  SetNuiFocus(false)
+function init_()
+    SetTextChatEnabled(false)
+    SetNuiFocus(false)
+end
 
-  local lastChatHideState = -1
-  local origChatHideState = -1
-
-  while true do
-    Wait(0)
-
-    if not chatInputActive then
-      if IsControlPressed(0, isRDR and `INPUT_MP_TEXT_CHAT_ALL` or 245) --[[ INPUT_MP_TEXT_CHAT_ALL ]] then
-        chatInputActive = true
-        chatInputActivating = true
-
-        SendNUIMessage({
-          type = 'ON_OPEN'
-        })
-      end
-    end
-
-    if chatInputActivating then
-      if not IsControlPressed(0, isRDR and `INPUT_MP_TEXT_CHAT_ALL` or 245) then
-        SetNuiFocus(true)
-
-        chatInputActivating = false
-      end
-    end
-
-    if chatLoaded then
-      local forceHide = IsScreenFadedOut() or IsPauseMenuActive()
-      local wasForceHide = false
-
-      if chatHideState ~= CHAT_HIDE_STATES.ALWAYS_HIDE then
-        if forceHide then
-          origChatHideState = chatHideState
-          chatHideState = CHAT_HIDE_STATES.ALWAYS_HIDE
-        end
-      elseif not forceHide and origChatHideState ~= -1 then
-        chatHideState = origChatHideState
-        origChatHideState = -1
-        wasForceHide = true
-      end
-
-      if chatHideState ~= lastChatHideState then
-        lastChatHideState = chatHideState
-
-        SendNUIMessage({
-          type = 'ON_SCREEN_STATE_CHANGE',
-          hideState = chatHideState,
-          fromUserInteraction = not forceHide and not isFirstHide and not wasForceHide
-        })
-
-        isFirstHide = false
-      end
-    end
+RegisterCommand('OpenChat', function()
+  if not chatInputActive then
+    chatInputActive = true
+    chatInputActivating = true
+    SendNUIMessage({
+               type = 'ON_OPEN'
+    })
   end
-end)
+  if chatInputActivating then
+    chatInputActivating = false
+    SetNuiFocus(true)
+  end
+       if chatLoaded then
+       local forceHide = IsScreenFadedOut() or IsPauseMenuActive()
+       local wasForceHide = false
+ 
+       if chatHideState ~= CHAT_HIDE_STATES.ALWAYS_HIDE then
+         if forceHide then
+           origChatHideState = chatHideState
+           chatHideState = CHAT_HIDE_STATES.ALWAYS_HIDE
+         end
+       elseif not forceHide and origChatHideState ~= -1 then
+         chatHideState = origChatHideState
+         origChatHideState = -1
+         wasForceHide = true
+       end
+ 
+       if chatHideState ~= lastChatHideState then
+         lastChatHideState = chatHideState
+ 
+         SendNUIMessage({
+           type = 'ON_SCREEN_STATE_CHANGE',
+           hideState = chatHideState,
+           fromUserInteraction = not forceHide and not isFirstHide and not wasForceHide
+         })
+ 
+         isFirstHide = false
+       end
+     end
+end, false)
+
+RegisterKeyMapping('OpenChat', 'Shortcut to Open The Chat', 'keyboard', 't')
+
+init_()
