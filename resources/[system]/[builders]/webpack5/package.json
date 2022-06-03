@@ -1,0 +1,15 @@
+{
+  "name": "webpack5-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^5.73.0",
+    "worker-farm": "^1.7.0"
+  }
+}
