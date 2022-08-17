@@ -4,21 +4,25 @@ const child_process = require('child_process');
 let buildingInProgress = false;
 let currentBuildingModule = '';
 
+const cliPath = require.resolve('./yarn_cli.js');
 const initCwd = process.cwd();
+const trimOutput = (data) => {
+	return `[yarn]\t` + data.toString().replace(/\s+$/, '');
+}
 
 const yarnBuildTask = {
 	shouldBuild(resourceName) {
 		try {
 			const resourcePath = GetResourcePath(resourceName);
-			
+
 			const packageJson = path.resolve(resourcePath, 'package.json');
 			const yarnLock = path.resolve(resourcePath, '.yarn.installed');
-			
+
 			const packageStat = fs.statSync(packageJson);
-			
+
 			try {
 				const yarnStat = fs.statSync(yarnLock);
-				
+
 				if (packageStat.mtimeMs > yarnStat.mtimeMs) {
 					return true;
 				}
@@ -27,12 +31,12 @@ const yarnBuildTask = {
 				return true;
 			}
 		} catch (e) {
-			
+
 		}
-		
+
 		return false;
 	},
-	
+
 	build(resourceName, cb) {
 		(async () => {
 			while (buildingInProgress && currentBuildingModule !== resourceName) {
@@ -42,14 +46,14 @@ const yarnBuildTask = {
 			buildingInProgress = true;
 			currentBuildingModule = resourceName;
 			const proc = child_process.fork(
-				require.resolve('./yarn_cli.js'),
+				cliPath,
 				['install', '--ignore-scripts', '--cache-folder', path.join(initCwd, 'cache', 'yarn-cache'), '--mutex', 'file:' + path.join(initCwd, 'cache', 'yarn-mutex')],
 				{
 					cwd: path.resolve(GetResourcePath(resourceName)),
 					stdio: 'pipe',
 				});
-			proc.stdout.on('data', (data) => console.log('[yarn]', data.toString()));
-			proc.stderr.on('data', (data) => console.error('[yarn]', data.toString()));
+			proc.stdout.on('data', (data) => console.log(trimOutput(data)));
+			proc.stderr.on('data', (data) => console.error(trimOutput(data)));
 			proc.on('exit', (code, signal) => {
 				setImmediate(() => {
 					if (code != 0 || signal) {
