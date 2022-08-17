@@ -1,6 +1,13 @@
 # cfx-server-data
 _The data repository for Cfx.re servers_
 
+## Deprecation notice
+This repository itself is considered finalized/immutable and is currently archived. Pull requests or issue reports were not merged for a *while*, using the contents of the repository should still be fine (and this shouldn't change until mentioned otherwise).
+
+In the future, relevant parts of this repository will be moved to [citizenfx/fivem](https://github.com/citizenfx/fivem) to be bundled with actual server builds, and the examples (+ legacy API-like resources) will be moved to a new repository.
+
+If there's any critical issue in the code in this repository, posting on the [Cfx.re forums](https://forum.cfx.re/) may work.
+
 ## Usage
 1. Make sure to `git clone`. Don't "Download ZIP", as that'll make it _much_ harder to update to newer versions.
 2. Put custom resources in `resources/[local]/` if you don't want to be affected by any random messups.
