@@ -5,6 +5,8 @@ local spawnPoints = {}
 local autoSpawnEnabled = false
 local autoSpawnCallback
 
+local playerSpawned = false
+
 -- support for mapmanager maps
 AddEventHandler('getMapDirectives', function(add)
     -- call the remote callback
@@ -330,6 +332,7 @@ function spawnPlayer(spawnIdx, cb)
             cb(spawn)
         end
 
+	playerSpawned = true
         spawnLock = false
     end)
 end
@@ -377,6 +380,11 @@ function forceRespawn()
     respawnForced = true
 end
 
+function isPlayerSpawned() 
+    return playerSpawned
+end
+
+exports('isPlayerSpawned', isPlayerSpawned)
 exports('spawnPlayer', spawnPlayer)
 exports('addSpawnPoint', addSpawnPoint)
 exports('removeSpawnPoint', removeSpawnPoint)
