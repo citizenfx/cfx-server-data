@@ -53,7 +53,7 @@ end)
 AddEventHandler('hostedSession', function()
     -- check if the client is the original locker
     if currentHosting ~= source then
-        -- TODO: drop client as they're clearly lying
+        DropPlayer(source, 'Connection to the server was lost')
         print(currentHosting, '~=', source)
         return
     end
