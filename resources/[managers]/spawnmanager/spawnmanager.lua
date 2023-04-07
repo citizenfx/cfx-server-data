@@ -313,7 +313,7 @@ function spawnPlayer(spawnIdx, cb)
 
         ShutdownLoadingScreen()
 
-        if IsScreenFadedOut() then
+        if not spawn.skipFade and IsScreenFadedOut() then
             DoScreenFadeIn(500)
 
             while not IsScreenFadedIn() do
