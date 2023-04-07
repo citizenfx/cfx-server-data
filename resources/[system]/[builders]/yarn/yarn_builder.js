@@ -5,6 +5,9 @@ let buildingInProgress = false;
 let currentBuildingModule = '';
 
 const initCwd = process.cwd();
+const trimOutput = (data) => {
+	return `[yarn]\t` + data.toString().replace(/\s+$/, '');
+}
 
 const yarnBuildTask = {
 	shouldBuild(resourceName) {
@@ -48,8 +51,8 @@ const yarnBuildTask = {
 					cwd: path.resolve(GetResourcePath(resourceName)),
 					stdio: 'pipe',
 				});
-			proc.stdout.on('data', (data) => console.log('[yarn]', data.toString()));
-			proc.stderr.on('data', (data) => console.error('[yarn]', data.toString()));
+			proc.stdout.on('data', (data) => console.log(trimOutput(data)));
+			proc.stderr.on('data', (data) => console.error(trimOutput(data)));
 			proc.on('exit', (code, signal) => {
 				setImmediate(() => {
 					if (code != 0 || signal) {
