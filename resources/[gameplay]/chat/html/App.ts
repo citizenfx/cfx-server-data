@@ -437,7 +437,7 @@ export default Vue.extend({
             mode: this.modes[this.modeIdxGet].name
           })
         );
-        this.oldMessages.unshift(this.message);
+        if (this.oldMessages[0] && this.oldMessages[0] !== this.message) this.oldMessages.unshift(this.message);
         this.oldMessagesIndex = -1;
         this.hideInput();
       } else {
