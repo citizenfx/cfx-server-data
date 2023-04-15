@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'Rubik';
+  src: url('https://cfx-nui-scoreboard/assets/Rubik.ttf');
+}
+
+* {
+  font-family: 'Rubik', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.scoreboardWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.scoreboard {
+  background-color: #414a4d;
+  width: 1000px;
+  max-width: 100%;
+  height: 600px;
+  overflow: auto;
+  background-image: url("https://cfx-nui-scoreboard/assets/backdrop.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.content-table {
+  border-collapse: separate;
+  width: 100%;
+  table-layout: fixed;
+  border: none;
+  margin: 0;
+  border-spacing: 0;
+}
+
+.content-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(35, 35, 35, 1);
+  border-bottom: 2px solid rgba(244,5,82,0.75);
+  text-align: left;
+  color: #fff;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 12px;
+  min-width: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.content-table tbody tr {
+  color: #fff;
+  transition: .2s;
+  border-bottom: 1px solid #eeeeee;
+  background: rgba(35, 35, 35, 0.6);
+}
+
+.content-table tbody tr:hover {
+  background-color: rgba(244,5,82,0.75);
+}
+
+::-webkit-scrollbar {
+  background: rgba(35, 35, 35, 0.9);
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(244,5,82, 1);
+}
