@@ -1,0 +1,11 @@
+{
+  "name": "esbuild_builder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "esbuild": "^0.12.28",
+    "fs-extra": "^10.0.0",
+    "worker-farm": "^1.7.0"
+  }
+}
