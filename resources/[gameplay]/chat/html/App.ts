@@ -85,8 +85,8 @@ export default Vue.extend({
       showWindowTimer: 0,
       showHideStateTimer: 0,
       listener: (event: MessageEvent) => {},
-      modes: [defaultMode, globalMode] as Mode[],
-      modeIdx: 0,
+      modes: [globalMode, defaultMode] as Mode[],
+      modeIdx: 1,
     };
   },
   destroyed() {
@@ -264,8 +264,17 @@ export default Vue.extend({
     ON_MODE_REMOVE({ name }: { name: string }) {
       this.modes = this.modes.filter(a => a.name !== name);
 
-      if (this.modes.length === 0) {
-        this.modes = [defaultMode];
+      //On old logic, unless the user knows about "_global" mode, and actively chooses to remove it, this would never happen.
+      //We check to make sure, that the user ALWAYS has an ACTIVE (non hidden) channel that he can see.
+      //This implementation assumes that the only channel that can remain is "_global", which is also Bad, but it does *something*.
+      if (this.modes.length === 0 || (this.modes.length === 1 && this.modes[0].hidden)) {
+        this.modes = [globalMode, defaultMode];
+      }
+      //Potential fix for making sure user doesn't remain on a NULL event
+      if (this.modes[this.modeIdx] === undefined) { //after removing the mode, check if the user can still use that modeIdx
+        do {
+            this.modeIdx = (this.modeIdx + 1) % this.modes.length;
+          } while (this.modes[this.modeIdx] === undefined);
       }
     },
     ON_TEMPLATE_ADD({ template }: { template: { id: string, html: string }}) {
