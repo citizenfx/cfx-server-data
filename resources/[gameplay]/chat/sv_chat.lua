@@ -21,6 +21,10 @@ exports('addMessage', function(target, message)
     TriggerClientEvent('chat:addMessage', target, message)
 end)
 
+exports('sendMessage', function(target, author, message, mode)
+    routeMessage(target, author, message, mode, true, true)
+end)
+
 local hooks = {}
 local hookIdx = 1
 
@@ -108,8 +112,8 @@ local function unregisterHooks(resource)
     end
 end
 
-local function routeMessage(source, author, message, mode, fromConsole)
-    if source >= 1 then
+local function routeMessage(source, author, message, mode, fromConsole, fromServer)
+    if not fromServer and source >= 1 then
         author = GetPlayerName(source)
     end
 
@@ -127,13 +131,14 @@ local function routeMessage(source, author, message, mode, fromConsole)
     if mode and modes[mode] then
         local modeData = modes[mode]
 
-        if modeData.seObject and not IsPlayerAceAllowed(source, modeData.seObject) then
+        if modeData.seObject and (source >= 1 and not IsPlayerAceAllowed(source, modeData.seObject)) then
             return
         end
     end
 
     local messageCanceled = false
-    local routingTarget = -1
+
+    local routingTarget = fromServer and source or -1
 
     local hookRef = {
         updateMessage = function(t)
@@ -170,21 +175,21 @@ local function routeMessage(source, author, message, mode, fromConsole)
 
     for _, hook in pairs(hooks) do
         if hook.fn then
-            hook.fn(source, outMessage, hookRef)
+            hook.fn(source, outMessage, hookRef, fromServer)
         end
     end
 
     if modes[mode] then
         local m = modes[mode]
 
-        m.cb(source, outMessage, hookRef)
+        m.cb(source, outMessage, hookRef, fromServer)
     end
 
     if messageCanceled then
         return
     end
 
-    TriggerEvent('chatMessage', source, #outMessage.args > 1 and outMessage.args[1] or '', outMessage.args[#outMessage.args])
+    TriggerEvent('chatMessage', fromServer and 0 or source, #outMessage.args > 1 and outMessage.args[1] or '', outMessage.args[#outMessage.args])
 
     if not WasEventCanceled() then
         if type(routingTarget) ~= 'table' then
