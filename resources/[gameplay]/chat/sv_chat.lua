@@ -196,7 +196,7 @@ local function routeMessage(source, author, message, mode, fromConsole)
         end
     end
 
-    if not fromConsole then
+    if not fromConsole and GetConvarInt('chat_silent', 0) == 0 then
         print(author .. '^7' .. (modes[mode] and (' (' .. modes[mode].displayName .. ')') or '') .. ': ' .. message .. '^7')
     end
 end
