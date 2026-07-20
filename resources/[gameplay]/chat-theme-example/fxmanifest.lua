@@ -3,13 +3,13 @@
 
 version '1.0.0'
 author 'Cfx.re <root@cfx.re>'
-description 'A GTA Online-styled theme for the chat resource.'
+description 'Example theme for the chat resource.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
 file 'style.css'
 file 'shadow.js'
 
-chat_theme 'gtao' {
+chat_theme 'example' {
     styleSheet = 'style.css',
     script = 'shadow.js',
     msgTemplates = {
