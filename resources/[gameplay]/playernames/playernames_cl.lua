@@ -142,9 +142,7 @@ local function getSettings(id)
     return mpGamerTagSettings[i]
 end
 
-RegisterNetEvent('playernames:configure')
-
-AddEventHandler('playernames:configure', function(id, key, ...)
+RegisterNetEvent('playernames:configure', function(id, key, ...)
     local args = table.pack(...)
 
     if key == 'tglc' then
@@ -183,7 +181,7 @@ AddEventHandler('onResourceStop', function(name)
     end
 end)
 
-SetTimeout(0, function()
+CreateThread(function()
     TriggerServerEvent('playernames:init')
 end)
 

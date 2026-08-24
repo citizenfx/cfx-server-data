@@ -12,14 +12,14 @@ local function refreshResources()
         if GetNumResourceMetadata(resource, 'resource_type') > 0 then
             local type = GetResourceMetadata(resource, 'resource_type', 0)
             local params = json.decode(GetResourceMetadata(resource, 'resource_type_extra', 0))
-            
+
             local valid = false
-            
+
             local games = GetNumResourceMetadata(resource, 'game')
             if games > 0 then
 				for j = 0, games - 1 do
 					local game = GetResourceMetadata(resource, 'game', j)
-				
+
 					if game == GetConvar('gamename', 'gta5') or game == 'common' then
 						valid = true
 					end
@@ -264,7 +264,7 @@ RegisterCommand("gametype", function(source, args)
     end
     changeGameType(args[1])
     print('gametype ' .. args[1] .. "\n")
-end)
+end, true)
 
 function getCurrentGameType()
     return currentGameType
@@ -313,3 +313,11 @@ function doesMapSupportGameType(gameType, map)
 
     return maps[map].gameTypes[gameType]
 end
+
+exports('getCurrentGameType', getCurrentGameType)
+exports('getCurrentMap', getCurrentMap)
+exports('changeGameType', changeGameType)
+exports('changeMap', changeMap)
+exports('doesMapSupportGameType', doesMapSupportGameType)
+exports('getMaps', getMaps)
+exports('roundEnded', roundEnded)

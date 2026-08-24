@@ -40,8 +40,8 @@ AddEventHandler('onClientResourceStart', function(res)
     loadMap(res)
 
     -- defer this to the next game tick to work around a lack of dependencies
-    Citizen.CreateThread(function()
-        Citizen.Wait(15)
+    CreateThread(function()
+        Wait(15)
 
         if maps[res] then
             TriggerEvent('onClientMapStart', res)
