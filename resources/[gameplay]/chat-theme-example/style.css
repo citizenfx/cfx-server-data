@@ -19,20 +19,9 @@
     user-select: none;
 }
 
-@font-face {
-    font-family: 'Font2';
-    src: url(https://runtime.fivem.net/temp/ChaletLondonNineteenSixty.otf?a);
-}
-
-@font-face {
-    font-family: 'Font2_cond';
-    src: url(https://runtime.fivem.net/temp/chaletcomprime-colognesixty-webfont.ttf?a);
-}
-
 .msg {
-    font-family: Font2, sans-serif;
+    font-family: sans-serif;
     color: #fff;
-
     font-size: calc(1.8vh); /* 13px in 720p, calc'd by width */
     filter: url(#svgDropShadowFilter);
 
@@ -47,15 +36,13 @@
 }
 
 .msg > span > span > b {
-    font-family: Font2_cond, sans-serif;
-    font-weight: normal;
-
+    font-family: sans-serif;
     vertical-align: baseline;
     padding-right: 11px;
 
     line-height: 1;
 
-    font-size: calc(2.7vh);
+    font-size: calc(1.8vh);
 }
 
 .msg > span > span > span {

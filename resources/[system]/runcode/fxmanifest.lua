@@ -19,6 +19,7 @@ shared_script 'runcode.js'
 client_script 'runcode_ui.lua'
 
 ui_page 'web/nui.html'
+nui_callback_strict_mode 'false'
 files {
     'web/nui.html'
 }
