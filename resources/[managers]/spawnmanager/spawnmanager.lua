@@ -255,24 +255,25 @@ function spawnPlayer(spawnIdx, cb)
 
         -- if the spawn has a model set
         if spawn.model then
-            RequestModel(spawn.model)
-
-            -- load the model for this spawn
-            while not HasModelLoaded(spawn.model) do
+            if IsModelValid(spawn.model) then
+                -- load the model for this spawn
                 RequestModel(spawn.model)
+                while not HasModelLoaded(spawn.model) do
+                    Wait(0)
+                end
 
-                Wait(0)
-            end
+                -- change the player model
+                SetPlayerModel(PlayerId(), spawn.model)
 
-            -- change the player model
-            SetPlayerModel(PlayerId(), spawn.model)
+                -- release the player model
+                SetModelAsNoLongerNeeded(spawn.model)
 
-            -- release the player model
-            SetModelAsNoLongerNeeded(spawn.model)
-            
-            -- RDR3 player model bits
-            if N_0x283978a15512b2fe then
-				N_0x283978a15512b2fe(PlayerPedId(), true)
+                -- RDR3 player model bits
+                if N_0x283978a15512b2fe then
+                    N_0x283978a15512b2fe(PlayerPedId(), true)
+                end
+            else
+                Citizen.Trace("tried to spawn with invalid model\n")
             end
         end
 
@@ -290,8 +291,15 @@ function spawnPlayer(spawnIdx, cb)
         -- gamelogic-style cleanup stuff
         ClearPedTasksImmediately(ped)
         --SetEntityHealth(ped, 300) -- TODO: allow configuration of this?
-        RemoveAllPedWeapons(ped) -- TODO: make configurable (V behavior?)
+
+        if not spawn.retainWeapons then -- Made configurable
+            RemoveAllPedWeapons(ped) -- V behavior?
+        end
         ClearPlayerWantedLevel(PlayerId())
+
+        if ResetPedVisibleDamage then -- RDR3 compatibility
+            ResetPedVisibleDamage(ped) -- Closer to V behavior?
+        end
 
         -- why is this even a flag?
         --SetCharWillFlyThroughWindscreen(ped, false)
@@ -313,7 +321,7 @@ function spawnPlayer(spawnIdx, cb)
 
         ShutdownLoadingScreen()
 
-        if IsScreenFadedOut() then
+        if IsScreenFadedOut() and not spawn.skipFadeIn then
             DoScreenFadeIn(500)
 
             while not IsScreenFadedIn() do
