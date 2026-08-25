@@ -130,7 +130,7 @@ AddEventHandler('playerConnecting', function()
 end)
 
 -- and migrate them to a 'joining' ID where possible
-RegisterNetEvent('playerJoining', function(oldIdx)
+AddEventHandler('playerJoining', function(oldIdx)
     -- resource restart race condition
     local oldPlayer = players[tostring(oldIdx)]
 
