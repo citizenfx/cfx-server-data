@@ -1,4 +1,4 @@
-local playerData = exports['cfx.re/playerData.v1alpha1']
+local playerData = exports['player-data']
 
 local validMoneyTypes = {
     bank = true,
@@ -88,9 +88,7 @@ AddEventHandler('money:updated', function(data)
     end
 end)
 
-RegisterNetEvent('money:requestDisplay')
-
-AddEventHandler('money:requestDisplay', function()
+RegisterNetEvent('money:requestDisplay', function()
     local source = source
     local playerId = playerData:getPlayerId(source)
 

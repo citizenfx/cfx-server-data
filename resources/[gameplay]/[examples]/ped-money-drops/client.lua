@@ -1,7 +1,6 @@
 AddEventHandler('gameEventTriggered', function(eventName, args)
     if eventName == 'CEventNetworkEntityDamage' then
         local victim = args[1]
-        local culprit = args[2]
         local isDead = args[6] == 1
 
         if isDead then

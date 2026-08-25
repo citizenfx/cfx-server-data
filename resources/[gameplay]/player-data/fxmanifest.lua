@@ -6,11 +6,7 @@ description 'A basic resource for storing player identifiers.'
 author 'Cfx.re <root@cfx.re>'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
-fx_version 'bodacious'
+fx_version 'cerulean'
 game 'common'
 
 server_script 'server.lua'
-
-provides {
-    'cfx.re/playerData.v1alpha1'
-}

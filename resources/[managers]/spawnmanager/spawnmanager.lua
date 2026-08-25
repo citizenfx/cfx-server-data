@@ -41,7 +41,7 @@ AddEventHandler('getMapDirectives', function(add)
 
                 -- recalculate the model for storage
                 if not tonumber(model) then
-                    model = GetHashKey(model, _r)
+                    model = GetHashKey(model)
                 end
 
                 -- store the spawn data in the state so we can erase it later on
@@ -110,11 +110,10 @@ function addSpawnPoint(spawn)
         error("invalid spawn model")
     end
 
-    -- is is even a ped?
-    -- not in V?
-    --[[if not IsThisModelAPed(model) then
+    -- is the model a ped?
+    if not IsModelAPed(model) then
         error("this model ain't a ped!")
-    end]]
+    end
 
     -- overwrite the model in case we hashed it
     spawn.model = model
@@ -153,32 +152,31 @@ end
 -- function as existing in original R* scripts
 local function freezePlayer(id, freeze)
     local player = id
-    SetPlayerControl(player, not freeze, false)
+    SetPlayerControl(player, not freeze, 0)
 
     local ped = GetPlayerPed(player)
 
     if not freeze then
         if not IsEntityVisible(ped) then
-            SetEntityVisible(ped, true)
+            SetEntityVisible(ped, true, false)
         end
 
-        if not IsPedInAnyVehicle(ped) then
-            SetEntityCollision(ped, true)
+        if not IsPedInAnyVehicle(ped, false) then
+            SetEntityCollision(ped, true, true)
         end
 
         FreezeEntityPosition(ped, false)
-        --SetCharNeverTargetted(ped, false)
+        SetPedCanBeTargetted(ped, true)
         SetPlayerInvincible(player, false)
     else
         if IsEntityVisible(ped) then
-            SetEntityVisible(ped, false)
+            SetEntityVisible(ped, false, false)
         end
 
-        SetEntityCollision(ped, false)
+        SetEntityCollision(ped, false, false)
         FreezeEntityPosition(ped, true)
-        --SetCharNeverTargetted(ped, true)
+        SetPedCanBeTargetted(ped, false)
         SetPlayerInvincible(player, true)
-        --RemovePtfxFromPed(ped)
 
         if not IsPedFatallyInjured(ped) then
             ClearPedTasksImmediately(ped)
@@ -187,17 +185,11 @@ local function freezePlayer(id, freeze)
 end
 
 function loadScene(x, y, z)
-	if not NewLoadSceneStart then
-		return
-	end
+	if not NewLoadSceneStart then return end
 
     NewLoadSceneStart(x, y, z, 0.0, 0.0, 0.0, 20.0, 0)
 
-    while IsNewLoadSceneActive() do
-        networkTimer = GetNetworkTimer()
-
-        NetworkUpdateLoadScene()
-    end
+    while IsNewLoadSceneActive() do NetworkUpdateLoadScene() end
 end
 
 -- to prevent trying to spawn multiple times
@@ -205,13 +197,11 @@ local spawnLock = false
 
 -- spawns the current player at a certain spawn point index (or a random one, for that matter)
 function spawnPlayer(spawnIdx, cb)
-    if spawnLock then
-        return
-    end
+    if spawnLock then return end
 
     spawnLock = true
 
-    Citizen.CreateThread(function()
+    CreateThread(function()
         -- if the spawn isn't set, select a random one
         if not spawnIdx then
             spawnIdx = GetRandomIntInRange(1, #spawnPoints + 1)
@@ -237,7 +227,7 @@ function spawnPlayer(spawnIdx, cb)
             DoScreenFadeOut(500)
 
             while not IsScreenFadedOut() do
-                Citizen.Wait(0)
+                Wait(0)
             end
         end
 
@@ -308,7 +298,7 @@ function spawnPlayer(spawnIdx, cb)
         local time = GetGameTimer()
 
         while (not HasCollisionLoadedAroundEntity(ped) and (GetGameTimer() - time) < 5000) do
-            Citizen.Wait(0)
+            Wait(0)
         end
 
         ShutdownLoadingScreen()
@@ -317,7 +307,7 @@ function spawnPlayer(spawnIdx, cb)
             DoScreenFadeIn(500)
 
             while not IsScreenFadedIn() do
-                Citizen.Wait(0)
+                Wait(0)
             end
         end
 
@@ -338,10 +328,10 @@ end
 local respawnForced
 local diedAt
 
-Citizen.CreateThread(function()
+CreateThread(function()
     -- main loop thing
     while true do
-        Citizen.Wait(50)
+        Wait(50)
 
         local playerPed = PlayerPedId()
 
