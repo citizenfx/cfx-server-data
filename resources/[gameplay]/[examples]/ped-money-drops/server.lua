@@ -38,5 +38,5 @@ AddEventHandler('money:tryPickup', function(entity)
 end)
 
 AddEventHandler('entityRemoved', function(entity)
-    safePositions[entity] = nil
+    safePositions[NetworkGetNetworkIdFromEntity(entity)] = nil
 end)
