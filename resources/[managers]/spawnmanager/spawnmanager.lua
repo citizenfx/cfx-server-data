@@ -233,14 +233,6 @@ function spawnPlayer(spawnIdx, cb)
             spawn = spawnPoints[spawnIdx]
         end
 
-        if not spawn.skipFade then
-            DoScreenFadeOut(500)
-
-            while not IsScreenFadedOut() do
-                Citizen.Wait(0)
-            end
-        end
-
         -- validate the index
         if not spawn then
             Citizen.Trace("tried to spawn at an invalid spawn index\n")
@@ -248,6 +240,14 @@ function spawnPlayer(spawnIdx, cb)
             spawnLock = false
 
             return
+        end
+
+        if not spawn.skipFade then
+            DoScreenFadeOut(500)
+
+            while not IsScreenFadedOut() do
+                Citizen.Wait(0)
+            end
         end
 
         -- freeze the local player
@@ -313,7 +313,7 @@ function spawnPlayer(spawnIdx, cb)
 
         ShutdownLoadingScreen()
 
-        if IsScreenFadedOut() then
+        if not spawn.skipFade and IsScreenFadedOut() then
             DoScreenFadeIn(500)
 
             while not IsScreenFadedIn() do
