@@ -6,7 +6,7 @@ description 'An example money system using KVS.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 author 'Cfx.re <root@cfx.re>'
 
-fx_version 'bodacious'
+fx_version 'cerulean'
 game 'gta5'
 
 client_script 'client.lua'
