@@ -28,6 +28,7 @@ var count = 0;
 var thisCount = 0;
 
 const emoji = {
+    INIT_CORE: [ '🍇' ],
     INIT_BEFORE_MAP_LOADED: [ '🍉' ],
     INIT_AFTER_MAP_LOADED: [ '🍋', '🍊' ],
     INIT_SESSION: [ '🍐', '🍅', '🍆' ],
@@ -38,7 +39,7 @@ const handlers = {
     {
         count = data.count;
 
-        document.querySelector('.letni h3').innerHTML += emoji[data.type][data.order - 1] || '';
+        document.querySelector('.letni h3').innerHTML += (emoji[data.type] || [])[data.order - 1] || '';
     },
 
     initFunctionInvoking(data)
