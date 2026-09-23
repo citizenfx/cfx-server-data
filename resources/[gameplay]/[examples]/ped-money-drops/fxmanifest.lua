@@ -6,7 +6,7 @@ description 'An example money system client.'
 author 'Cfx.re <root@cfx.re>'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
-fx_version 'bodacious'
+fx_version 'cerulean'
 game 'gta5'
 
 client_script 'client.lua'

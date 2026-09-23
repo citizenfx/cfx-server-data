@@ -32,5 +32,5 @@ files {
 }
 
 -- support the latest resource manifest
-fx_version 'adamant'
+fx_version 'cerulean'
 game 'gta5'
