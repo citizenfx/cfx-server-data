@@ -313,3 +313,11 @@ function doesMapSupportGameType(gameType, map)
 
     return maps[map].gameTypes[gameType]
 end
+
+exports('getCurrentGameType', getCurrentGameType)
+exports('getCurrentMap', getCurrentMap)
+exports('changeGameType', changeGameType)
+exports('changeMap', changeMap)
+exports('doesMapSupportGameType', doesMapSupportGameType)
+exports('getMaps', getMaps)
+exports('roundEnded', roundEnded)

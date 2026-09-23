@@ -1,4 +1,4 @@
-local playerData = exports['cfx.re/playerData.v1alpha1']
+local playerData = exports['player-data']
 
 local validMoneyTypes = {
     bank = true,

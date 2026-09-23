@@ -12,5 +12,6 @@ game 'gta5'
 client_script 'client.lua'
 server_script 'server.lua'
 
---dependency 'cfx.re/playerData.v1alpha1'
 lua54 'yes'
+
+dependency 'player-data'
