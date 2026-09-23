@@ -7,7 +7,7 @@ local function detectUpdates()
     SetTimeout(500, detectUpdates)
 
     local template = GetConvar('playerNames_template', '[{{id}}] {{name}}')
-    
+
     if curTemplate ~= template then
         setNameTemplate(-1, template)
 
@@ -20,7 +20,7 @@ local function detectUpdates()
         local newTag = formatPlayerNameTag(v, template)
         if newTag ~= curTags[v] then
             setName(v, newTag)
-            
+
             curTags[v] = newTag
         end
     end

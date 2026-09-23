@@ -187,9 +187,7 @@ local function freezePlayer(id, freeze)
 end
 
 function loadScene(x, y, z)
-	if not NewLoadSceneStart then
-		return
-	end
+	if not NewLoadSceneStart then return end
 
     NewLoadSceneStart(x, y, z, 0.0, 0.0, 0.0, 20.0, 0)
 
@@ -205,9 +203,7 @@ local spawnLock = false
 
 -- spawns the current player at a certain spawn point index (or a random one, for that matter)
 function spawnPlayer(spawnIdx, cb)
-    if spawnLock then
-        return
-    end
+    if spawnLock then return end
 
     spawnLock = true
 

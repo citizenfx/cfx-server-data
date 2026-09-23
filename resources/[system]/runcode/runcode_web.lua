@@ -111,7 +111,7 @@ end
 CreateThread(function()
 	while true do
 		Wait(1000)
-		
+
 		if attempts > 0 and (GetGameTimer() - lastAttempt) > 5000 then
 			attempts = 0
 			lastAttempt = 0

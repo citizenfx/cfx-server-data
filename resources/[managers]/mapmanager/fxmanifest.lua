@@ -6,15 +6,11 @@ author 'Cfx.re <root@cfx.re>'
 description 'A flexible handler for game type/map association.'
 repository 'https://github.com/citizenfx/cfx-server-data'
 
-client_scripts {
-    "mapmanager_shared.lua",
-    "mapmanager_client.lua"
-}
+client_script 'mapmanager_client.lua'
 
-server_scripts {
-    "mapmanager_shared.lua",
-    "mapmanager_server.lua"
-}
+server_script 'mapmanager_server.lua'
+
+shared_script 'mapmanager_shared.lua'
 
 fx_version 'adamant'
 games { 'gta5', 'rdr3' }
