@@ -264,7 +264,7 @@ RegisterCommand("gametype", function(source, args)
     end
     changeGameType(args[1])
     print('gametype ' .. args[1] .. "\n")
-end)
+end, true)
 
 function getCurrentGameType()
     return currentGameType

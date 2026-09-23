@@ -41,7 +41,7 @@ AddEventHandler('getMapDirectives', function(add)
 
                 -- recalculate the model for storage
                 if not tonumber(model) then
-                    model = GetHashKey(model, _r)
+                    model = GetHashKey(model)
                 end
 
                 -- store the spawn data in the state so we can erase it later on
@@ -110,11 +110,10 @@ function addSpawnPoint(spawn)
         error("invalid spawn model")
     end
 
-    -- is is even a ped?
-    -- not in V?
-    --[[if not IsThisModelAPed(model) then
+    -- is the model a ped?
+    if not IsModelAPed(model) then
         error("this model ain't a ped!")
-    end]]
+    end
 
     -- overwrite the model in case we hashed it
     spawn.model = model
@@ -153,17 +152,17 @@ end
 -- function as existing in original R* scripts
 local function freezePlayer(id, freeze)
     local player = id
-    SetPlayerControl(player, not freeze, false)
+    SetPlayerControl(player, not freeze, 0)
 
     local ped = GetPlayerPed(player)
 
     if not freeze then
         if not IsEntityVisible(ped) then
-            SetEntityVisible(ped, true)
+            SetEntityVisible(ped, true, false)
         end
 
-        if not IsPedInAnyVehicle(ped) then
-            SetEntityCollision(ped, true)
+        if not IsPedInAnyVehicle(ped, false) then
+            SetEntityCollision(ped, true, true)
         end
 
         FreezeEntityPosition(ped, false)
@@ -171,14 +170,13 @@ local function freezePlayer(id, freeze)
         SetPlayerInvincible(player, false)
     else
         if IsEntityVisible(ped) then
-            SetEntityVisible(ped, false)
+            SetEntityVisible(ped, false, false)
         end
 
-        SetEntityCollision(ped, false)
+        SetEntityCollision(ped, false, false)
         FreezeEntityPosition(ped, true)
         --SetCharNeverTargetted(ped, true)
         SetPlayerInvincible(player, true)
-        --RemovePtfxFromPed(ped)
 
         if not IsPedFatallyInjured(ped) then
             ClearPedTasksImmediately(ped)
@@ -193,11 +191,7 @@ function loadScene(x, y, z)
 
     NewLoadSceneStart(x, y, z, 0.0, 0.0, 0.0, 20.0, 0)
 
-    while IsNewLoadSceneActive() do
-        networkTimer = GetNetworkTimer()
-
-        NetworkUpdateLoadScene()
-    end
+    while IsNewLoadSceneActive() do NetworkUpdateLoadScene() end
 end
 
 -- to prevent trying to spawn multiple times
