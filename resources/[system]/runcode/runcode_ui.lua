@@ -1,8 +1,6 @@
 local openData
 
-RegisterNetEvent('runcode:openUi')
-
-AddEventHandler('runcode:openUi', function(options)
+RegisterNetEvent('runcode:openUi', function(options)
     openData = {
         type = 'open',
         options = options,
@@ -48,9 +46,7 @@ RegisterNUICallback('runCodeInBand', function(args, cb)
     TriggerServerEvent('runcode:runInBand', id, args)
 end)
 
-RegisterNetEvent('runcode:inBandResult')
-
-AddEventHandler('runcode:inBandResult', function(id, result)
+RegisterNetEvent('runcode:inBandResult', function(id, result)
     if rcCbs[id] then
         local cb = rcCbs[id]
         rcCbs[id] = nil

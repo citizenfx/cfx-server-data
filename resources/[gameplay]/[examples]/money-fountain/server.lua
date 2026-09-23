@@ -80,14 +80,12 @@ local function handleFountainStuff(source, id, pickup)
 end
 
 -- event for picking up fountain->player
-RegisterNetEvent('money_fountain:tryPickup')
-AddEventHandler('money_fountain:tryPickup', function(id)
+RegisterNetEvent('money_fountain:tryPickup', function(id)
     handleFountainStuff(source, id, true)
 end)
 
 -- event for donating player->fountain
-RegisterNetEvent('money_fountain:tryPlace')
-AddEventHandler('money_fountain:tryPlace', function(id)
+RegisterNetEvent('money_fountain:tryPlace', function(id)
     handleFountainStuff(source, id, false)
 end)
 

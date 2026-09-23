@@ -3,7 +3,7 @@
 -- it works in a fairly simple way: a set of identifiers is assigned to an account ID, and said
 -- account ID is then returned/added as state bag
 --
--- it also implements the `cfx.re/playerData.v1alpha1` spec, which is exposed through the following:
+-- it also implements the `player-data` spec, which is exposed through the following:
 -- - getPlayerId(source: string)
 -- - getPlayerById(dbId: string)
 -- - getPlayerIdFromIdentifier(identifier: string)
@@ -130,8 +130,6 @@ AddEventHandler('playerConnecting', function()
 end)
 
 -- and migrate them to a 'joining' ID where possible
-RegisterNetEvent('playerJoining')
-
 AddEventHandler('playerJoining', function(oldIdx)
     -- resource restart race condition
     local oldPlayer = players[tostring(oldIdx)]
@@ -189,25 +187,10 @@ RegisterCommand('playerData', function(source, args)
     end
 end, true)
 
--- COMPATIBILITY for server versions that don't export provide
-local function getExportEventName(resource, name)
-	return string.format('__cfx_export_%s_%s', resource, name)
-end
-
-function AddExport(name, fn)
-    if not Citizen.Traits or not Citizen.Traits.ProvidesExports then
-        AddEventHandler(getExportEventName('cfx.re/playerData.v1alpha1', name), function(setCB)
-            setCB(fn)
-        end)
-    end
-
-    exports(name, fn)
-end
-
 -- exports
-AddExport('getPlayerIdFromIdentifier', getPlayerIdFromIdentifier)
+exports('getPlayerIdFromIdentifier', getPlayerIdFromIdentifier)
 
-AddExport('getPlayerId', function(playerIdx)
+exports('getPlayerId', function(playerIdx)
     local player = players[tostring(playerIdx)]
 
     if not player then
@@ -217,6 +200,6 @@ AddExport('getPlayerId', function(playerIdx)
     return player.dbId
 end)
 
-AddExport('getPlayerById', function(playerId)
+exports('getPlayerById', function(playerId)
     return playersById[tostring(playerId)]
 end)

@@ -1,6 +1,4 @@
-RegisterNetEvent('runcode:gotSnippet')
-
-AddEventHandler('runcode:gotSnippet', function(id, lang, code)
+RegisterNetEvent('runcode:gotSnippet', function(id, lang, code)
 	local res, err = RunCode(lang, code)
 
 	if not err then

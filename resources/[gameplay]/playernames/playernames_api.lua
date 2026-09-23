@@ -42,6 +42,13 @@ setHealthBarColor = getTriggerFunction('sehc')
 setNameTemplate = getTriggerFunction('tpl')
 setName = getTriggerFunction('name')
 
+exports('setComponentColor', setComponentColor)
+exports('setComponentAlpha', setComponentAlpha)
+exports('setComponentVisibility', setComponentVisibility)
+exports('setWantedLevel', setWantedLevel)
+exports('setHealthBarColor', setHealthBarColor)
+exports('setNameTemplate', setNameTemplate)
+
 if not io then
     io = { write = nil, open = nil }
 end
