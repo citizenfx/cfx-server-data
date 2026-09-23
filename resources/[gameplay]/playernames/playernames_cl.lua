@@ -181,7 +181,7 @@ AddEventHandler('onResourceStop', function(name)
     end
 end)
 
-SetTimeout(0, function()
+CreateThread(function()
     TriggerServerEvent('playernames:init')
 end)
 
