@@ -37,8 +37,7 @@ AddEventHandler('playerDropped', function()
     activePlayers[source] = nil
 end)
 
-RegisterNetEvent('playernames:init')
-AddEventHandler('playernames:init', function()
+RegisterNetEvent('playernames:init', function()
     reconfigure(source)
     activePlayers[source] = true
 end)
