@@ -41,25 +41,21 @@ Citizen.CreateThread(function()
                 if killer == ped or killer == -1 then
                     TriggerEvent('baseevents:onPlayerDied', killertype, { table.unpack(GetEntityCoords(ped)) })
                     TriggerServerEvent('baseevents:onPlayerDied', killertype, { table.unpack(GetEntityCoords(ped)) })
-                    hasBeenDead = true
                 else
                     TriggerEvent('baseevents:onPlayerKilled', killerid, {killertype=killertype, weaponhash = killerweapon, killerinveh=killerinvehicle, killervehseat=killervehicleseat, killervehname=killervehiclename, killerpos={table.unpack(GetEntityCoords(ped))}})
                     TriggerServerEvent('baseevents:onPlayerKilled', killerid, {killertype=killertype, weaponhash = killerweapon, killerinveh=killerinvehicle, killervehseat=killervehicleseat, killervehname=killervehiclename, killerpos={table.unpack(GetEntityCoords(ped))}})
-                    hasBeenDead = true
                 end
             elseif not IsPedFatallyInjured(ped) then
                 isDead = false
+                hasBeenDead = false
                 diedAt = nil
             end
 
-            -- check if the player has to respawn in order to trigger an event
             if not hasBeenDead and diedAt ~= nil and diedAt > 0 then
                 TriggerEvent('baseevents:onPlayerWasted', { table.unpack(GetEntityCoords(ped)) })
                 TriggerServerEvent('baseevents:onPlayerWasted', { table.unpack(GetEntityCoords(ped)) })
 
                 hasBeenDead = true
-            elseif hasBeenDead and diedAt ~= nil and diedAt <= 0 then
-                hasBeenDead = false
             end
         end
     end
